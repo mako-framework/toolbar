@@ -1,0 +1,21 @@
+{
+    "name": "mako/toolbar",
+    "type": "mako-package",
+    "keywords": ["mako", "framework", "toolbar"],
+    "homepage": "http://makoframework.com",
+    "license": "BSD-3-Clause",
+    "authors": [
+        {
+            "name": "Frederic G. Østby",
+            "email": "frederic.g.ostby@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "mako\\toolbar\\": "src"
+        }
+    },
+    "require": {
+        "composer/installers": "*"
+    }
+}
