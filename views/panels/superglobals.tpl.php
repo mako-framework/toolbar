@@ -23,9 +23,7 @@
 			{% endforeach %}
 
 		</table>
-		
-		<br>
-	
+			
 	{% endif %}
 
 {% endforeach %}

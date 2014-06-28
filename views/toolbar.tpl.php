@@ -105,33 +105,15 @@
 		padding-left: 8px;
 		padding-right: 8px;
 		color: #aaa;
-		background: #1c1c1c;
+		background: #111;
 		border-bottom: 1px solid #333;
 		-moz-box-shadow: inset 0 3px 5px #111;
 		-webkit-box-shadow: inset 0 3px 5px #111;
 		box-shadow: inset 0 3px 5px #111;
-		-webkit-border-radius: 10px;
-		-moz-border-radius: 10px;
-		border-radius: 10px;
 	}
 	#mako-debug .mako-right span:not(:last-child)
 	{
-		-webkit-border-top-right-radius: 0px;
-		-webkit-border-bottom-right-radius: 0px;
-		-moz-border-radius-topright: 0px;
-		-moz-border-radius-bottomright: 0px;
-		border-top-right-radius: 0px;
-		border-bottom-right-radius: 0px;
-		border-right: 1px solid #222;
-	}
-	#mako-debug .mako-right span:not(:first-child)
-	{
-		-webkit-border-top-left-radius: 1px;
-		-webkit-border-bottom-left-radius: 1px;
-		-moz-border-radius-topleft: 1px;
-		-moz-border-radius-bottomleft: 1px;
-		border-top-left-radius: 1px;
-		border-bottom-left-radius: 1px;
+		border-right: 1px solid #232323;
 	}
 	#mako-debug .mako-close
 	{
@@ -144,9 +126,6 @@
 		position:absolute;
 		top:0px;
 		right:0px;
-		-webkit-border-bottom-left-radius: 5px;
-		-moz-border-radius-bottomleft: 5px;
-		border-bottom-left-radius: 5px;
 	}
 	#mako-debug .mako-close a
 	{
@@ -208,16 +187,25 @@
 	{
 		margin: 150px auto;
 	}
+
 	#mako-debug .mako-table
 	{
 		width: 100%;
 		border: 1px solid #ccc;
 		background: #fff;
+		border-collapse: collapse;
+	}
+	#mako-debug table th
+	{
+		padding: 4px;
+		background: #ddd;
+		border-bottom: 1px solid #ccc;
 	}
 	#mako-debug table td
 	{
 		padding: 4px;
 		border-bottom: 1px solid #ccc;
+		border-right: 1px solid #ccc;
 		vertical-align: top;
 	}
 	#mako-debug table td:first-child
@@ -231,10 +219,6 @@
 		word-wrap: break-word;
 		word-break: break-all;
 	}
-	#mako-debug table tr:last-child td
-	{
-		border: 0px;
-	}
 	#mako-debug table tr:nth-child(odd)
 	{
 		background: #efefef;
@@ -247,11 +231,7 @@
 	#mako-debug #mako-toolbar
 	{
 		padding: 12px;
-		background: #111;
-		background: -webkit-linear-gradient(bottom, #1c1c1c, #3c3c3c);
-		background: -moz-linear-gradient(bottom, #1c1c1c, #3c3c3c);
-		background: -ms-linear-gradient(bottom, #1c1c1c, #3c3c3c);
-		background: -o-linear-gradient(bottom, #1c1c1c, #3c3c3c);
+		background: #232323;
 		border-top: 1px solid #000;
 		font-size: 0.8em;
 		text-shadow: 0px 1px 0px #000;
@@ -273,7 +253,7 @@
 	{
 		color: #bbb;
 		padding: 5px;
-		border-right: 1px solid #222;
+		border-right: 1px solid #111;
 		-webkit-box-shadow: 1px 0px 0px #444;
 		-moz-box-shadow: 1px 0px 0px #444;
 		box-shadow: 1px 0px 0px #444;
@@ -306,7 +286,7 @@
 	{% endforeach %}
 
 	<div id="mako-toolbar-hidden">
-		<div class="mako-icon" title="Mako {{MAKO_VERSION}}" onclick="Mako.toggleToolbar(1);"></div>
+		<div class="mako-icon" title="Mako {{MAKO_VERSION}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(1);"></div>
 	</div>
 
 	<div id="mako-toolbar">
@@ -316,7 +296,7 @@
 			<span title="total execution time">{{$time}} seconds</span>
 		</div>
 
-		<div class="mako-icon" title="Mako {{MAKO_VERSION}}" onclick="Mako.toggleToolbar(0);"></div>
+		<div class="mako-icon" title="Mako {{MAKO_VERSION}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(0);"></div>
 
 		{% foreach($panels as $panel) %}
 
