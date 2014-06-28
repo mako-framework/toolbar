@@ -61,6 +61,7 @@
 	{
 		display: none;
 		padding: 12px;
+		opacity: 0.5;
 	}
 	#mako-debug
 	{
