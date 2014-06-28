@@ -1,4 +1,4 @@
-<p><span class="mako-title">INCLUDED FILES</span></p>
+<p><span class="mako-title">Included files</span></p>
 
 <table class="mako-table">
 	<tr>

@@ -4,7 +4,7 @@
 
 {% else %}
 			
-	<p><span class="mako-title">DATABASE QUERIES</span></p>
+	<p><span class="mako-title">Database queries</span></p>
 
 		{% foreach($logs as $name => $queries) %}
 

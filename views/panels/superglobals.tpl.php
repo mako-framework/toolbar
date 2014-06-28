@@ -1,4 +1,4 @@
-<p><span class="mako-title">SUPERGLOBALS</span></p>
+<p><span class="mako-title">Superglobals</span></p>
 
 {% foreach($superglobals as $name => $superglobal) %}
 
