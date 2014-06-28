@@ -24,7 +24,7 @@ class SuperglobalsPanel extends \mako\toolbar\panels\Panel implements \mako\tool
 
 	public function getTabLabel()
 	{
-		return 'superglobals';
+		return 'Superglobals';
 	}
 
 	/**

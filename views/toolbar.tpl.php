@@ -209,13 +209,8 @@
 		border-right: 1px solid #ccc;
 		vertical-align: top;
 	}
-	#mako-debug table td:first-child
+	#mako-debug table td
 	{
-		width: 20%;
-	}
-	#mako-debug table td:last-child
-	{
-		width: 80%;
 		white-space: pre-wrap;
 		word-wrap: break-word;
 		word-break: break-all;

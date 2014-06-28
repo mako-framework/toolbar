@@ -36,12 +36,12 @@ class ToolbarService extends \mako\application\services\Service
 
 			// Register panels
 
+			$toolbar->addPanel(new SuperglobalsPanel($view));
+
 			if($container->has('database'))
 			{
 				$toolbar->addPanel(new DatabasePanel($view, $container->get('database')));
 			}
-
-			$toolbar->addPanel(new SuperglobalsPanel($view));
 
 			$toolbar->addPanel(new IncludedFilesPanel($view));
 
