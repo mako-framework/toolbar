@@ -2,11 +2,11 @@
 
 ## Requirements
 
-Mako 4.0 or greater.
+Mako 4.2 or greater.
 
 ## Installation
 
-1) Add the ```mako\toolbar\ToolbarService``` to your ```app/config/application.php``` config file.
+1) Add the ```mako\toolbar\ToolbarPackage``` to your ```app/config/application.php``` config file.
 
 2) Render the toolbar. The easiest way of doing this is by adding the following code to your ```app/bootstrap.php``` file:
 
