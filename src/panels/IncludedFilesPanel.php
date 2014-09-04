@@ -60,7 +60,7 @@ class IncludedFilesPanel extends \mako\toolbar\panels\Panel implements \mako\too
 
 	public function render()
 	{
-		$view = $this->view->create('toolbar::panels.included_files',
+		$view = $this->view->create('mako-toolbar::panels.included_files',
 		[
 			'files' => $this->files,
 		]);

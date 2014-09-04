@@ -77,7 +77,7 @@ class Toolbar
 
 	public function render()
 	{
-		$view = $this->view->create('toolbar::toolbar', 
+		$view = $this->view->create('mako-toolbar::toolbar', 
 		[
 			'memory' => $this->humanizer->fileSize(memory_get_peak_usage()),
 			'time'   => round(microtime(true) - MAKO_START, 4),

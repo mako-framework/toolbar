@@ -79,7 +79,7 @@ class DatabasePanel extends \mako\toolbar\panels\Panel implements \mako\toolbar\
 
 	public function render()
 	{
-		$view = $this->view->create('toolbar::panels.database',
+		$view = $this->view->create('mako-toolbar::panels.database',
 		[
 			'logs' => $this->database->getLogs(),
 		]);

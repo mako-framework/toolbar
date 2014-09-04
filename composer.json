@@ -1,6 +1,5 @@
 {
     "name": "mako/toolbar",
-    "type": "mako-package",
     "keywords": ["mako", "framework", "toolbar"],
     "homepage": "http://makoframework.com",
     "license": "BSD-3-Clause",
@@ -14,8 +13,5 @@
         "psr-4": {
             "mako\\toolbar\\": "src"
         }
-    },
-    "require": {
-        "composer/installers": "*"
     }
 }

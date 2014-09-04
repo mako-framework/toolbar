@@ -36,7 +36,7 @@ class SuperglobalsPanel extends \mako\toolbar\panels\Panel implements \mako\tool
 
 	public function render()
 	{
-		$view = $this->view->create('toolbar::panels.superglobals',
+		$view = $this->view->create('mako-toolbar::panels.superglobals',
 		[
 			'superglobals' => 
 			[
