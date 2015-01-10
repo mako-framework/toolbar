@@ -16,7 +16,7 @@ use mako\view\ViewFactory;
  * @author  Frederic G. Østby
  */
 
-abstract class Panel implements mako\toolbar\panels\PanelInterface
+abstract class Panel implements PanelInterface
 {
 	/**
 	 * View factory instance.
