@@ -7,7 +7,7 @@
 
 namespace mako\toolbar\panels;
 
-use mako\toolbar\panels\PanelInterface
+use mako\toolbar\panels\PanelInterface;
 use mako\view\ViewFactory;
 
 /**

@@ -9,7 +9,7 @@ namespace mako\toolbar\panels;
 
 use mako\database\ConnectionManager;
 use mako\toolbar\panels\Panel;
-use mako\toolbar\panels\PanelInterface
+use mako\toolbar\panels\PanelInterface;
 use mako\utility\Arr;
 use mako\view\ViewFactory;
 
