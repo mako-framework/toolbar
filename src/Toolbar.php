@@ -80,7 +80,7 @@ class Toolbar
 	{
 		$view = $this->view->create('mako-toolbar::toolbar', 
 		[
-			'version' => Mako::VERSION;
+			'version' => Mako::VERSION,
 			'memory'  => $this->humanizer->fileSize(memory_get_peak_usage()),
 			'time'    => round(microtime(true) - MAKO_START, 4),
 			'panels'  => $this->panels,
