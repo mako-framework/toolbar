@@ -7,9 +7,11 @@
 
 namespace mako\toolbar\panels;
 
-use \mako\view\ViewFactory;
-use \mako\database\ConnectionManager;
-use \mako\utility\Arr;
+use mako\database\ConnectionManager;
+use mako\toolbar\panels\Panel;
+use mako\toolbar\panels\PanelInterface
+use mako\utility\Arr;
+use mako\view\ViewFactory;
 
 /**
  * Database panel.
@@ -17,7 +19,7 @@ use \mako\utility\Arr;
  * @author  Frederic G. Østby
  */
 
-class DatabasePanel extends \mako\toolbar\panels\Panel implements \mako\toolbar\panels\PanelInterface
+class DatabasePanel extends Panel implements PanelInterface
 {
 	/**
 	 * Conenction manager instance.

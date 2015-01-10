@@ -7,9 +7,10 @@
 
 namespace mako\toolbar;
 
-use \mako\utility\Humanizer;
-use \mako\toolbar\panels\PanelInterface;
-use \mako\view\ViewFactory;
+use mako\Mako;
+use mako\utility\Humanizer;
+use mako\toolbar\panels\PanelInterface;
+use mako\view\ViewFactory;
 
 /**
  * Mako debug toolbar.
@@ -79,9 +80,10 @@ class Toolbar
 	{
 		$view = $this->view->create('mako-toolbar::toolbar', 
 		[
-			'memory' => $this->humanizer->fileSize(memory_get_peak_usage()),
-			'time'   => round(microtime(true) - MAKO_START, 4),
-			'panels' => $this->panels,
+			'version' => Mako::VERSION;
+			'memory'  => $this->humanizer->fileSize(memory_get_peak_usage()),
+			'time'    => round(microtime(true) - MAKO_START, 4),
+			'panels'  => $this->panels,
 		]);
 
 		return $view->render();

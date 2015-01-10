@@ -7,13 +7,16 @@
 
 namespace mako\toolbar\panels;
 
+use mako\toolbar\panels\Panel;
+use mako\toolbar\panels\PanelInterface
+
 /**
  * Superglobals panel.
  *
  * @author  Frederic G. Østby
  */
 
-class SuperglobalsPanel extends \mako\toolbar\panels\Panel implements \mako\toolbar\panels\PanelInterface
+class SuperglobalsPanel extends Panel implements PanelInterface
 {
 	/**
 	 * Returns the tab label.

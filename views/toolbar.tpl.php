@@ -282,7 +282,7 @@
 	{% endforeach %}
 
 	<div id="mako-toolbar-hidden">
-		<div class="mako-icon" title="Mako {{MAKO_VERSION}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(1);"></div>
+		<div class="mako-icon" title="Mako {{$version}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(1);"></div>
 	</div>
 
 	<div id="mako-toolbar">
@@ -292,7 +292,7 @@
 			<span title="total execution time">{{$time}} seconds</span>
 		</div>
 
-		<div class="mako-icon" title="Mako {{MAKO_VERSION}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(0);"></div>
+		<div class="mako-icon" title="Mako {{$version}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(0);"></div>
 
 		{% foreach($panels as $panel) %}
 

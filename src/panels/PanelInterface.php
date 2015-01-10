@@ -7,7 +7,7 @@
 
 namespace mako\toolbar\panels;
 
-use \mako\view\ViewFactory;
+use mako\view\ViewFactory;
 
 /**
  * Panel interface.

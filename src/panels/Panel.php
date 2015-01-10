@@ -7,7 +7,8 @@
 
 namespace mako\toolbar\panels;
 
-use \mako\view\ViewFactory;
+use mako\toolbar\panels\PanelInterface
+use mako\view\ViewFactory;
 
 /**
  * Abstract panel.
@@ -15,7 +16,7 @@ use \mako\view\ViewFactory;
  * @author  Frederic G. Østby
  */
 
-abstract class Panel implements \mako\toolbar\panels\PanelInterface
+abstract class Panel implements mako\toolbar\panels\PanelInterface
 {
 	/**
 	 * View factory instance.

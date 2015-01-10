@@ -7,11 +7,11 @@
 
 namespace mako\toolbar;
 
-use \mako\application\Package;
-use \mako\toolbar\Toolbar;
-use \mako\toolbar\panels\DatabasePanel;
-use \mako\toolbar\panels\IncludedFilesPanel;
-use \mako\toolbar\panels\SuperglobalsPanel;
+use mako\application\Package;
+use mako\toolbar\Toolbar;
+use mako\toolbar\panels\DatabasePanel;
+use mako\toolbar\panels\IncludedFilesPanel;
+use mako\toolbar\panels\SuperglobalsPanel;
 
 /**
  * Toolbar package.

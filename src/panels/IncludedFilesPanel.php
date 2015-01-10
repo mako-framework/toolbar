@@ -7,7 +7,9 @@
 
 namespace mako\toolbar\panels;
 
-use \mako\view\ViewFactory;
+use mako\toolbar\panels\Panel;
+use mako\toolbar\panels\PanelInterface
+use mako\view\ViewFactory;
 
 /**
  * Included files panel.
@@ -15,7 +17,7 @@ use \mako\view\ViewFactory;
  * @author  Frederic G. Østby
  */
 
-class IncludedFilesPanel extends \mako\toolbar\panels\Panel implements \mako\toolbar\panels\PanelInterface
+class IncludedFilesPanel extends Panel implements PanelInterface
 {
 	/**
 	 * Included files.
