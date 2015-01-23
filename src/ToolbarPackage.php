@@ -12,6 +12,7 @@ use mako\toolbar\Toolbar;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
 use mako\toolbar\panels\IncludedFilesPanel;
+use mako\toolbar\panels\SessionPanel;
 use mako\toolbar\panels\SuperglobalsPanel;
 
 /**
@@ -45,6 +46,11 @@ class ToolbarPackage extends Package
 			$toolbar->addPanel(new SuperglobalsPanel($view));
 
 			$toolbar->addPanel(new ConfigPanel($view, $container->get('config')));
+
+			if($container->has('session'))
+			{
+				$toolbar->addPanel(new SessionPanel($view, $container->get('session')));
+			}
 
 			if($container->has('database'))
 			{

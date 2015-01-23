@@ -1,6 +1,6 @@
 <p><span class="mako-title">Included files</span></p>
 
-<table class="mako-table">
+<table class="mako-table mako-table-2c">
 	<tr>
 		<th>#</th>
 		<th>Name</th>

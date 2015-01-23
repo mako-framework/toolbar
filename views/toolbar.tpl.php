@@ -208,12 +208,17 @@
 		border-bottom: 1px solid #ccc;
 		border-right: 1px solid #ccc;
 		vertical-align: top;
-	}
-	#mako-debug table td
-	{
 		white-space: pre-wrap;
 		word-wrap: break-word;
 		word-break: break-all;
+	}
+	#mako-debug table.mako-table-2c td:first-child
+	{
+		min-width: 25%;
+	}
+	#mako-debug table.mako-table-2c td:last-child
+	{
+		width: 75%;
 	}
 	#mako-debug table tr:nth-child(odd)
 	{

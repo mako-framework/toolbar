@@ -4,9 +4,9 @@
 
 	{% if(!empty($superglobal)) %}
 		
-		<p><span class="mako-subtitle">${{$name}}</span></p>
+		<p><span class="mako-subtitle">${{$name}}:</span></p>
 		
-		<table class="mako-table">
+		<table class="mako-table mako-table-2c">
 
 			<tr>
 				<th>Key</th>

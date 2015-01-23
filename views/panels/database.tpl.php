@@ -20,7 +20,7 @@
 
 			{% else %}
 
-				<table class="mako-table">
+				<table class="mako-table mako-table-2c">
 
 					<tr>
 						<th>Time</th>

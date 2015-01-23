@@ -2,7 +2,7 @@
 
 <p>Only the currently loaded configuration is displayed.</p>
 
-<table class="mako-table">
+<table class="mako-table mako-table-2c">
 	<tr>
 		<th>File</th>
 		<th>Configuration</th>

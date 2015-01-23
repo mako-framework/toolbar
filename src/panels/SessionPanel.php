@@ -7,40 +7,40 @@
 
 namespace mako\toolbar\panels;
 
-use mako\config\Config;
+use mako\session\Session;
 use mako\toolbar\panels\Panel;
 use mako\toolbar\panels\PanelInterface;
 use mako\view\ViewFactory;
 
 /**
- * Config panel.
+ * Session panel.
  *
  * @author  Frederic G. Østby
  */
 
-class ConfigPanel extends Panel implements PanelInterface
+class SessionPanel extends Panel implements PanelInterface
 {
 	/**
-	 * Config.
+	 * Session.
 	 * 
-	 * @var \mako\config\Config;
+	 * @var \mako\session\Session;
 	 */
 
-	protected $config;
+	protected $session;
 
 	/**
 	 * Constructor.
 	 * 
 	 * @access  public
-	 * @param   \mako\view\ViewFactory  $view    View factory instance
-	 * @param   \mako\config\Config     $config  Configuration instance
+	 * @param   \mako\view\ViewFactory  $view      View factory instance
+	 * @param   \mako\session\Session   $session   Session instance
 	 */
 
-	public function __construct(ViewFactory $view, Config $config)
+	public function __construct(ViewFactory $view, Session $session)
 	{
 		parent::__construct($view);
 
-		$this->config = $config;
+		$this->session = $session;
 	}
 
 	/**
@@ -52,7 +52,7 @@ class ConfigPanel extends Panel implements PanelInterface
 
 	public function getTabLabel()
 	{
-		return 'Configuration';
+		return 'Session';
 	}
 
 	/**
@@ -64,9 +64,10 @@ class ConfigPanel extends Panel implements PanelInterface
 
 	public function render()
 	{
-		$view = $this->view->create('mako-toolbar::panels.config',
+		$view = $this->view->create('mako-toolbar::panels.session',
 		[
-			'config' => $this->config->getLoadedConfiguration(),
+			'id'   => $this->session->getId(),
+			'data' => $this->session->getData(),
 		]);
 
 		return $view->render();
