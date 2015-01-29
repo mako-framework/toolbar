@@ -20,7 +20,7 @@ class SuperglobalsPanel extends Panel implements PanelInterface
 {
 	/**
 	 * Returns the tab label.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */
@@ -32,7 +32,7 @@ class SuperglobalsPanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the rendered panel.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */
@@ -41,7 +41,7 @@ class SuperglobalsPanel extends Panel implements PanelInterface
 	{
 		$view = $this->view->create('mako-toolbar::panels.superglobals',
 		[
-			'superglobals' => 
+			'superglobals' =>
 			[
 				'_COOKIE'  => &$_COOKIE,
 				'_ENV'     => &$_ENV,

@@ -22,7 +22,7 @@ class ConfigPanel extends Panel implements PanelInterface
 {
 	/**
 	 * Config.
-	 * 
+	 *
 	 * @var \mako\config\Config;
 	 */
 
@@ -30,7 +30,7 @@ class ConfigPanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @access  public
 	 * @param   \mako\view\ViewFactory  $view    View factory instance
 	 * @param   \mako\config\Config     $config  Configuration instance
@@ -45,7 +45,7 @@ class ConfigPanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the tab label.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */
@@ -57,7 +57,7 @@ class ConfigPanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the rendered panel.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */

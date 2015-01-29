@@ -13,7 +13,7 @@
 				}
 				else
 				{
-					element.style.display = 'none';	
+					element.style.display = 'none';
 				}
 			}
 
@@ -277,7 +277,7 @@
 	{% foreach($panels as $panel) %}
 
 		<div class="mako-panel" id="{{$panel->getId()}}">
-			
+
 			<div class="mako-close"><a onclick="Mako.togglePanel('{{$panel->getId()}}')">close</a></div>
 
 			{{raw:$panel->render()}}
@@ -291,7 +291,7 @@
 	</div>
 
 	<div id="mako-toolbar">
-		
+
 		<div class="mako-right">
 			<span title="peak memory usage">{{$memory}}</span>
 			<span title="total execution time">{{$time}} seconds</span>

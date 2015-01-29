@@ -25,7 +25,7 @@ class ToolbarPackage extends Package
 {
 	/**
 	 * Package name.
-	 * 
+	 *
 	 * @var string
 	 */
 
@@ -58,7 +58,7 @@ class ToolbarPackage extends Package
 			}
 
 			$toolbar->addPanel(new IncludedFilesPanel($view));
-			
+
 			return $toolbar;
 		});
 	}

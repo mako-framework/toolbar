@@ -22,7 +22,7 @@ class Toolbar
 {
 	/**
 	 * View factory instance.
-	 * 
+	 *
 	 * @var \mako\view\ViewFactory
 	 */
 
@@ -30,13 +30,13 @@ class Toolbar
 
 	/**
 	 * Humanizer instance.
-	 * 
+	 *
 	 * @var \mako\utility\Humanizer
 	 */
 
 	/**
 	 * Panels.
-	 * 
+	 *
 	 * @var array
 	 */
 
@@ -44,7 +44,7 @@ class Toolbar
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @access  public
 	 * @param   \mako\view\ViewFactory   $view       View factory instance
 	 * @param   \mako\utility\Humanizer  $humanizer  Humanizer instance
@@ -59,7 +59,7 @@ class Toolbar
 
 	/**
 	 * Add a panel to the toolbar.
-	 * 
+	 *
 	 * @access  public
 	 * @param   \mako\toolbar\PanelInterface  $panel  Panel
 	 */
@@ -71,14 +71,14 @@ class Toolbar
 
 	/**
 	 * Renders the toolbar.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */
 
 	public function render()
 	{
-		$view = $this->view->create('mako-toolbar::toolbar', 
+		$view = $this->view->create('mako-toolbar::toolbar',
 		[
 			'version' => Mako::VERSION,
 			'memory'  => $this->humanizer->fileSize(memory_get_peak_usage()),

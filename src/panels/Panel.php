@@ -20,7 +20,7 @@ abstract class Panel implements PanelInterface
 {
 	/**
 	 * View factory instance.
-	 * 
+	 *
 	 * @var \mako\view\ViewFactory
 	 */
 
@@ -28,7 +28,7 @@ abstract class Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @access  public
 	 * @param   \mako\view\ViewFactory  $view     View factory instance
 	 */
@@ -40,7 +40,7 @@ abstract class Panel implements PanelInterface
 
 	/**
 	 * Returns a unique panel id.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */

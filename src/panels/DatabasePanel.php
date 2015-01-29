@@ -23,7 +23,7 @@ class DatabasePanel extends Panel implements PanelInterface
 {
 	/**
 	 * Conenction manager instance.
-	 * 
+	 *
 	 * @var array
 	 */
 
@@ -31,7 +31,7 @@ class DatabasePanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @access  public
 	 * @param   \mako\view\ViewFactory            $view      View factory instance
 	 * @param   \mako\database\ConnectionManager  $database  Connection manager instance
@@ -46,7 +46,7 @@ class DatabasePanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the tab label.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */
@@ -55,7 +55,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	{
 		$queryTime  = 0;
 		$queryCount = 0;
-		
+
 		foreach($this->database->getLogs() as $queryLog)
 		{
 			$queryTime  += array_sum(Arr::pluck($queryLog, 'time'));
@@ -74,7 +74,7 @@ class DatabasePanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the rendered panel.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */

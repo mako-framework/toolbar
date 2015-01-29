@@ -21,7 +21,7 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 {
 	/**
 	 * Included files.
-	 * 
+	 *
 	 * @var array
 	 */
 
@@ -29,7 +29,7 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @access  public
 	 * @param   \mako\view\ViewFactory  $view  View factory instance
 	 */
@@ -43,7 +43,7 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the tab label.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */
@@ -55,7 +55,7 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the rendered panel.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */

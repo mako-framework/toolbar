@@ -22,7 +22,7 @@ class SessionPanel extends Panel implements PanelInterface
 {
 	/**
 	 * Session.
-	 * 
+	 *
 	 * @var \mako\session\Session;
 	 */
 
@@ -30,7 +30,7 @@ class SessionPanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 * 
+	 *
 	 * @access  public
 	 * @param   \mako\view\ViewFactory  $view      View factory instance
 	 * @param   \mako\session\Session   $session   Session instance
@@ -45,7 +45,7 @@ class SessionPanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the tab label.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */
@@ -57,7 +57,7 @@ class SessionPanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the rendered panel.
-	 * 
+	 *
 	 * @access  public
 	 * @return  string
 	 */

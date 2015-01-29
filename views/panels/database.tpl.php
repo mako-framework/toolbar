@@ -3,7 +3,7 @@
 	<div class="mako-empty mako-title">No database queries...</div>
 
 {% else %}
-			
+
 	<p><span class="mako-title">Database queries</span></p>
 
 		{% foreach($logs as $name => $queries) %}
@@ -41,5 +41,5 @@
 			{% endif %}
 
 	{% endforeach %}
-			
+
 {% endif %}
