@@ -270,6 +270,38 @@
 		-moz-box-shadow: none;
 		box-shadow: none;
 	}
+	.mako-log-debug
+	{
+		color: #216BAB;
+	}
+	.mako-log-info
+	{
+		color: #2FBC4A;
+	}
+	.mako-log-notice
+	{
+		color: #EE9800;
+	}
+	.mako-log-warning
+	{
+		color: #E34A00;
+	}
+	.mako-log-error, .mako-log-critical, .mako-log-alert, .mako-log-emergency
+	{
+		color: #C22E20;
+	}
+	.mako-log-critical, .mako-log-alert, .mako-log-emergency
+	{
+		font-style: italic;
+	}
+	.mako-log-alert, .mako-log-emergency
+	{
+		text-decoration: underline;
+	}
+	.mako-log-emergency
+	{
+		font-weight: bold;
+	}
 </style>
 
 <div id="mako-debug">
