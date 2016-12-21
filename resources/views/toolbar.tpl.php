@@ -205,9 +205,6 @@
 		border-bottom: 1px solid #ccc;
 		border-right: 1px solid #ccc;
 		vertical-align: top;
-		white-space: pre-wrap;
-		word-wrap: break-word;
-		word-break: break-all;
 	}
 	#mako-debug table tr:nth-child(odd)
 	{
