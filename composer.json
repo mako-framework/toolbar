@@ -16,7 +16,8 @@
     },
     "require": {
 		"php": ">=7.0.0",
-		"jdorn/sql-formatter": "^1.2"
+		"jdorn/sql-formatter": "^1.2",
+        "symfony/var-dumper": "^3.2"
 	},
     "extra": {
         "branch-alias": {
