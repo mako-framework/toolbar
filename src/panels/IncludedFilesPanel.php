@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar\panels;
@@ -14,9 +14,8 @@ use mako\view\ViewFactory;
 /**
  * Included files panel.
  *
- * @author  Frederic G. Østby
+ * @author Frederic G. Østby
  */
-
 class IncludedFilesPanel extends Panel implements PanelInterface
 {
 	/**
@@ -24,16 +23,14 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 	 *
 	 * @var array
 	 */
-
 	protected $files;
 
 	/**
 	 * Constructor.
 	 *
-	 * @access  public
-	 * @param   \mako\view\ViewFactory  $view  View factory instance
+	 * @access public
+	 * @param \mako\view\ViewFactory $view View factory instance
 	 */
-
 	public function __construct(ViewFactory $view)
 	{
 		parent::__construct($view);
@@ -44,11 +41,10 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 	/**
 	 * Returns the tab label.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function getTabLabel()
+	public function getTabLabel(): string
 	{
 		return sprintf('%u included files', count($this->files));
 	}
@@ -56,11 +52,10 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 	/**
 	 * Returns the rendered panel.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function render()
+	public function render(): string
 	{
 		$view = $this->view->create('mako-toolbar::panels.included_files',
 		[

@@ -1,11 +1,13 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar\panels;
+
+use SqlFormatter;
 
 use mako\database\ConnectionManager;
 use mako\toolbar\panels\Panel;
@@ -16,9 +18,8 @@ use mako\view\ViewFactory;
 /**
  * Database panel.
  *
- * @author  Frederic G. Østby
+ * @author Frederic G. Østby
  */
-
 class DatabasePanel extends Panel implements PanelInterface
 {
 	/**
@@ -26,17 +27,15 @@ class DatabasePanel extends Panel implements PanelInterface
 	 *
 	 * @var array
 	 */
-
 	protected $database;
 
 	/**
 	 * Constructor.
 	 *
-	 * @access  public
-	 * @param   \mako\view\ViewFactory            $view      View factory instance
-	 * @param   \mako\database\ConnectionManager  $database  Connection manager instance
+	 * @access public
+	 * @param \mako\view\ViewFactory           $view     View factory instance
+	 * @param \mako\database\ConnectionManager $database Connection manager instance
 	 */
-
 	public function __construct(ViewFactory $view, ConnectionManager $database)
 	{
 		parent::__construct($view);
@@ -47,11 +46,10 @@ class DatabasePanel extends Panel implements PanelInterface
 	/**
 	 * Returns the tab label.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function getTabLabel()
+	public function getTabLabel(): string
 	{
 		$queryTime  = 0;
 		$queryCount = 0;
@@ -73,17 +71,42 @@ class DatabasePanel extends Panel implements PanelInterface
 	}
 
 	/**
+	 * Returns logs with highlighted queries.
+	 *
+	 * @access public
+	 * @param  array $logs Query logs
+	 * @return array
+	 */
+	protected function getLogWithHighlightedQueries(array $logs): array
+	{
+		// Configure the SQL formatter
+
+		SqlFormatter::$pre_attributes = 'style="color: black; background-color: transparent;"';
+
+		// Add syntax highlighting to SQL queries
+
+		foreach($logs as &$log)
+		{
+			foreach($log as $key => $query)
+			{
+				$log[$key]['query'] = SqlFormatter::highlight($query['query']);
+			}
+		}
+
+		return $logs;
+	}
+
+	/**
 	 * Returns the rendered panel.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function render()
+	public function render(): string
 	{
 		$view = $this->view->create('mako-toolbar::panels.database',
 		[
-			'logs' => $this->database->getLogs(),
+			'logs' => $this->getLogWithHighlightedQueries($this->database->getLogs()),
 		]);
 
 		return $view->render();

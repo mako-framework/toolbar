@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar\panels;
@@ -12,12 +12,11 @@ use mako\view\ViewFactory;
 /**
  * Panel interface.
  *
- * @author  Frederic G. Østby
+ * @author Frederic G. Østby
  */
-
 interface PanelInterface
 {
-	public function getId();
-	public function getTabLabel();
-	public function render();
+	public function getId(): string;
+	public function getTabLabel(): string;
+	public function render(): string;
 }

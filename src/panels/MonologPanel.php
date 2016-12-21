@@ -1,11 +1,13 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar\panels;
+
+use Closure;
 
 use mako\toolbar\Monologger;
 use mako\toolbar\panels\Panel;
@@ -15,9 +17,8 @@ use mako\view\ViewFactory;
 /**
  * Monolog panel.
  *
- * @author  Frederic G. Østby
+ * @author Frederic G. Østby
  */
-
 class MonologPanel extends Panel implements PanelInterface
 {
 	/**
@@ -25,17 +26,15 @@ class MonologPanel extends Panel implements PanelInterface
 	 *
 	 * @var \mako\toolbar\Monologger
 	 */
-
 	protected $monologger;
 
 	/**
 	 * Constructor.
 	 *
-	 * @access  public
-	 * @param   \mako\view\ViewFactory    $view        View factory instance
-	 * @param   \mako\toolbar\Monologger  $monologger  Monologger
+	 * @access public
+	 * @param \mako\view\ViewFactory   $view       View factory instance
+	 * @param \mako\toolbar\Monologger $monologger Monologger
 	 */
-
 	public function __construct(ViewFactory $view, Monologger $monologger)
 	{
 		parent::__construct($view);
@@ -46,11 +45,10 @@ class MonologPanel extends Panel implements PanelInterface
 	/**
 	 * Returns the tab label.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function getTabLabel()
+	public function getTabLabel(): string
 	{
 		return sprintf('%u log entries', $this->monologger->getEntryCount());
 	}
@@ -58,11 +56,10 @@ class MonologPanel extends Panel implements PanelInterface
 	/**
 	 * Returns a helper funtion.
 	 *
-	 * @access  protected
-	 * @return  \Closure
+	 * @access protected
+	 * @return \Closure
 	 */
-
-	protected function getLevelHelper()
+	protected function getLevelHelper(): Closure
 	{
 		return function($level)
 		{
@@ -91,11 +88,10 @@ class MonologPanel extends Panel implements PanelInterface
 	/**
 	 * Returns the rendered panel.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function render()
+	public function render(): string
 	{
 		$view = $this->view->create('mako-toolbar::panels.monolog',
 		[

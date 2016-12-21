@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar\panels;
@@ -15,9 +15,8 @@ use mako\view\ViewFactory;
 /**
  * Session panel.
  *
- * @author  Frederic G. Østby
+ * @author Frederic G. Østby
  */
-
 class SessionPanel extends Panel implements PanelInterface
 {
 	/**
@@ -25,17 +24,15 @@ class SessionPanel extends Panel implements PanelInterface
 	 *
 	 * @var \mako\session\Session;
 	 */
-
 	protected $session;
 
 	/**
 	 * Constructor.
 	 *
-	 * @access  public
-	 * @param   \mako\view\ViewFactory  $view      View factory instance
-	 * @param   \mako\session\Session   $session   Session instance
+	 * @access public
+	 * @param \mako\view\ViewFactory $view    View factory instance
+	 * @param \mako\session\Session  $session Session instance
 	 */
-
 	public function __construct(ViewFactory $view, Session $session)
 	{
 		parent::__construct($view);
@@ -46,11 +43,10 @@ class SessionPanel extends Panel implements PanelInterface
 	/**
 	 * Returns the tab label.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function getTabLabel()
+	public function getTabLabel(): string
 	{
 		return 'Session';
 	}
@@ -58,11 +54,10 @@ class SessionPanel extends Panel implements PanelInterface
 	/**
 	 * Returns the rendered panel.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function render()
+	public function render(): string
 	{
 		$view = $this->view->create('mako-toolbar::panels.session',
 		[

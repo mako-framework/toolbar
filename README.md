@@ -13,6 +13,6 @@ Mako 4.4 or greater.
 	$container->get('response')->filter(function($body) use ($container)
 	{
 		$toolbar = $container->get('toolbar')->render();
-		
+
 		return str_replace('</body>', $toolbar . '</body>', $body);
 	});

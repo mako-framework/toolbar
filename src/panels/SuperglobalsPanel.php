@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar\panels;
@@ -13,19 +13,17 @@ use mako\toolbar\panels\PanelInterface;
 /**
  * Superglobals panel.
  *
- * @author  Frederic G. Østby
+ * @author Frederic G. Østby
  */
-
 class SuperglobalsPanel extends Panel implements PanelInterface
 {
 	/**
 	 * Returns the tab label.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function getTabLabel()
+	public function getTabLabel(): string
 	{
 		return 'Superglobals';
 	}
@@ -33,11 +31,10 @@ class SuperglobalsPanel extends Panel implements PanelInterface
 	/**
 	 * Returns the rendered panel.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
-	public function render()
+	public function render(): string
 	{
 		$view = $this->view->create('mako-toolbar::panels.superglobals',
 		[

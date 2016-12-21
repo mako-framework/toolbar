@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar;
@@ -24,7 +24,6 @@ use Monolog\Logger;
  *
  * @author  Frederic G. Østby
  */
-
 class ToolbarPackage extends Package
 {
 	/**
@@ -32,13 +31,11 @@ class ToolbarPackage extends Package
 	 *
 	 * @var string
 	 */
-
 	protected $packageName = 'mako/toolbar';
 
 	/**
 	 * {@inheritdoc}
 	 */
-
 	protected function bootstrap()
 	{
 		$monologHandler = null;

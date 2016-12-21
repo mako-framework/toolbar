@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar;
@@ -13,9 +13,8 @@ use Monolog\Handler\AbstractProcessingHandler;
 /**
  * Monologger.
  *
- * @author  Frederic G. Østby
+ * @author Frederic G. Østby
  */
-
 class Monologger extends AbstractProcessingHandler
 {
 	/**
@@ -23,13 +22,11 @@ class Monologger extends AbstractProcessingHandler
 	 *
 	 * @var array
 	 */
-
 	protected $entries = [];
 
 	/**
 	 * {@inheritdoc}
 	 */
-
 	protected function write(array $record)
 	{
 		$this->entries[] = $record;
@@ -38,11 +35,10 @@ class Monologger extends AbstractProcessingHandler
 	/**
 	 * Returns the number of log entries.
 	 *
-	 * @access  public
-	 * @return  int
+	 * @access public
+	 * @return int
 	 */
-
-	public function getEntryCount()
+	public function getEntryCount(): int
 	{
 		return count($this->entries);
 	}
@@ -50,11 +46,10 @@ class Monologger extends AbstractProcessingHandler
 	/**
 	 * Returns the log entries.
 	 *
-	 * @access  public
-	 * @return  array
+	 * @access public
+	 * @return array
 	 */
-
-	public function getEntries()
+	public function getEntries(): array
 	{
 		return $this->entries;
 	}

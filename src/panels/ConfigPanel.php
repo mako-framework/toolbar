@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar\panels;
@@ -15,9 +15,8 @@ use mako\view\ViewFactory;
 /**
  * Config panel.
  *
- * @author  Frederic G. Østby
+ * @author Frederic G. Østby
  */
-
 class ConfigPanel extends Panel implements PanelInterface
 {
 	/**
@@ -25,17 +24,15 @@ class ConfigPanel extends Panel implements PanelInterface
 	 *
 	 * @var \mako\config\Config;
 	 */
-
 	protected $config;
 
 	/**
 	 * Constructor.
 	 *
-	 * @access  public
-	 * @param   \mako\view\ViewFactory  $view    View factory instance
-	 * @param   \mako\config\Config     $config  Configuration instance
+	 * @access public
+	 * @param \mako\view\ViewFactory $view   View factory instance
+	 * @param \mako\config\Config    $config Configuration instance
 	 */
-
 	public function __construct(ViewFactory $view, Config $config)
 	{
 		parent::__construct($view);
@@ -47,10 +44,9 @@ class ConfigPanel extends Panel implements PanelInterface
 	 * Returns the tab label.
 	 *
 	 * @access  public
-	 * @return  string
+	 * @return string
 	 */
-
-	public function getTabLabel()
+	public function getTabLabel(): string
 	{
 		return 'Configuration';
 	}
@@ -59,10 +55,9 @@ class ConfigPanel extends Panel implements PanelInterface
 	 * Returns the rendered panel.
 	 *
 	 * @access  public
-	 * @return  string
+	 * @return string
 	 */
-
-	public function render()
+	public function render(): string
 	{
 		$view = $this->view->create('mako-toolbar::panels.config',
 		[

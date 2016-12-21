@@ -1,8 +1,8 @@
 <?php
 
 /**
- * @copyright  Frederic G. Østby
- * @license    http://www.makoframework.com/license
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
  */
 
 namespace mako\toolbar;
@@ -17,7 +17,6 @@ use mako\view\ViewFactory;
  *
  * @author  Frederic G. Østby
  */
-
 class Toolbar
 {
 	/**
@@ -25,7 +24,6 @@ class Toolbar
 	 *
 	 * @var \mako\view\ViewFactory
 	 */
-
 	protected $view;
 
 	/**
@@ -39,17 +37,15 @@ class Toolbar
 	 *
 	 * @var array
 	 */
-
 	protected $panels = [];
 
 	/**
 	 * Constructor.
 	 *
-	 * @access  public
-	 * @param   \mako\view\ViewFactory   $view       View factory instance
-	 * @param   \mako\utility\Humanizer  $humanizer  Humanizer instance
+	 * @access public
+	 * @param \mako\view\ViewFactory  $view      View factory instance
+	 * @param \mako\utility\Humanizer $humanizer Humanizer instance
 	 */
-
 	public function __construct(ViewFactory $view, Humanizer $humanizer)
 	{
 		$this->view = $view;
@@ -60,10 +56,9 @@ class Toolbar
 	/**
 	 * Add a panel to the toolbar.
 	 *
-	 * @access  public
-	 * @param   \mako\toolbar\PanelInterface  $panel  Panel
+	 * @access public
+	 * @param \mako\toolbar\PanelInterface $panel Panel
 	 */
-
 	public function addPanel(PanelInterface $panel)
 	{
 		$this->panels[] = $panel;
@@ -72,10 +67,9 @@ class Toolbar
 	/**
 	 * Renders the toolbar.
 	 *
-	 * @access  public
-	 * @return  string
+	 * @access public
+	 * @return string
 	 */
-
 	public function render()
 	{
 		$view = $this->view->create('mako-toolbar::toolbar',

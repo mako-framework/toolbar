@@ -31,7 +31,7 @@
 
 						<tr>
 							<td>{{round($query['time'], 5)}} seconds</td>
-							<td>{{$query['query']}}</td>
+							<td>{{raw:$query['query']}}</td>
 						</tr>
 
 					{% endforeach %}
