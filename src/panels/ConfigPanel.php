@@ -10,6 +10,7 @@ namespace mako\toolbar\panels;
 use mako\config\Config;
 use mako\toolbar\panels\Panel;
 use mako\toolbar\panels\PanelInterface;
+use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 
 /**
@@ -19,6 +20,8 @@ use mako\view\ViewFactory;
  */
 class ConfigPanel extends Panel implements PanelInterface
 {
+	use DumperTrait;
+
 	/**
 	 * Config.
 	 *
@@ -62,6 +65,7 @@ class ConfigPanel extends Panel implements PanelInterface
 		$view = $this->view->create('mako-toolbar::panels.config',
 		[
 			'config' => $this->config->getLoadedConfiguration(),
+			'dump'   => $this->getDumper(),
 		]);
 
 		return $view->render();

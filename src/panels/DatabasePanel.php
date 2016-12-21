@@ -71,13 +71,13 @@ class DatabasePanel extends Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns logs with highlighted queries.
+	 * Returns logs with syntax highlighted queries.
 	 *
 	 * @access public
 	 * @param  array $logs Query logs
 	 * @return array
 	 */
-	protected function getLogWithHighlightedQueries(array $logs): array
+	protected function getLogWithSyntaxHighlightedQueries(array $logs): array
 	{
 		// Configure the SQL formatter
 
@@ -106,7 +106,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	{
 		$view = $this->view->create('mako-toolbar::panels.database',
 		[
-			'logs' => $this->getLogWithHighlightedQueries($this->database->getLogs()),
+			'logs' => $this->getLogWithSyntaxHighlightedQueries($this->database->getLogs()),
 		]);
 
 		return $view->render();

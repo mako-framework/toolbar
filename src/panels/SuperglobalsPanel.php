@@ -9,6 +9,7 @@ namespace mako\toolbar\panels;
 
 use mako\toolbar\panels\Panel;
 use mako\toolbar\panels\PanelInterface;
+use mako\toolbar\panels\traits\DumperTrait;
 
 /**
  * Superglobals panel.
@@ -17,6 +18,8 @@ use mako\toolbar\panels\PanelInterface;
  */
 class SuperglobalsPanel extends Panel implements PanelInterface
 {
+	use DumperTrait;
+
 	/**
 	 * Returns the tab label.
 	 *
@@ -48,6 +51,7 @@ class SuperglobalsPanel extends Panel implements PanelInterface
 				'_SERVER'  => &$_SERVER,
 				'_SESSION' => &$_SESSION,
 			],
+			'dump' => $this->getDumper(),
 		]);
 
 		return $view->render();

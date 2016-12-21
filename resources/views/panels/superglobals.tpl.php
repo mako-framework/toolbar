@@ -17,7 +17,7 @@
 
 				<tr>
 					<td>{{$key}}</td>
-					<td>{{print_r($value, true)}}</td>
+					<td>{{$dump($value)}}</td>
 				</tr>
 
 			{% endforeach %}

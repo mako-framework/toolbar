@@ -12,6 +12,7 @@ use Closure;
 use mako\toolbar\Monologger;
 use mako\toolbar\panels\Panel;
 use mako\toolbar\panels\PanelInterface;
+use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 
 /**
@@ -21,6 +22,8 @@ use mako\view\ViewFactory;
  */
 class MonologPanel extends Panel implements PanelInterface
 {
+	use DumperTrait;
+
 	/**
 	 * Monologger.
 	 *
@@ -97,6 +100,7 @@ class MonologPanel extends Panel implements PanelInterface
 		[
 			'entries'      => $this->monologger->getEntries(),
 			'level_helper' => $this->getLevelHelper(),
+			'dump'         => $this->getDumper(),
 		]);
 
 		return $view->render();

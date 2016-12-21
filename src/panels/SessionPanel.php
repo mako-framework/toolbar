@@ -10,6 +10,7 @@ namespace mako\toolbar\panels;
 use mako\session\Session;
 use mako\toolbar\panels\Panel;
 use mako\toolbar\panels\PanelInterface;
+use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 
 /**
@@ -19,6 +20,8 @@ use mako\view\ViewFactory;
  */
 class SessionPanel extends Panel implements PanelInterface
 {
+	use DumperTrait;
+
 	/**
 	 * Session.
 	 *
@@ -63,6 +66,7 @@ class SessionPanel extends Panel implements PanelInterface
 		[
 			'id'   => $this->session->getId(),
 			'data' => $this->session->getData(),
+			'dump' => $this->getDumper(),
 		]);
 
 		return $view->render();

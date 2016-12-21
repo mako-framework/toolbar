@@ -16,7 +16,7 @@
 
 			<tr>
 				<td class="mako-log-{{$level_helper($entry['level'])}}">{{strtoupper($level_helper($entry['level']))}}</td>
-				<td>{{print_r($entry['message'], true)}}</td>
+				<td>{{$dump($entry['message'])}}</td>
 			</tr>
 
 		{% endforeach %}

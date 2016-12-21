@@ -12,7 +12,7 @@
 
 		<tr>
 			<td>{{$file}}</td>
-			<td>{{print_r($configuration, true)}}</td>
+			<td>{{$dump($configuration)}}</td>
 		</tr>
 
 	{% endforeach %}

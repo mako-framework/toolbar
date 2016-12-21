@@ -73,6 +73,7 @@
 		color: #fff;
 		font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
 		font-size: 16px !important;
+		text-shadow: none;
 	}
 	#mako-debug a
 	{
@@ -131,12 +132,10 @@
 	#mako-debug .mako-close a
 	{
 		color: #fff;
-		text-shadow: 0px 1px 0px #000;
 	}
 	#mako-debug .mako-log
 	{
 		color: #fff;
-		text-shadow: 0px 1px 0px #000;
 	}
 	#mako-debug .mako-notice
 	{
@@ -175,14 +174,12 @@
 		color: #aaa;
 		font-size: 2.0em;
 		text-align: center;
-		text-shadow: 0px 2px 0px #fff;
 	}
 	#mako-debug .mako-subtitle
 	{
 		color: #555;
 		font-size: 1.2em;
 		text-align: center;
-		text-shadow: 0px 2px 0px #fff;
 	}
 	#mako-debug .mako-empty
 	{
@@ -212,14 +209,6 @@
 		word-wrap: break-word;
 		word-break: break-all;
 	}
-	#mako-debug table.mako-table-2c td:first-child
-	{
-		min-width: 25%;
-	}
-	#mako-debug table.mako-table-2c td:last-child
-	{
-		width: 75%;
-	}
 	#mako-debug table tr:nth-child(odd)
 	{
 		background: #efefef;
@@ -235,7 +224,6 @@
 		background: #232323;
 		border-top: 1px solid #000;
 		font-size: 0.8em;
-		text-shadow: 0px 1px 0px #000;
 	}
 	#mako-debug .mako-panel
 	{
@@ -248,7 +236,6 @@
 		border-top: 2px solid #555;
 		color: #222;
 		font-size: 0.9em;
-		text-shadow: 0px 1px 0px #fff;
 	}
 	#mako-debug a.mako-button
 	{
