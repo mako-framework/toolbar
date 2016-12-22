@@ -68,13 +68,13 @@ class RequestPanel extends Panel implements PanelInterface
 			'dump'         => $this->getDumper(),
 			'superglobals' =>
 			[
-				'GET Parameters'      => &$_GET,
-				'POST Parameters'     => &$_POST,
+				'GET parameters'      => &$_GET,
+				'POST parameters'     => &$_POST,
 				'Cookies'             => &$_COOKIE,
 				'Uploaded files'      => &$_FILES,
-				'Native Session Data' => &$_SESSION,
+				'Native session data' => &$_SESSION,
 				'Environment'         => &$_ENV,
-				'Server Variables'    => &$_SERVER,
+				'Server variables'    => &$_SERVER,
 			],
 		]);
 

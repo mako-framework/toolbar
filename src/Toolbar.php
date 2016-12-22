@@ -119,11 +119,12 @@ class Toolbar
 
 		$view = $this->view->create('mako-toolbar::toolbar',
 		[
+			'humanizer'      => $this->humanizer,
 			'version'        => Mako::VERSION,
-			'memory'         => $this->humanizer->fileSize(memory_get_peak_usage()),
+			'memory'         => memory_get_peak_usage(),
+			'memory_limit'   => ini_get('memory_limit'),
 			'time'           => round($executionTime['total'], 4),
 			'execution_time' => $executionTime,
-			'timers'         => $this->timers,
 			'panels'         => $this->panels,
 		]);
 

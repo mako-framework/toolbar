@@ -1,8 +1,10 @@
-<p><span class="mako-title">Execution Time</span></p>
-
-<b>Total execution time:</b> <span class="mako-label">{{round($execution_time['total'], 4)}} seconds</span>
+<p><span class="mako-title">Execution</span></p>
 
 <hr>
+
+<p><span class="mako-subtitle">Execution time:</span></p>
+
+<p><b>Total execution time:</b> <span class="mako-label">{{round($execution_time['total'], 4)}} seconds</span></p>
 
 <table class="mako-table mako-table-2c">
 
@@ -23,4 +25,17 @@
 
 {% endforeach %}
 
+</table>
+
+<p><span class="mako-subtitle">Memory usage:</span></p>
+
+<table class="mako-table mako-table-2c">
+	<tr>
+		<th>Limit</th>
+		<th>Usage</th>
+	</tr>
+	<tr>
+		<td>{{$memory_limit}}</td>
+		<td>{{$humanizer->fileSize($memory)}}</td>
+	</tr>
 </table>

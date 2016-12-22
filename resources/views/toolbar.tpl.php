@@ -134,6 +134,7 @@
 		position:absolute;
 		top:0px;
 		right:0px;
+		z-index: 999999;
 	}
 	#mako-debug .mako-close a
 	{
@@ -333,10 +334,10 @@
 
 	{% endforeach %}
 
-	<div class="mako-panel" id="execution-time">
-		<div class="mako-close"><a onclick="Mako.togglePanel('execution-time')">close</a></div>
+	<div class="mako-panel" id="execution">
+		<div class="mako-close"><a onclick="Mako.togglePanel('execution')">close</a></div>
 
-		{{view:'mako-toolbar::panels.time'}}
+		{{view:'mako-toolbar::panels.execution'}}
 	</div>
 
 	<div id="mako-toolbar-hidden">
@@ -346,8 +347,8 @@
 	<div id="mako-toolbar">
 
 		<div class="mako-right">
-			<span title="peak memory usage">{{$memory}}</span>
-			<span title="total execution time"><a class="mako-button" onclick="Mako.togglePanel('execution-time')">{{$time}} seconds</a></span>
+			<span title="peak memory usage"><a class="mako-button" onclick="Mako.togglePanel('execution')">{{$humanizer->fileSize($memory)}}</a></span>
+			<span title="total execution time"><a class="mako-button" onclick="Mako.togglePanel('execution')">{{$time}} seconds</a></span>
 		</div>
 
 		<div class="mako-icon" title="Mako {{$version}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(0);"></div>
