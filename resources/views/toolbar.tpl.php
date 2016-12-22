@@ -334,6 +334,8 @@
 	{% endforeach %}
 
 	<div class="mako-panel" id="execution-time">
+		<div class="mako-close"><a onclick="Mako.togglePanel('execution-time')">close</a></div>
+
 		{{view:'mako-toolbar::panels.time'}}
 	</div>
 
