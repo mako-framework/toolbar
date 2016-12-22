@@ -1,8 +1,8 @@
 <p><span class="mako-title">Session</span></p>
 
-<p><span class="mako-subtitle">Session id:</span></p>
+<b>Session id:</b> <span class="mako-label">{{$id}}</span>
 
-<p>{{$id}}</p>
+<hr>
 
 <p><span class="mako-subtitle">Session data:</span></p>
 

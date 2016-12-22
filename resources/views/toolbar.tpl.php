@@ -74,6 +74,12 @@
 		font-family:"Helvetica Neue",Helvetica,Arial,sans-serif !important;
 		font-size: 16px !important;
 		text-shadow: none;
+		font-weight: normal;
+	}
+	#mako-debug pre
+	{
+		margin: 0 !important;
+		padding: 0 !important;
 	}
 	#mako-debug a
 	{
@@ -133,6 +139,23 @@
 	{
 		color: #fff;
 	}
+	#mako-debug hr
+	{
+		border: 0;
+    	height: 1px;
+    	background: #CCC;
+		margin: 0;
+		margin-top: 10px;
+		margin-bottom: 10px;
+		padding: 0;
+	}
+	#mako-debug .mako-label
+	{
+		background: #EEE;
+		padding: 2px;
+		border: 1px solid #CCC;
+		font-size: .80em
+	}
 	#mako-debug .mako-log
 	{
 		color: #fff;
@@ -183,7 +206,7 @@
 	}
 	#mako-debug .mako-empty
 	{
-		margin: 150px auto;
+		margin: 200px auto;
 	}
 
 	#mako-debug .mako-table
@@ -192,6 +215,14 @@
 		border: 1px solid #ccc;
 		background: #fff;
 		border-collapse: collapse;
+	}
+	#mako-debug table.mako-table-2c td:first-child
+	{
+		min-width: 10%;
+	}
+	#mako-debug table.mako-table-2c td:last-child
+	{
+		width: 90%;
 	}
 	#mako-debug table th
 	{
@@ -225,7 +256,7 @@
 	#mako-debug .mako-panel
 	{
 		display: none;
-		height: 400px;
+		height: 500px;
 		padding: 12px;
 		overflow: auto;
 		background: #eee;
@@ -302,6 +333,10 @@
 
 	{% endforeach %}
 
+	<div class="mako-panel" id="execution-time">
+		{{view:'mako-toolbar::panels.time'}}
+	</div>
+
 	<div id="mako-toolbar-hidden">
 		<div class="mako-icon" title="Mako {{$version}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(1);"></div>
 	</div>
@@ -310,7 +345,7 @@
 
 		<div class="mako-right">
 			<span title="peak memory usage">{{$memory}}</span>
-			<span title="total execution time">{{$time}} seconds</span>
+			<span title="total execution time"><a class="mako-button" onclick="Mako.togglePanel('execution-time')">{{$time}} seconds</a></span>
 		</div>
 
 		<div class="mako-icon" title="Mako {{$version}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(0);"></div>

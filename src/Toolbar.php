@@ -40,6 +40,13 @@ class Toolbar
 	protected $panels = [];
 
 	/**
+	 * Timers.
+	 *
+	 * @var array
+	 */
+	protected $timers = [];
+
+	/**
 	 * Constructor.
 	 *
 	 * @access public
@@ -65,6 +72,42 @@ class Toolbar
 	}
 
 	/**
+	 * [addTimer description]
+	 * @param string $name [description]
+	 * @param float  $time [description]
+	 */
+	public function addTimer(string $name, float $time)
+	{
+		$this->timers[$name] = $time;
+	}
+
+	/**
+	 * Calculates the execution time.
+	 *
+	 * @access protected
+	 * @return array
+	 */
+	protected function calculateExecutionTime(): array
+	{
+		$totalTime = microtime(true) - MAKO_START;
+
+		$executionTime = ['total' => $totalTime, 'details' => []];
+
+		$otherTime = array_sum($this->timers);
+
+		$detailedTime = $totalTime - $otherTime;
+
+		$executionTime['details']['PHP'] = ['time' => $detailedTime, 'pct' => ($detailedTime / $totalTime * 100)];
+
+		foreach($this->timers as $timer => $time)
+		{
+			$executionTime['details'][$timer] = ['time' => $time, 'pct' => ($time / $totalTime * 100)];
+		}
+
+		return $executionTime;
+	}
+
+	/**
 	 * Renders the toolbar.
 	 *
 	 * @access public
@@ -72,12 +115,16 @@ class Toolbar
 	 */
 	public function render()
 	{
+		$executionTime = $this->calculateExecutionTime();
+
 		$view = $this->view->create('mako-toolbar::toolbar',
 		[
-			'version' => Mako::VERSION,
-			'memory'  => $this->humanizer->fileSize(memory_get_peak_usage()),
-			'time'    => round(microtime(true) - MAKO_START, 4),
-			'panels'  => $this->panels,
+			'version'        => Mako::VERSION,
+			'memory'         => $this->humanizer->fileSize(memory_get_peak_usage()),
+			'time'           => round($executionTime['total'], 4),
+			'execution_time' => $executionTime,
+			'timers'         => $this->timers,
+			'panels'         => $this->panels,
 		]);
 
 		return $view->render();

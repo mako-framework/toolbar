@@ -6,6 +6,8 @@
 
 	<p><span class="mako-title">Log entries</span></p>
 
+	<hr>
+
 	<table class="mako-table mako-table-2c">
 		<tr>
 			<th>Type</th>

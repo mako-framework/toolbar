@@ -30,6 +30,20 @@ class DatabasePanel extends Panel implements PanelInterface
 	protected $database;
 
 	/**
+	 * Total queries.
+	 *
+	 * @var int
+	 */
+	protected $totalQueries;
+
+	/**
+	 * Total query time.
+	 *
+	 * @var float
+	 */
+	protected $totalQueryTime;
+
+	/**
 	 * Constructor.
 	 *
 	 * @access public
@@ -41,6 +55,38 @@ class DatabasePanel extends Panel implements PanelInterface
 		parent::__construct($view);
 
 		$this->database = $database;
+
+		$this->collectQueryStats();
+	}
+
+	/**
+	 * Collects query stats.
+	 *
+	 * @access protected
+	 */
+	protected function collectQueryStats()
+	{
+		$this->totalQueries = 0;
+
+		$this->totalQueryTime = 0;
+
+		foreach($this->database->getLogs() as $queryLog)
+		{
+			$this->totalQueries += count($queryLog);
+
+			$this->totalQueryTime += array_sum(Arr::pluck($queryLog, 'time'));
+		}
+	}
+
+	/**
+	 * Returns the total query time.
+	 *
+	 * @access public
+	 * @return float
+	 */
+	public function getTotalQueryTime(): float
+	{
+		return $this->totalQueryTime;
 	}
 
 	/**
@@ -51,22 +97,13 @@ class DatabasePanel extends Panel implements PanelInterface
 	 */
 	public function getTabLabel(): string
 	{
-		$queryTime  = 0;
-		$queryCount = 0;
-
-		foreach($this->database->getLogs() as $queryLog)
+		if($this->totalQueries === 0)
 		{
-			$queryTime  += array_sum(Arr::pluck($queryLog, 'time'));
-			$queryCount += count($queryLog);
-		}
-
-		if($queryCount === 0)
-		{
-			return sprintf('%u database queries', $queryCount);
+			return sprintf('%u database queries', $this->totalQueries);
 		}
 		else
 		{
-			return sprintf('%u database queries ( %f seconds )', $queryCount, round($queryTime, 4));
+			return sprintf('%u database queries ( %f seconds )', $this->totalQueries, round($this->totalQueryTime, 4));
 		}
 	}
 
@@ -77,7 +114,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	 * @param  array $logs Query logs
 	 * @return array
 	 */
-	protected function getLogWithSyntaxHighlightedQueries(array $logs): array
+	protected function getFormattedLog(array $logs): array
 	{
 		// Configure the SQL formatter
 
@@ -89,7 +126,7 @@ class DatabasePanel extends Panel implements PanelInterface
 		{
 			foreach($log as $key => $query)
 			{
-				$log[$key]['query'] = SqlFormatter::highlight($query['query']);
+				$log[$key]['query'] = SqlFormatter::format($query['query']);
 			}
 		}
 
@@ -106,7 +143,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	{
 		$view = $this->view->create('mako-toolbar::panels.database',
 		[
-			'logs' => $this->getLogWithSyntaxHighlightedQueries($this->database->getLogs()),
+			'logs' => $this->getFormattedLog($this->database->getLogs()),
 		]);
 
 		return $view->render();

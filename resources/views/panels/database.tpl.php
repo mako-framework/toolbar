@@ -6,9 +6,11 @@
 
 	<p><span class="mako-title">Database queries</span></p>
 
+	<hr>
+
 		{% foreach($logs as $name => $queries) %}
 
-			<p><span class="mako-subtitle">Queries executed on the [ {{$name}} ] connection:</span></p>
+			<p><span class="mako-subtitle">Queries executed on the <span class="mako-label">{{$name}}</span> connection:</span></p>
 
 			{% if(empty($queries)) %}
 

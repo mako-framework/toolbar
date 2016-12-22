@@ -14,8 +14,9 @@ use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
 use mako\toolbar\panels\IncludedFilesPanel;
 use mako\toolbar\panels\MonologPanel;
+use mako\toolbar\panels\RequestPanel;
+use mako\toolbar\panels\ResponsePanel;
 use mako\toolbar\panels\SessionPanel;
-use mako\toolbar\panels\SuperglobalsPanel;
 
 use Monolog\Logger;
 
@@ -57,9 +58,11 @@ class ToolbarPackage extends Package
 
 			$toolbar = new Toolbar($view, $container->get('humanizer'));
 
-			$toolbar->addPanel(new SuperglobalsPanel($view));
+			$toolbar->addPanel(new RequestPanel($view, $container->get('request')));
 
-			$toolbar->addPanel(new ConfigPanel($view, $container->get('config')));
+			$toolbar->addPanel(new ResponsePanel($view, $container->get('response')));
+
+			$toolbar->addPanel(new ConfigPanel($view, $container->get('config'), $container->get('app')->getEnvironment()));
 
 			if($container->has('session'))
 			{
@@ -68,7 +71,11 @@ class ToolbarPackage extends Package
 
 			if($container->has('database'))
 			{
-				$toolbar->addPanel(new DatabasePanel($view, $container->get('database')));
+				$panel = new DatabasePanel($view, $container->get('database'));
+
+				$toolbar->addPanel($panel);
+
+				$toolbar->addTimer('SQL', $panel->getTotalQueryTime());
 			}
 
 			if($monologHandler !== null)

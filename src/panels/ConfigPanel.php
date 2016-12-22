@@ -30,17 +30,27 @@ class ConfigPanel extends Panel implements PanelInterface
 	protected $config;
 
 	/**
+	 * Environment.
+	 *
+	 * @var string
+	 */
+	protected $environment;
+
+	/**
 	 * Constructor.
 	 *
 	 * @access public
-	 * @param \mako\view\ViewFactory $view   View factory instance
-	 * @param \mako\config\Config    $config Configuration instance
+	 * @param \mako\view\ViewFactory $view        View factory instance
+	 * @param \mako\config\Config    $config      Configuration instance
+	 * @param string                 $environment Environment
 	 */
-	public function __construct(ViewFactory $view, Config $config)
+	public function __construct(ViewFactory $view, Config $config, string $environment)
 	{
 		parent::__construct($view);
 
 		$this->config = $config;
+
+		$this->environment = $environment;
 	}
 
 	/**
@@ -64,8 +74,9 @@ class ConfigPanel extends Panel implements PanelInterface
 	{
 		$view = $this->view->create('mako-toolbar::panels.config',
 		[
-			'config' => $this->config->getLoadedConfiguration(),
-			'dump'   => $this->getDumper(),
+			'config'      => $this->config->getLoadedConfiguration(),
+			'environment' => $this->environment,
+			'dump'        => $this->getDumper(),
 		]);
 
 		return $view->render();

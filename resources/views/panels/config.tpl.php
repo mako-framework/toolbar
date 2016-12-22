@@ -1,6 +1,10 @@
 <p><span class="mako-title">Configuration</span></p>
 
-<p>Only the currently loaded configuration is displayed.</p>
+<b>Environment:</b> <span class="mako-label">{{$environment || 'Default'}}</span>
+
+<hr>
+
+<p><span class="mako-subtitle">Loaded configuration:</span></p>
 
 <table class="mako-table mako-table-2c">
 	<tr>

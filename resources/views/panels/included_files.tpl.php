@@ -1,6 +1,6 @@
 <p><span class="mako-title">Included files</span></p>
 
-<p>Note that the debug toolbar includes several files that might not be included when the toolbar is disabled.</p>
+<hr>
 
 <table class="mako-table mako-table-2c">
 	<tr>
