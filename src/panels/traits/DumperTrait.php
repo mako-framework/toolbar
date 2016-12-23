@@ -29,7 +29,19 @@ trait DumperTrait
 	{
 		$styles =
 		[
-			'default' => 'background-color:transparent; color:#FF8400; line-height:1.2em; font:14px Menlo, Monaco, Consolas, monospace; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:99999; word-break: normal',
+			'default'   => 'background-color:transparent; color:#91CDA4; line-height:1.2em; font:14px Menlo, Monaco, Consolas, monospace; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:99999; word-break: normal',
+			'num'       => 'font-weight:normal; color:#666',
+	        'const'     => 'font-weight:bold',
+	        'str'       => 'font-weight:normal; color:#888',
+	        'note'      => 'color:#666',
+	        'ref'       => 'color:#A0A0A0',
+	        'public'    => 'color:#94A9A9',
+	        'protected' => 'color:#94A9A9',
+	        'private'   => 'color:#94A9A9',
+	        'meta'      => 'color:#7B8D8D',
+	        'key'       => 'color:#569771',
+	        'index'     => 'color:#666',
+	        'ellipsis'  => 'color:#91CDA4',
 		];
 
 		$dumper->setStyles($styles);
