@@ -34,8 +34,22 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 	public function __construct(ViewFactory $view)
 	{
 		parent::__construct($view);
+	}
 
-		$this->files = get_included_files();
+	/**
+	 * Returns the included files.
+	 *
+	 * @access protected
+	 * @return array
+	 */
+	protected function getIncludedFiles(): array
+	{
+		if(empty($this->files))
+		{
+			$this->files = get_included_files();
+		}
+
+		return $this->files;
 	}
 
 	/**
@@ -46,7 +60,7 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 	 */
 	public function getTabLabel(): string
 	{
-		return sprintf('%u included files', count($this->files));
+		return sprintf('%u included files', count($this->getIncludedFiles()));
 	}
 
 	/**
@@ -59,7 +73,7 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 	{
 		$view = $this->view->create('mako-toolbar::panels.included_files',
 		[
-			'files' => $this->files,
+			'files' => $this->getIncludedFiles(),
 		]);
 
 		return $view->render();

@@ -4,7 +4,9 @@
 
 <div class="mako-panel-content">
 
-	<p>&nbsp;&nbsp;</p>
+	<p><span class="mako-subtitle">Included files:</span></p>
+
+	<p><small>* The file list might not be a 100% accurate as it only contains the files included at the time of panel rendering.</small></p>
 
 	<table class="mako-table mako-table-2c">
 		<tr>
