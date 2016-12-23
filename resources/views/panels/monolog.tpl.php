@@ -4,25 +4,29 @@
 
 {% else %}
 
-	<p><span class="mako-title">Log entries</span></p>
+	<div class="mako-panel-header">
+		<span class="mako-title">Log entries</span>
+	</div>
 
-	<hr>
+	<div class="mako-panel-content">
 
-	<table class="mako-table mako-table-2c">
-		<tr>
-			<th>Type</th>
-			<th>Message</th>
-		</tr>
-
-		{% foreach($entries as $entry) %}
-
+		<table class="mako-table mako-table-2c">
 			<tr>
-				<td class="mako-log-{{$level_helper($entry['level'])}}">{{strtoupper($level_helper($entry['level']))}}</td>
-				<td>{{$dump($entry['message'])}}</td>
+				<th>Type</th>
+				<th>Message</th>
 			</tr>
 
-		{% endforeach %}
+			{% foreach($entries as $entry) %}
 
-	</table>
+				<tr>
+					<td class="mako-log-{{$level_helper($entry['level'])}}">{{strtoupper($level_helper($entry['level']))}}</td>
+					<td>{{$dump($entry['message'])}}</td>
+				</tr>
+
+			{% endforeach %}
+
+		</table>
+
+	</div>
 
 {% endif %}

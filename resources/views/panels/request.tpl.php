@@ -1,36 +1,42 @@
-<p><span class="mako-title">Request</span></p>
+<div class="mako-panel-header">
+	<span class="mako-title">Request</span>
+</div>
 
-<b>Method:</b> <span class="mako-label">{{$request->method()}}</span> &nbsp;&nbsp;
-<b>Real Method:</b> <span class="mako-label">{{$request->realMethod()}}</span> &nbsp;&nbsp;
-<b>Route:</b> <span class="mako-label" title="Pattern: {{$request->getRoute()->getRegex()}}">{{$request->getRoute()->getRoute()}}</span> &nbsp;&nbsp;
-<b>Client IP:</b> <span class="mako-label">{{$request->ip()}}</span>
+<div class="mako-panel-content">
 
-<hr>
+	<b>Method:</b> <span class="mako-label">{{$request->method()}}</span> &nbsp;&nbsp;
+	<b>Real Method:</b> <span class="mako-label">{{$request->realMethod()}}</span> &nbsp;&nbsp;
+	<b>Route:</b> <span class="mako-label" title="Pattern: {{$request->getRoute()->getRegex()}}">{{$request->getRoute()->getRoute()}}</span> &nbsp;&nbsp;
+	<b>Client IP:</b> <span class="mako-label">{{$request->ip()}}</span>
 
-{% foreach($superglobals as $name => $superglobal) %}
+	<hr>
 
-	{% if(!empty($superglobal)) %}
+	{% foreach($superglobals as $name => $superglobal) %}
 
-		<p><span class="mako-subtitle">{{$name}}:</span></p>
+		{% if(!empty($superglobal)) %}
 
-		<table class="mako-table mako-table-2c">
+			<p><span class="mako-subtitle">{{$name}}:</span></p>
 
-			<tr>
-				<th>Key</th>
-				<th>Value</th>
-			</tr>
-
-			{% foreach($superglobal as $key => $value) %}
+			<table class="mako-table mako-table-2c">
 
 				<tr>
-					<td>{{$key}}</td>
-					<td>{{$dump($value)}}</td>
+					<th>Key</th>
+					<th>Value</th>
 				</tr>
 
-			{% endforeach %}
+				{% foreach($superglobal as $key => $value) %}
 
-		</table>
+					<tr>
+						<td>{{$key}}</td>
+						<td>{{$dump($value)}}</td>
+					</tr>
 
-	{% endif %}
+				{% endforeach %}
 
-{% endforeach %}
+			</table>
+
+		{% endif %}
+
+	{% endforeach %}
+
+</div>

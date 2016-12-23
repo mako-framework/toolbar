@@ -1,35 +1,41 @@
-<p><span class="mako-title">Response</span></p>
+<div class="mako-panel-header">
+	<span class="mako-title">Response</span>
+</div>
 
-<b>Status:</b> <span class="mako-label">{{$response->getStatus()}}</span> &nbsp;&nbsp;
-<b>Content Type:</b> <span class="mako-label">{{$response->getType()}}</span> &nbsp;&nbsp;
-<b>Character Set:</b> <span class="mako-label">{{$response->getCharset()}}</span> &nbsp;&nbsp;
+<div class="mako-panel-content">
 
-<hr>
+	<b>Status:</b> <span class="mako-label">{{$response->getStatus()}}</span> &nbsp;&nbsp;
+	<b>Content Type:</b> <span class="mako-label">{{$response->getType()}}</span> &nbsp;&nbsp;
+	<b>Character Set:</b> <span class="mako-label">{{$response->getCharset()}}</span> &nbsp;&nbsp;
 
-{% foreach($data as $name => $items) %}
+	<hr>
 
-	{% if(!empty($items)) %}
+	{% foreach($data as $name => $items) %}
 
-		<p><span class="mako-subtitle">{{$name}}:</span></p>
+		{% if(!empty($items)) %}
 
-		<table class="mako-table mako-table-2c">
+			<p><span class="mako-subtitle">{{$name}}:</span></p>
 
-			<tr>
-				<th>Key</th>
-				<th>Value</th>
-			</tr>
-
-			{% foreach($items as $key => $value) %}
+			<table class="mako-table mako-table-2c">
 
 				<tr>
-					<td>{{$key}}</td>
-					<td>{{$dump($value)}}</td>
+					<th>Key</th>
+					<th>Value</th>
 				</tr>
 
-			{% endforeach %}
+				{% foreach($items as $key => $value) %}
 
-		</table>
+					<tr>
+						<td>{{$key}}</td>
+						<td>{{$dump($value)}}</td>
+					</tr>
 
-	{% endif %}
+				{% endforeach %}
 
-{% endforeach %}
+			</table>
+
+		{% endif %}
+
+	{% endforeach %}
+
+</div>

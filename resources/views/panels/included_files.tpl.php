@@ -1,20 +1,24 @@
-<p><span class="mako-title">Included files</span></p>
+<div class="mako-panel-header">
+	<span class="mako-title">Included files</span>
+</div>
 
-<hr>
+<div class="mako-panel-content">
 
-<table class="mako-table mako-table-2c">
-	<tr>
-		<th>#</th>
-		<th>Name</th>
-	</tr>
-
-	{% foreach($files as $key => $file) %}
-
+	<table class="mako-table mako-table-2c">
 		<tr>
-			<td>{{$key + 1}}</td>
-			<td>{{$file}}</td>
+			<th>#</th>
+			<th>Name</th>
 		</tr>
 
-	{% endforeach %}
+		{% foreach($files as $key => $file) %}
 
-</table>
+			<tr>
+				<td>{{$key + 1}}</td>
+				<td>{{$file}}</td>
+			</tr>
+
+		{% endforeach %}
+
+	</table>
+
+</div>

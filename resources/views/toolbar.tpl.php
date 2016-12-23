@@ -123,22 +123,6 @@
 	{
 		border-right: 1px solid #232323;
 	}
-	#mako-debug .mako-close
-	{
-		background:#333;
-		color:#fff;
-		display:inline-block;
-		padding:10px;
-		padding-left: 20px;
-		padding-right: 20px;
-		position:absolute;
-		top:0px;
-		right:0px;
-	}
-	#mako-debug .mako-close a
-	{
-		color: #fff;
-	}
 	#mako-debug hr
 	{
 		border: 0;
@@ -151,10 +135,9 @@
 	}
 	#mako-debug .mako-label
 	{
-		background: #EEE;
-		padding: 2px;
-		border: 1px solid #CCC;
-		font-size: .80em
+		background: #efefef;
+		color: #2DB28A;
+		padding: 2px 4px;
 	}
 	#mako-debug .mako-log
 	{
@@ -194,7 +177,7 @@
 	}
 	#mako-debug .mako-title
 	{
-		color: #aaa;
+		color: #eee;
 		font-size: 2.0em;
 		text-align: center;
 	}
@@ -206,13 +189,14 @@
 	}
 	#mako-debug .mako-empty
 	{
+		color: #ccc;
 		margin: 200px auto;
 	}
 
 	#mako-debug .mako-table
 	{
 		width: 100%;
-		border: 1px solid #ccc;
+		border: 1px solid #ddd;
 		background: #fff;
 		border-collapse: collapse;
 	}
@@ -227,19 +211,18 @@
 	#mako-debug table th
 	{
 		padding: 4px;
-		background: #ddd;
-		border-bottom: 1px solid #ccc;
+		border-bottom: 2px solid #ddd;
 	}
 	#mako-debug table td
 	{
 		padding: 4px;
-		border-bottom: 1px solid #ccc;
-		border-right: 1px solid #ccc;
+		border-bottom: 1px solid #ddd;
+		border-right: 1px solid #ddd;
 		vertical-align: top;
 	}
 	#mako-debug table tr:nth-child(odd)
 	{
-		background: #efefef;
+		background: #f4f4f4;
 	}
 	#mako-debug table tr th
 	{
@@ -257,13 +240,21 @@
 	{
 		display: none;
 		height: 500px;
-		padding: 12px;
 		overflow: auto;
-		background: #eee;
-		background: rgba(250, 250, 250, 0.95);
+		background: #fff;
 		border-top: 2px solid #555;
 		color: #222;
 		font-size: 0.9em;
+	}
+	#mako-debug .mako-panel-header
+	{
+		padding: 12px;
+		background: #2DB28A;
+		color: #eee;
+	}
+	#mako-debug .mako-panel-content
+	{
+		padding: 12px;
 	}
 	#mako-debug a.mako-button
 	{
@@ -324,19 +315,13 @@
 	{% foreach($panels as $panel) %}
 
 		<div class="mako-panel" id="{{$panel->getId()}}">
-
-			<div class="mako-close"><a onclick="Mako.togglePanel('{{$panel->getId()}}')">close</a></div>
-
 			{{raw:$panel->render()}}
-
 		</div>
 
 	{% endforeach %}
 
-	<div class="mako-panel" id="execution-time">
-		<div class="mako-close"><a onclick="Mako.togglePanel('execution-time')">close</a></div>
-
-		{{view:'mako-toolbar::panels.time'}}
+	<div class="mako-panel" id="execution">
+		{{view:'mako-toolbar::panels.execution'}}
 	</div>
 
 	<div id="mako-toolbar-hidden">
@@ -346,8 +331,8 @@
 	<div id="mako-toolbar">
 
 		<div class="mako-right">
-			<span title="peak memory usage">{{$memory}}</span>
-			<span title="total execution time"><a class="mako-button" onclick="Mako.togglePanel('execution-time')">{{$time}} seconds</a></span>
+			<span title="peak memory usage"><a class="mako-button" onclick="Mako.togglePanel('execution')">{{$humanizer->fileSize($memory)}}</a></span>
+			<span title="total execution time"><a class="mako-button" onclick="Mako.togglePanel('execution')">{{$time}} seconds</a></span>
 		</div>
 
 		<div class="mako-icon" title="Mako {{$version}} ({{PHP_VERSION}})" onclick="Mako.toggleToolbar(0);"></div>

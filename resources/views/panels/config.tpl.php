@@ -1,24 +1,30 @@
-<p><span class="mako-title">Configuration</span></p>
+<div class="mako-panel-header">
+	<span class="mako-title">Configuration</span>
+</div>
 
-<b>Environment:</b> <span class="mako-label">{{$environment || 'Default'}}</span>
+<div class="mako-panel-content">
 
-<hr>
+	<b>Environment:</b> <span class="mako-label">{{$environment || 'Default'}}</span>
 
-<p><span class="mako-subtitle">Loaded configuration:</span></p>
+	<hr>
 
-<table class="mako-table mako-table-2c">
-	<tr>
-		<th>File</th>
-		<th>Configuration</th>
-	</tr>
+	<p><span class="mako-subtitle">Loaded configuration:</span></p>
 
-	{% foreach($config as $file => $configuration) %}
-
+	<table class="mako-table mako-table-2c">
 		<tr>
-			<td>{{$file}}</td>
-			<td>{{$dump($configuration)}}</td>
+			<th>File</th>
+			<th>Configuration</th>
 		</tr>
 
-	{% endforeach %}
+		{% foreach($config as $file => $configuration) %}
 
-</table>
+			<tr>
+				<td>{{$file}}</td>
+				<td>{{$dump($configuration)}}</td>
+			</tr>
+
+		{% endforeach %}
+
+	</table>
+
+</div>

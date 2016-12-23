@@ -1,24 +1,30 @@
-<p><span class="mako-title">Session</span></p>
+<div class="mako-panel-header">
+	<span class="mako-title">Session</span>
+</div>
 
-<b>Session id:</b> <span class="mako-label">{{$id}}</span>
+<div class="mako-panel-content">
 
-<hr>
+	<b>Session id:</b> <span class="mako-label">{{$id}}</span>
 
-<p><span class="mako-subtitle">Session data:</span></p>
+	<hr>
 
-<table class="mako-table mako-table-2c">
-	<tr>
-		<th>Key</th>
-		<th>Value</th>
-	</tr>
+	<p><span class="mako-subtitle">Session data:</span></p>
 
-	{% foreach($data as $key => $value) %}
-
+	<table class="mako-table mako-table-2c">
 		<tr>
-			<td>{{$key}}</td>
-			<td>{{$dump($value)}}</td>
+			<th>Key</th>
+			<th>Value</th>
 		</tr>
 
-	{% endforeach %}
+		{% foreach($data as $key => $value) %}
 
-</table>
+			<tr>
+				<td>{{$key}}</td>
+				<td>{{$dump($value)}}</td>
+			</tr>
+
+		{% endforeach %}
+
+	</table>
+
+</div>

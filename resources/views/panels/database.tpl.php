@@ -4,9 +4,11 @@
 
 {% else %}
 
-	<p><span class="mako-title">Database queries</span></p>
+	<div class="mako-panel-header">
+		<span class="mako-title">Database queries</span>
+	</div>
 
-	<hr>
+	<div class="mako-panel-content">
 
 		{% foreach($logs as $name => $queries) %}
 
@@ -42,6 +44,8 @@
 
 			{% endif %}
 
-	{% endforeach %}
+		{% endforeach %}
+
+	</div>
 
 {% endif %}
