@@ -103,7 +103,6 @@
 	#mako-debug .mako-right
 	{
 		float: right;
-		margin-top: -2px;
 	}
 	#mako-debug .mako-right span
 	{
