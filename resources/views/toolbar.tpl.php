@@ -132,6 +132,16 @@
 		margin-bottom: 10px;
 		padding: 0;
 	}
+	#mako-debug .mako-close
+	{
+		float: right;
+		padding-top: 20px;
+		padding-right: 12px;
+	}
+	#mako-debug .mako-close a
+	{
+		color: #FFF;
+	}
 	#mako-debug .mako-label
 	{
 		background: #efefef;
@@ -314,12 +324,14 @@
 	{% foreach($panels as $panel) %}
 
 		<div class="mako-panel" id="{{$panel->getId()}}">
+			<div class="mako-close"><a onclick="Mako.togglePanel('{{$panel->getId()}}')">&#x2716;</a></div>
 			{{raw:$panel->render()}}
 		</div>
 
 	{% endforeach %}
 
 	<div class="mako-panel" id="execution">
+		<div class="mako-close"><a onclick="Mako.togglePanel('execution')">&#x2716;</a></div>
 		{{view:'mako-toolbar::panels.execution'}}
 	</div>
 
