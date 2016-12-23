@@ -4,7 +4,7 @@
 
 <div class="mako-panel-content">
 
-	<span class="mako-subtitle">Execution time:</span>
+	<p><span class="mako-subtitle">Execution time:</span></p>
 
 	<p><b>Total execution time:</b> <span class="mako-label">{{round($execution_time['total'], 4)}} seconds</span></p>
 

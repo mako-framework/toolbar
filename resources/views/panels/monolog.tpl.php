@@ -10,6 +10,8 @@
 
 	<div class="mako-panel-content">
 
+		<p><span class="mako-subtitle">Log entries:</span></p>
+
 		<table class="mako-table mako-table-2c">
 			<tr>
 				<th>Type</th>

@@ -4,9 +4,11 @@
 
 <div class="mako-panel-content">
 
-	<b>Status:</b> <span class="mako-label">{{$response->getStatus()}}</span> &nbsp;&nbsp;
-	<b>Content Type:</b> <span class="mako-label">{{$response->getType()}}</span> &nbsp;&nbsp;
-	<b>Character Set:</b> <span class="mako-label">{{$response->getCharset()}}</span> &nbsp;&nbsp;
+	<p>
+		<b>Status:</b> <span class="mako-label">{{$response->getStatus()}}</span> &nbsp;&nbsp;
+		<b>Content Type:</b> <span class="mako-label">{{$response->getType()}}</span> &nbsp;&nbsp;
+		<b>Character Set:</b> <span class="mako-label">{{$response->getCharset()}}</span> &nbsp;&nbsp;
+	</p>
 
 	<hr>
 

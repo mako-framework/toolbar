@@ -4,7 +4,9 @@
 
 <div class="mako-panel-content">
 
-	<b>Session id:</b> <span class="mako-label">{{$id}}</span>
+	<p>
+		<b>Session id:</b> <span class="mako-label">{{$id}}</span> &nbsp;&nbsp;
+	</p>
 
 	<hr>
 

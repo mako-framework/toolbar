@@ -83,8 +83,6 @@ class ToolbarPackage extends Package
 				$toolbar->addPanel(new MonologPanel($view, $monologHandler));
 			}
 
-			$toolbar->addPanel(new IncludedFilesPanel($view));
-
 			return $toolbar;
 		});
 	}
