@@ -37,12 +37,38 @@
 
 				document.getElementById('mako-toolbar').style.display = 'none';
 				document.getElementById('mako-toolbar-hidden').style.display = 'block';
+
+				document.cookie = 'mako_toolbar_hidden=1';
 			}
 			else
 			{
 				document.getElementById('mako-toolbar').style.display = 'block';
 				document.getElementById('mako-toolbar-hidden').style.display = 'none';
+
+				document.cookie = 'mako_toolbar_hidden=0';
 			}
+		},
+		getCookie: function(name)
+		{
+			var name = name + '=';
+
+			var cookies = document.cookie.split(';');
+
+			for(var i = 0; i < cookies.length; i++)
+			{
+				var cookie = cookies[i];
+
+				while(cookie.charAt(0) == ' ')
+				{
+					cookie = cookie.substring(1);
+				}
+
+				if(cookie.indexOf(name) == 0)
+				{
+					return cookie.substring(name.length, cookie.length);
+				}
+			}
+			return false;
 		}
 	};
 </script>
@@ -357,3 +383,10 @@
 	</div>
 
 </div>
+
+<script>
+	if(Mako.getCookie('mako_toolbar_hidden') === '1')
+	{
+		Mako.toggleToolbar(0);
+	}
+</script>
