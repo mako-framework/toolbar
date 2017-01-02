@@ -104,6 +104,7 @@
 	}
 	#mako-debug pre
 	{
+		border: none;
 		margin: 0 !important;
 		padding: 0 !important;
 	}
