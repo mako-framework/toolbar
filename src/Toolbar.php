@@ -31,6 +31,7 @@ class Toolbar
 	 *
 	 * @var \mako\utility\Humanizer
 	 */
+	protected $humanizer;
 
 	/**
 	 * Panels.
