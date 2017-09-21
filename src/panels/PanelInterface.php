@@ -7,8 +7,6 @@
 
 namespace mako\toolbar\panels;
 
-use mako\view\ViewFactory;
-
 /**
  * Panel interface.
  *
@@ -16,7 +14,24 @@ use mako\view\ViewFactory;
  */
 interface PanelInterface
 {
+	/**
+	 * Returns a unique panel id.
+	 *
+	 * @return string
+	 */
 	public function getId(): string;
+
+	/**
+	 * Returns the tab label.
+	 *
+	 * @return string
+	 */
 	public function getTabLabel(): string;
+
+	/**
+	 * Returns the rendered panel.
+	 *
+	 * @return string
+	 */
 	public function render(): string;
 }

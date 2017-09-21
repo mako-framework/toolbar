@@ -7,7 +7,6 @@
 
 namespace mako\toolbar;
 
-use Monolog\Logger;
 use Monolog\Handler\AbstractProcessingHandler;
 
 /**
@@ -35,7 +34,6 @@ class Monologger extends AbstractProcessingHandler
 	/**
 	 * Returns the number of log entries.
 	 *
-	 * @access public
 	 * @return int
 	 */
 	public function getEntryCount(): int
@@ -46,7 +44,6 @@ class Monologger extends AbstractProcessingHandler
 	/**
 	 * Returns the log entries.
 	 *
-	 * @access public
 	 * @return array
 	 */
 	public function getEntries(): array

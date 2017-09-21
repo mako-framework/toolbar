@@ -34,7 +34,6 @@ class MonologPanel extends Panel implements PanelInterface
 	/**
 	 * Constructor.
 	 *
-	 * @access public
 	 * @param \mako\view\ViewFactory   $view       View factory instance
 	 * @param \mako\toolbar\Monologger $monologger Monologger
 	 */
@@ -46,10 +45,7 @@ class MonologPanel extends Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns the tab label.
-	 *
-	 * @access public
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function getTabLabel(): string
 	{
@@ -59,7 +55,6 @@ class MonologPanel extends Panel implements PanelInterface
 	/**
 	 * Returns a helper funtion.
 	 *
-	 * @access protected
 	 * @return \Closure
 	 */
 	protected function getLevelHelper(): Closure
@@ -89,10 +84,7 @@ class MonologPanel extends Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns the rendered panel.
-	 *
-	 * @access public
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function render(): string
 	{

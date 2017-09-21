@@ -32,7 +32,6 @@ class SessionPanel extends Panel implements PanelInterface
 	/**
 	 * Constructor.
 	 *
-	 * @access public
 	 * @param \mako\view\ViewFactory $view    View factory instance
 	 * @param \mako\session\Session  $session Session instance
 	 */
@@ -44,10 +43,7 @@ class SessionPanel extends Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns the tab label.
-	 *
-	 * @access public
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function getTabLabel(): string
 	{
@@ -55,10 +51,7 @@ class SessionPanel extends Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns the rendered panel.
-	 *
-	 * @access public
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function render(): string
 	{

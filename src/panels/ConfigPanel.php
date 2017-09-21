@@ -39,7 +39,6 @@ class ConfigPanel extends Panel implements PanelInterface
 	/**
 	 * Constructor.
 	 *
-	 * @access public
 	 * @param \mako\view\ViewFactory $view        View factory instance
 	 * @param \mako\config\Config    $config      Configuration instance
 	 * @param string|null            $environment Environment
@@ -54,10 +53,7 @@ class ConfigPanel extends Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns the tab label.
-	 *
-	 * @access  public
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function getTabLabel(): string
 	{
@@ -65,10 +61,7 @@ class ConfigPanel extends Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns the rendered panel.
-	 *
-	 * @access  public
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function render(): string
 	{

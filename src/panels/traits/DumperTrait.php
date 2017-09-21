@@ -22,7 +22,6 @@ trait DumperTrait
 	/**
 	 * Styles the dumper.
 	 *
-	 * @access protected
 	 * @param \Symfony\Component\VarDumper\Dumper\HtmlDumper $dumper HTML dumper
 	 */
 	protected function styleDumper(HtmlDumper $dumper)
@@ -50,7 +49,6 @@ trait DumperTrait
 	/**
 	 * Returns a dumper closure.
 	 *
-	 * @access protected
 	 * @return \Closure
 	 */
 	protected function getDumper(): Closure

@@ -46,7 +46,6 @@ class DatabasePanel extends Panel implements PanelInterface
 	/**
 	 * Constructor.
 	 *
-	 * @access public
 	 * @param \mako\view\ViewFactory           $view     View factory instance
 	 * @param \mako\database\ConnectionManager $database Connection manager instance
 	 */
@@ -61,8 +60,6 @@ class DatabasePanel extends Panel implements PanelInterface
 
 	/**
 	 * Collects query stats.
-	 *
-	 * @access protected
 	 */
 	protected function collectQueryStats()
 	{
@@ -81,7 +78,6 @@ class DatabasePanel extends Panel implements PanelInterface
 	/**
 	 * Returns the total query time.
 	 *
-	 * @access public
 	 * @return float
 	 */
 	public function getTotalQueryTime(): float
@@ -90,10 +86,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns the tab label.
-	 *
-	 * @access public
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function getTabLabel(): string
 	{
@@ -110,7 +103,6 @@ class DatabasePanel extends Panel implements PanelInterface
 	/**
 	 * Returns logs with syntax highlighted queries.
 	 *
-	 * @access public
 	 * @param  array $logs Query logs
 	 * @return array
 	 */
@@ -134,10 +126,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns the rendered panel.
-	 *
-	 * @access public
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function render(): string
 	{

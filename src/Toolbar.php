@@ -50,7 +50,6 @@ class Toolbar
 	/**
 	 * Constructor.
 	 *
-	 * @access public
 	 * @param \mako\view\ViewFactory  $view      View factory instance
 	 * @param \mako\utility\Humanizer $humanizer Humanizer instance
 	 */
@@ -64,8 +63,7 @@ class Toolbar
 	/**
 	 * Add a panel to the toolbar.
 	 *
-	 * @access public
-	 * @param \mako\toolbar\PanelInterface $panel Panel
+	 * @param \mako\toolbar\panels\PanelInterface $panel Panel
 	 */
 	public function addPanel(PanelInterface $panel)
 	{
@@ -73,7 +71,8 @@ class Toolbar
 	}
 
 	/**
-	 * [addTimer description]
+	 * Adds a timer.
+	 *
 	 * @param string $name [description]
 	 * @param float  $time [description]
 	 */
@@ -85,7 +84,6 @@ class Toolbar
 	/**
 	 * Calculates the execution time.
 	 *
-	 * @access protected
 	 * @return array
 	 */
 	protected function calculateExecutionTime(): array
@@ -111,10 +109,9 @@ class Toolbar
 	/**
 	 * Renders the toolbar.
 	 *
-	 * @access public
 	 * @return string
 	 */
-	public function render()
+	public function render(): string
 	{
 		$executionTime = $this->calculateExecutionTime();
 

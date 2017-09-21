@@ -27,7 +27,6 @@ abstract class Panel implements PanelInterface
 	/**
 	 * Constructor.
 	 *
-	 * @access public
 	 * @param \mako\view\ViewFactory $view View factory instance
 	 */
 	public function __construct(ViewFactory $view)
@@ -36,10 +35,7 @@ abstract class Panel implements PanelInterface
 	}
 
 	/**
-	 * Returns a unique panel id.
-	 *
-	 * @access public
-	 * @return string
+	 * {@inheritDoc}
 	 */
 	public function getId(): string
 	{

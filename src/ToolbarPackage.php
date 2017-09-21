@@ -12,7 +12,6 @@ use mako\toolbar\Toolbar;
 use mako\toolbar\Monologger;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
-use mako\toolbar\panels\IncludedFilesPanel;
 use mako\toolbar\panels\MonologPanel;
 use mako\toolbar\panels\RequestPanel;
 use mako\toolbar\panels\ResponsePanel;
