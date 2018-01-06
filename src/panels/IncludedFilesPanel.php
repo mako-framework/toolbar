@@ -9,6 +9,7 @@ namespace mako\toolbar\panels;
 
 use mako\toolbar\panels\Panel;
 use mako\toolbar\panels\PanelInterface;
+use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 
 /**
@@ -18,6 +19,8 @@ use mako\view\ViewFactory;
  */
 class IncludedFilesPanel extends Panel implements PanelInterface
 {
+	use DumperTrait;
+
 	/**
 	 * Included files.
 	 *
@@ -66,6 +69,7 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 		$view = $this->view->create('mako-toolbar::panels.included_files',
 		[
 			'files' => $this->getIncludedFiles(),
+			'dump'  => $this->getDumper(),
 		]);
 
 		return $view->render();
