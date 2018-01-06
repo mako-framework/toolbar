@@ -13,6 +13,7 @@ use mako\toolbar\Monologger;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
 use mako\toolbar\panels\MonologPanel;
+use mako\toolbar\panels\OPcachePanel;
 use mako\toolbar\panels\RequestPanel;
 use mako\toolbar\panels\ResponsePanel;
 use mako\toolbar\panels\SessionPanel;
@@ -82,7 +83,16 @@ class ToolbarPackage extends Package
 				$toolbar->addPanel(new MonologPanel($view, $monologHandler));
 			}
 
+			if(function_exists('opcache_get_status'))
+			{
+				$toolbar->addPanel(new OPcachePanel($view, $container->get('urlBuilder')));
+			}
+
 			return $toolbar;
 		});
+
+		// Register routes
+
+		$this->container->get('routes')->post('/mako.toolbar/opcache/reset', 'mako\toolbar\controllers\OPcache::reset', 'mako.toolbar.opcache.reset');
 	}
 }

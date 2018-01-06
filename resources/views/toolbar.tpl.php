@@ -344,6 +344,12 @@
 	{
 		font-weight: bold;
 	}
+	button
+	{
+		border: 0;
+		background: #2DB28A;
+		color: #eee;
+	}
 </style>
 
 <div id="mako-debug">
