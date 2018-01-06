@@ -16,7 +16,7 @@
 			</form>
 		</div>
 
-		<b>Enabled:</b> <span class="mako-label">{{$status['opcache_enabled'] ? 'Yes' : 'No'}}</span>
+		<b>Status:</b> <span class="mako-label">{{$status['opcache_enabled'] ? 'Enabled' : 'Disabled'}}{% if($status['restart_in_progress']) %} (Restarting){% endif %}</span>
 	</p>
 
 	{% if(!empty($status['scripts'])) %}
