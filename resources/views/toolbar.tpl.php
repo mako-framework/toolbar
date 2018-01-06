@@ -152,8 +152,8 @@
 	#mako-debug hr
 	{
 		border: 0;
-    	height: 1px;
-    	background: #CCC;
+		height: 1px;
+		background: #CCC;
 		margin: 0;
 		margin-top: 10px;
 		margin-bottom: 10px;
