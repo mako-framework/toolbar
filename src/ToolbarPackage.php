@@ -8,7 +8,6 @@
 namespace mako\toolbar;
 
 use mako\application\Package;
-use mako\toolbar\Toolbar;
 use mako\toolbar\Monologger;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
@@ -17,6 +16,7 @@ use mako\toolbar\panels\OPcachePanel;
 use mako\toolbar\panels\RequestPanel;
 use mako\toolbar\panels\ResponsePanel;
 use mako\toolbar\panels\SessionPanel;
+use mako\toolbar\Toolbar;
 
 use Monolog\Logger;
 
@@ -56,7 +56,7 @@ class ToolbarPackage extends Package
 		{
 			$view = $container->get('view');
 
-			$toolbar = new Toolbar($view, $container->get('humanizer'));
+			$toolbar = new Toolbar($view, $container->get('humanizer'), $container->get('app'));
 
 			$toolbar->addPanel(new RequestPanel($view, $container->get('request')));
 

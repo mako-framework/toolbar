@@ -7,9 +7,10 @@
 
 namespace mako\toolbar;
 
+use mako\application\Application;
 use mako\Mako;
-use mako\utility\Humanizer;
 use mako\toolbar\panels\PanelInterface;
+use mako\utility\Humanizer;
 use mako\view\ViewFactory;
 
 /**
@@ -34,6 +35,13 @@ class Toolbar
 	protected $humanizer;
 
 	/**
+	 * Application.
+	 *
+	 * @var \mako\application\Application
+	 */
+	protected $application;
+
+	/**
 	 * Panels.
 	 *
 	 * @var array
@@ -50,14 +58,17 @@ class Toolbar
 	/**
 	 * Constructor.
 	 *
-	 * @param \mako\view\ViewFactory  $view      View factory instance
-	 * @param \mako\utility\Humanizer $humanizer Humanizer instance
+	 * @param \mako\view\ViewFactory        $view        View factory instance
+	 * @param \mako\utility\Humanizer       $humanizer   Humanizer instance
+	 * @param \mako\application\Application $application Application
 	 */
-	public function __construct(ViewFactory $view, Humanizer $humanizer)
+	public function __construct(ViewFactory $view, Humanizer $humanizer, Application $application)
 	{
 		$this->view = $view;
 
 		$this->humanizer = $humanizer;
+
+		$this->application = $application;
 	}
 
 	/**
@@ -88,7 +99,7 @@ class Toolbar
 	 */
 	protected function calculateExecutionTime(): array
 	{
-		$totalTime = microtime(true) - MAKO_START;
+		$totalTime = microtime(true) - $this->application->getStartTime();
 
 		$executionTime = ['total' => $totalTime, 'details' => []];
 
