@@ -2,21 +2,26 @@
 
 ## Requirements
 
-Mako 5.0 or greater.
+Mako 5.4 or greater.
 
 ## Installation
 
-1) Add the ```mako\toolbar\ToolbarPackage``` package to your ```app/config/application.php``` config file.
+Install the package using the following composer command:
 
-2) Render the toolbar. The easiest way of doing it is by adding the following code to your ```app/bootstrap.php``` file:
+	composer require mako/toolbar
 
-	$container->get('response')->filter(function($body) use ($container)
-	{
-		$toolbar = $container->get('toolbar');
+Next, add the ```mako\toolbar\ToolbarPackage``` package to your ```app/config/application.php``` config file.
 
-		return str_replace('</body>', $toolbar->render() . '</body>', $body);
-	});
+Finally, you need to make sure that the toolbar gets rendered. The quickest way of getting it up and running is to use the included middleware.
 
-3) The `included files` panel is disabled by default. To enable it just add the following line of code.
+	$dispatcher->registerMiddleware('toolbar', ToolbarMiddelware::class);
 
-	$toolbar->addPanel(new IncludedFilesPanel($container->get('view')));
+You should make sure that the middleware gets executed first to ensure that the toolbar is able to collect all the information about your application.
+
+	$dispatcher->setMiddlewarePriority(['toolbar' => 1]);
+
+You can now add the middleware to the routes of your choice or make it global if you want to apply it to all your routes.
+
+	$dispatcher->setMiddlewareAsGlobal(['toolbar']);
+
+> The middleware will only append the toolbar to responses with a content type of `text/html` and a body that includes a set of `<body></body>` tags.
