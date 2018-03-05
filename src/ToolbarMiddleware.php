@@ -8,11 +8,9 @@
 namespace mako\toolbar;
 
 use Closure;
-
 use mako\http\Request;
 use mako\http\Response;
 use mako\http\routing\middleware\Middleware;
-use mako\toolbar\Toolbar;
 
 /**
  * Toolbar middleware.

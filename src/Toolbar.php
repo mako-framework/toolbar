@@ -8,7 +8,6 @@
 namespace mako\toolbar;
 
 use Closure;
-
 use mako\application\Application;
 use mako\Mako;
 use mako\toolbar\panels\PanelInterface;

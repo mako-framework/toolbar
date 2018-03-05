@@ -1,10 +1,13 @@
 <?php
 
+/**
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
+ */
+
 namespace mako\toolbar\panels;
 
 use mako\http\routing\URLBuilder;
-use mako\toolbar\panels\Panel;
-use mako\toolbar\panels\PanelInterface;
 use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 

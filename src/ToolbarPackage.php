@@ -8,7 +8,6 @@
 namespace mako\toolbar;
 
 use mako\application\Package;
-use mako\toolbar\Monologger;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
 use mako\toolbar\panels\MonologPanel;
@@ -16,8 +15,6 @@ use mako\toolbar\panels\OPcachePanel;
 use mako\toolbar\panels\RequestPanel;
 use mako\toolbar\panels\ResponsePanel;
 use mako\toolbar\panels\SessionPanel;
-use mako\toolbar\Toolbar;
-
 use Monolog\Logger;
 
 /**

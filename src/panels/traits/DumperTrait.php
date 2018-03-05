@@ -8,7 +8,6 @@
 namespace mako\toolbar\panels\traits;
 
 use Closure;
-
 use Symfony\Component\VarDumper\Cloner\VarCloner;
 use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 

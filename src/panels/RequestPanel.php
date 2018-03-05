@@ -8,8 +8,6 @@
 namespace mako\toolbar\panels;
 
 use mako\http\Request;
-use mako\toolbar\panels\Panel;
-use mako\toolbar\panels\PanelInterface;
 use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 

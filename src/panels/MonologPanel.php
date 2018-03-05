@@ -8,10 +8,7 @@
 namespace mako\toolbar\panels;
 
 use Closure;
-
 use mako\toolbar\Monologger;
-use mako\toolbar\panels\Panel;
-use mako\toolbar\panels\PanelInterface;
 use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 

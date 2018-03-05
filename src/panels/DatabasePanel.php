@@ -7,12 +7,9 @@
 
 namespace mako\toolbar\panels;
 
-use SqlFormatter;
-
 use mako\database\ConnectionManager;
-use mako\toolbar\panels\Panel;
-use mako\toolbar\panels\PanelInterface;
 use mako\view\ViewFactory;
+use SqlFormatter;
 
 /**
  * Database panel.
