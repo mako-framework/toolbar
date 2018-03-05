@@ -12,7 +12,6 @@ use SqlFormatter;
 use mako\database\ConnectionManager;
 use mako\toolbar\panels\Panel;
 use mako\toolbar\panels\PanelInterface;
-use mako\utility\Arr;
 use mako\view\ViewFactory;
 
 /**
@@ -30,20 +29,6 @@ class DatabasePanel extends Panel implements PanelInterface
 	protected $database;
 
 	/**
-	 * Total queries.
-	 *
-	 * @var int
-	 */
-	protected $totalQueries;
-
-	/**
-	 * Total query time.
-	 *
-	 * @var float
-	 */
-	protected $totalQueryTime;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param \mako\view\ViewFactory           $view     View factory instance
@@ -54,25 +39,16 @@ class DatabasePanel extends Panel implements PanelInterface
 		parent::__construct($view);
 
 		$this->database = $database;
-
-		$this->collectQueryStats();
 	}
 
 	/**
-	 * Collects query stats.
+	 * Returns the total query count.
+	 *
+	 * @return int
 	 */
-	protected function collectQueryStats()
+	public function getTotalQueryCount(): int
 	{
-		$this->totalQueries = 0;
-
-		$this->totalQueryTime = 0;
-
-		foreach($this->database->getLogs() as $queryLog)
-		{
-			$this->totalQueries += count($queryLog);
-
-			$this->totalQueryTime += array_sum(Arr::pluck($queryLog, 'time'));
-		}
+		return count($this->database->getLogs(false));
 	}
 
 	/**
@@ -82,7 +58,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	 */
 	public function getTotalQueryTime(): float
 	{
-		return $this->totalQueryTime;
+		return array_sum(array_column($this->database->getLogs(false), 'time'));
 	}
 
 	/**
@@ -90,13 +66,13 @@ class DatabasePanel extends Panel implements PanelInterface
 	 */
 	public function getTabLabel(): string
 	{
-		if($this->totalQueries === 0)
+		if(($totalQueries = $this->getTotalQueryCount()) === 0)
 		{
-			return sprintf('%u database queries', $this->totalQueries);
+			return sprintf('%u database queries', $totalQueries);
 		}
 		else
 		{
-			return sprintf('%u database queries ( %f seconds )', $this->totalQueries, round($this->totalQueryTime, 4));
+			return sprintf('%u database queries ( %f seconds )', $totalQueries, round($this->getTotalQueryTime(), 4));
 		}
 	}
 

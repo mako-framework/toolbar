@@ -75,7 +75,10 @@ class ToolbarPackage extends Package
 
 				$toolbar->addPanel($panel);
 
-				$toolbar->addTimer('SQL', $panel->getTotalQueryTime());
+				$toolbar->addTimer('SQL', function() use ($panel)
+				{
+					return $panel->getTotalQueryTime();
+				});
 			}
 
 			if($monologHandler !== null)
