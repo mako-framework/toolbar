@@ -7,6 +7,8 @@
 
 namespace mako\toolbar;
 
+use Closure;
+
 use mako\application\Application;
 use mako\Mako;
 use mako\toolbar\panels\PanelInterface;
@@ -84,10 +86,10 @@ class Toolbar
 	/**
 	 * Adds a timer.
 	 *
-	 * @param string $name [description]
-	 * @param float  $time [description]
+	 * @param string         $name Timer name
+	 * @param float|\Closure $time Timer value
 	 */
-	public function addTimer(string $name, float $time)
+	public function addTimer(string $name, $time)
 	{
 		$this->timers[$name] = $time;
 	}
@@ -111,6 +113,11 @@ class Toolbar
 
 		foreach($this->timers as $timer => $time)
 		{
+			if($time instanceof Closure)
+			{
+				$time = $time();
+			}
+
 			$executionTime['details'][$timer] = ['time' => $time, 'pct' => ($time / $totalTime * 100)];
 		}
 
