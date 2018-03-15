@@ -19,6 +19,7 @@ return
 			'application.secret',
 			'crypto.configurations.*.key',
 			'database.configurations.*.password',
+			'redis.configurations.*.password',
 		],
 	],
 ];
