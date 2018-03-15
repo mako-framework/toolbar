@@ -12,7 +12,7 @@ return
 	'config' =>
 	[
 		/**
-		* Array of config keys of where you want the value masked in the output. Set to false to disable masking.
+		* Array of config keys that you want masked in the output. Set to false to disable masking.
 		*/
 		'mask' =>
 		[
