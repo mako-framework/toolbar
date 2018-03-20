@@ -63,45 +63,18 @@ class ConfigPanel extends Panel implements PanelInterface
 	/**
 	 * Expand key.
 	 *
-	 * @param  array        $config Config
-	 * @param  string|array $key    Config key
+	 * @param  array  $config Config
+	 * @param  string $key    Config key
 	 * @return array
 	 */
-	protected function expandKey($config, $key): array
+	protected function expandKey(array $config, string $key): array
 	{
-		if(is_string($key) && strpos($key, '*') === false)
+		if(strpos($key, '*') === false)
 		{
 			return [$key];
 		}
 
-		$keys = (array) $key;
-
-		$expanded = [];
-
-		foreach($keys as $key)
-		{
-			list($known, $rest) = array_map(function($value)
-			{
-				return trim($value, '.');
-			}, explode('*', $key, 2));
-
-			if(is_array($value = Arr::get($config, $known)) === false)
-			{
-				continue;
-			}
-
-			foreach(array_keys($value) as $key)
-			{
-				$expanded[] = rtrim($known . '.' . $key . '.' . $rest, '.');
-			}
-		}
-
-		if(isset($rest) && strpos($rest, '*') !== false)
-		{
-			return $this->expandWildcardField($expanded);
-		}
-
-		return $expanded;
+		return Arr::expandKey($config, $key);
 	}
 
 	/**
