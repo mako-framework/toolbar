@@ -15,13 +15,13 @@
         }
     },
     "require": {
-		"php": ">=7.0.0",
-		"jdorn/sql-formatter": "^1.2",
-        "symfony/var-dumper": "^3.2"
-	},
+        "php": ">=7.0.0",
+        "jdorn/sql-formatter": "^1.2",
+        "symfony/var-dumper": "^3.4 || ^4.1"
+    },
     "extra": {
         "branch-alias": {
-             "dev-master": "2.3-dev"
+            "dev-master": "2.3-dev"
         }
     }
 }
