@@ -14,6 +14,12 @@ use mako\toolbar\panels\PanelInterface;
 use mako\utility\Humanizer;
 use mako\view\ViewFactory;
 
+use function array_sum;
+use function ini_get;
+use function memory_get_peak_usage;
+use function microtime;
+use function round;
+
 /**
  * Mako debug toolbar.
  *

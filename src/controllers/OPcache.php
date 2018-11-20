@@ -9,6 +9,8 @@ namespace mako\toolbar\controllers;
 
 use mako\http\routing\Controller;
 
+use function opcache_reset;
+
 /**
  * OPcache.
  *

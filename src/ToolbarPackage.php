@@ -7,7 +7,15 @@
 
 namespace mako\toolbar;
 
+use mako\application\Application;
 use mako\application\Package;
+use mako\config\Config;
+use mako\database\ConnectionManager as DatabaseConnectionManager;
+use mako\http\Request;
+use mako\http\Response;
+use mako\http\routing\Routes;
+use mako\http\routing\URLBuilder;
+use mako\session\Session;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
 use mako\toolbar\panels\MonologPanel;
@@ -15,7 +23,12 @@ use mako\toolbar\panels\OPcachePanel;
 use mako\toolbar\panels\RequestPanel;
 use mako\toolbar\panels\ResponsePanel;
 use mako\toolbar\panels\SessionPanel;
+use mako\utility\Humanizer;
+use mako\view\ViewFactory;
 use Monolog\Logger;
+use Psr\Log\LoggerInterface;
+
+use function function_exists;
 
 /**
  * Toolbar package.
@@ -40,35 +53,35 @@ class ToolbarPackage extends Package
 
 		// Add logger if monolog is in the container
 
-		if($this->container->has('logger'))
+		if($this->container->has(LoggerInterface::class))
 		{
 			$monologHandler = new Monologger(Logger::DEBUG, true);
 
-			$this->container->get('logger')->pushHandler($monologHandler);
+			$this->container->get(LoggerInterface::class)->pushHandler($monologHandler);
 		}
 
 		// Register the toolbar in the container
 
 		$this->container->registerSingleton(['mako\toolbar\Toolbar', 'toolbar'], function($container) use ($monologHandler)
 		{
-			$view = $container->get('view');
+			$view = $container->get(ViewFactory::class);
 
-			$toolbar = new Toolbar($view, $container->get('humanizer'), $container->get('app'));
+			$toolbar = new Toolbar($view, $container->get(Humanizer::class), $container->get(Application::class));
 
-			$toolbar->addPanel(new RequestPanel($view, $container->get('request')));
+			$toolbar->addPanel(new RequestPanel($view, $container->get(Request::class)));
 
-			$toolbar->addPanel(new ResponsePanel($view, $container->get('response')));
+			$toolbar->addPanel(new ResponsePanel($view, $container->get(Response::class)));
 
-			$toolbar->addPanel(new ConfigPanel($view, $container->get('config'), $container->get('app')->getEnvironment()));
+			$toolbar->addPanel(new ConfigPanel($view, $container->get(Config::class), $container->get(Application::class)->getEnvironment()));
 
-			if($container->has('session'))
+			if($container->has(Session::class))
 			{
-				$toolbar->addPanel(new SessionPanel($view, $container->get('session')));
+				$toolbar->addPanel(new SessionPanel($view, $container->get(Session::class)));
 			}
 
-			if($container->has('database'))
+			if($container->has(DatabaseConnectionManager::class))
 			{
-				$panel = new DatabasePanel($view, $container->get('database'));
+				$panel = new DatabasePanel($view, $container->get(DatabaseConnectionManager::class));
 
 				$toolbar->addPanel($panel);
 
@@ -85,7 +98,7 @@ class ToolbarPackage extends Package
 
 			if(function_exists('opcache_get_status'))
 			{
-				$toolbar->addPanel(new OPcachePanel($view, $container->get('urlBuilder')));
+				$toolbar->addPanel(new OPcachePanel($view, $container->get(URLBuilder::class)));
 			}
 
 			return $toolbar;
@@ -93,6 +106,6 @@ class ToolbarPackage extends Package
 
 		// Register routes
 
-		$this->container->get('routes')->post('/mako.toolbar/opcache/reset', 'mako\toolbar\controllers\OPcache::reset', 'mako.toolbar.opcache.reset');
+		$this->container->get(Routes::class)->post('/mako.toolbar/opcache/reset', 'mako\toolbar\controllers\OPcache::reset', 'mako.toolbar.opcache.reset');
 	}
 }

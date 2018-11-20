@@ -10,6 +10,10 @@ namespace mako\toolbar\panels;
 use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 
+use function count;
+use function get_included_files;
+use function sprintf;
+
 /**
  * Included files panel.
  *

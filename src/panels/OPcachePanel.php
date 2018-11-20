@@ -11,6 +11,8 @@ use mako\http\routing\URLBuilder;
 use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 
+use function opcache_get_status;
+
 /**
  * OPcache panel.
  *

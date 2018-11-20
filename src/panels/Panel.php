@@ -9,6 +9,9 @@ namespace mako\toolbar\panels;
 
 use mako\view\ViewFactory;
 
+use function get_called_class;
+use function md5;
+
 /**
  * Abstract panel.
  *

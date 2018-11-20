@@ -12,6 +12,8 @@ use mako\toolbar\Monologger;
 use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 
+use function sprintf;
+
 /**
  * Monolog panel.
  *

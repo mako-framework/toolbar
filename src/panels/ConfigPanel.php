@@ -13,6 +13,10 @@ use mako\utility\Arr;
 use mako\utility\Str;
 use mako\view\ViewFactory;
 
+use function is_array;
+use function is_string;
+use function strpos;
+
 /**
  * Config panel.
  *

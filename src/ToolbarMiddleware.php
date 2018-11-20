@@ -12,6 +12,11 @@ use mako\http\Request;
 use mako\http\Response;
 use mako\http\routing\middleware\Middleware;
 
+use function is_object;
+use function is_string;
+use function method_exists;
+use function str_replace;
+
 /**
  * Toolbar middleware.
  *

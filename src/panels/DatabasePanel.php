@@ -11,6 +11,12 @@ use mako\database\ConnectionManager;
 use mako\view\ViewFactory;
 use SqlFormatter;
 
+use function array_column;
+use function array_sum;
+use function count;
+use function round;
+use function sprintf;
+
 /**
  * Database panel.
  *

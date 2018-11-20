@@ -9,6 +9,8 @@ namespace mako\toolbar;
 
 use Monolog\Handler\AbstractProcessingHandler;
 
+use function count;
+
 /**
  * Monologger.
  *
