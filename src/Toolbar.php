@@ -83,7 +83,7 @@ class Toolbar
 	 *
 	 * @param \mako\toolbar\panels\PanelInterface $panel Panel
 	 */
-	public function addPanel(PanelInterface $panel)
+	public function addPanel(PanelInterface $panel): void
 	{
 		$this->panels[] = $panel;
 	}
@@ -94,7 +94,7 @@ class Toolbar
 	 * @param string         $name Timer name
 	 * @param float|\Closure $time Timer value
 	 */
-	public function addTimer(string $name, $time)
+	public function addTimer(string $name, $time): void
 	{
 		$this->timers[$name] = $time;
 	}

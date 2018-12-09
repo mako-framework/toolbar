@@ -21,7 +21,7 @@ class OPcache extends Controller
 	/**
 	 * Clears the opcache.
 	 */
-	public function reset()
+	public function reset(): void
 	{
 		opcache_reset();
 	}

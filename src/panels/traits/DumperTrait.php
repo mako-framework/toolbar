@@ -23,7 +23,7 @@ trait DumperTrait
 	 *
 	 * @param \Symfony\Component\VarDumper\Dumper\HtmlDumper $dumper HTML dumper
 	 */
-	protected function styleDumper(HtmlDumper $dumper)
+	protected function styleDumper(HtmlDumper $dumper): void
 	{
 		$styles =
 		[
@@ -56,7 +56,7 @@ trait DumperTrait
 
 		$this->styleDumper($dumper);
 
-		return function($variable) use ($dumper)
+		return function($variable) use ($dumper): void
 		{
 			$dumper->dump((new VarCloner)->cloneVar($variable));
 		};

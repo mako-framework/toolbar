@@ -47,7 +47,7 @@ class ToolbarPackage extends Package
 	/**
 	 * {@inheritdoc}
 	 */
-	protected function bootstrap()
+	protected function bootstrap(): void
 	{
 		$monologHandler = null;
 
