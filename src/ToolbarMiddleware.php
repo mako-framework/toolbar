@@ -10,7 +10,7 @@ namespace mako\toolbar;
 use Closure;
 use mako\http\Request;
 use mako\http\Response;
-use mako\http\routing\middleware\Middleware;
+use mako\http\routing\middleware\MiddlewareInterface;
 
 use function is_object;
 use function is_string;
@@ -22,7 +22,7 @@ use function str_replace;
  *
  * @author Frederic G. Østby
  */
-class ToolbarMiddleware extends Middleware
+class ToolbarMiddleware implements MiddlewareInterface
 {
 	/**
 	 * Toolbar.
