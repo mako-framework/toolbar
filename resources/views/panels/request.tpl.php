@@ -5,10 +5,10 @@
 <div class="mako-panel-content">
 
 	<p>
-		<b>Method:</b> <span class="mako-label">{{$request->method()}}</span> &nbsp;&nbsp;
-		<b>Real Method:</b> <span class="mako-label">{{$request->realMethod()}}</span> &nbsp;&nbsp;
+		<b>Method:</b> <span class="mako-label">{{$request->getMethod()}}</span> &nbsp;&nbsp;
+		<b>Real Method:</b> <span class="mako-label">{{$request->getRealMethod()}}</span> &nbsp;&nbsp;
 		<b>Route:</b> <span class="mako-label" title="Pattern: {{$request->getRoute()->getRegex()}}">{{$request->getRoute()->getRoute()}}</span> &nbsp;&nbsp;
-		<b>Client IP:</b> <span class="mako-label">{{$request->ip()}}</span> &nbsp;&nbsp;
+		<b>Client IP:</b> <span class="mako-label">{{$request->getIp()}}</span> &nbsp;&nbsp;
 	</p>
 
 	<hr>
