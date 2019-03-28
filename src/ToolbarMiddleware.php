@@ -52,7 +52,7 @@ class ToolbarMiddleware implements MiddlewareInterface
 
 		if($response->getType() === 'text/html' && (is_string($body) || (is_object($body) && method_exists($body, '__toString'))))
 		{
-			$response->body(str_replace('</body>', $this->toolbar->render() . '</body>', $body));
+			$response->setBody(str_replace('</body>', $this->toolbar->render() . '</body>', $body));
 		}
 
 		return $response;
