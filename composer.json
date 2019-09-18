@@ -1,5 +1,6 @@
 {
     "name": "mako/toolbar",
+    "description": "A debug toolbar for the Mako Framework",
     "keywords": ["mako", "framework", "toolbar"],
     "homepage": "http://makoframework.com",
     "license": "BSD-3-Clause",
