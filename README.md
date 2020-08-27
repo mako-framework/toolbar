@@ -2,7 +2,7 @@
 
 ## Requirements
 
-Mako 6.0 or greater.
+Mako 7.0 or greater.
 
 ## Installation
 

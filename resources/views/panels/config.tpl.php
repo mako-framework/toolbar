@@ -5,7 +5,7 @@
 <div class="mako-panel-content">
 
 	<p>
-		<b>Environment:</b> <span class="mako-label">{{$environment || 'Default'}}</span> &nbsp;&nbsp;
+		<b>Environment:</b> <span class="mako-label">{{$environment, default: 'Default'}}</span> &nbsp;&nbsp;
 	</p>
 
 	<hr>
