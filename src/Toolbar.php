@@ -92,7 +92,7 @@ class Toolbar
 	 * Adds a timer.
 	 *
 	 * @param string         $name Timer name
-	 * @param float|\Closure $time Timer value
+	 * @param \Closure|float $time Timer value
 	 */
 	public function addTimer(string $name, $time): void
 	{

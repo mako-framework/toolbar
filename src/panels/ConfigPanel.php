@@ -47,7 +47,7 @@ class ConfigPanel extends Panel implements PanelInterface
 	 * @param \mako\config\Config    $config      Configuration instance
 	 * @param string|null            $environment Environment
 	 */
-	public function __construct(ViewFactory $view, Config $config, string $environment = null)
+	public function __construct(ViewFactory $view, Config $config, ?string $environment = null)
 	{
 		parent::__construct($view);
 

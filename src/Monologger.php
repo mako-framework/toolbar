@@ -26,7 +26,7 @@ class Monologger extends AbstractProcessingHandler
 	protected $entries = [];
 
 	/**
-	 * {@inheritdoc}
+	 * {@inheritDoc}
 	 */
 	protected function write(array $record): void
 	{

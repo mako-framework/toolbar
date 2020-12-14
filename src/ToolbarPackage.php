@@ -45,7 +45,7 @@ class ToolbarPackage extends Package
 	protected $packageName = 'mako/toolbar';
 
 	/**
-	 * {@inheritdoc}
+	 * {@inheritDoc}
 	 */
 	protected function bootstrap(): void
 	{
