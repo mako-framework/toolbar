@@ -7,9 +7,10 @@
 
 namespace mako\toolbar\panels;
 
+use Doctrine\SqlFormatter\HtmlHighlighter;
+use Doctrine\SqlFormatter\SqlFormatter;
 use mako\database\ConnectionManager;
 use mako\view\ViewFactory;
-use SqlFormatter;
 
 use function array_column;
 use function array_sum;
@@ -27,7 +28,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	/**
 	 * Conenction manager instance.
 	 *
-	 * @var array
+	 * @var \mako\database\ConnectionManager
 	 */
 	protected $database;
 
@@ -87,17 +88,22 @@ class DatabasePanel extends Panel implements PanelInterface
 	 */
 	protected function getFormattedLog(array $logs): array
 	{
-		// Configure the SQL formatter
+		// Configure the SQL highlighter
 
-		SqlFormatter::$pre_attributes = 'style="color: black; background-color: transparent;"';
+		$highlighter = new HtmlHighlighter
+		([
+			HtmlHighlighter::HIGHLIGHT_PRE => 'style="color: inherit; background-color: transparent;"',
+		]);
 
 		// Add syntax highlighting to SQL queries
+
+		$formatter = new SqlFormatter($highlighter);
 
 		foreach($logs as &$log)
 		{
 			foreach($log as $key => $query)
 			{
-				$log[$key]['query'] = SqlFormatter::format($query['query']);
+				$log[$key]['query'] = $formatter->format($query['query']);
 			}
 		}
 

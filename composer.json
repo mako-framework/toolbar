@@ -17,8 +17,8 @@
     },
     "require": {
         "php": ">=7.3.0",
-        "jdorn/sql-formatter": "^1.2.17",
-        "symfony/var-dumper": "^5.1.3"
+        "doctrine/sql-formatter": "^1.1",
+        "symfony/var-dumper": "^5.2"
     },
     "require-dev": {
         "mako/framework": "^7.0.0-dev"
