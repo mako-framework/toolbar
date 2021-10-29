@@ -13,8 +13,6 @@ use mako\view\ViewFactory;
 
 /**
  * Request panel.
- *
- * @author Frederic G. Østby
  */
 class RequestPanel extends Panel implements PanelInterface
 {

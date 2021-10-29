@@ -9,8 +9,6 @@ namespace mako\toolbar\panels;
 
 /**
  * Panel interface.
- *
- * @author Frederic G. Østby
  */
 interface PanelInterface
 {

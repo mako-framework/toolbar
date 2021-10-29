@@ -20,8 +20,6 @@ use function sprintf;
 
 /**
  * Database panel.
- *
- * @author Frederic G. Østby
  */
 class DatabasePanel extends Panel implements PanelInterface
 {

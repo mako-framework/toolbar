@@ -13,8 +13,6 @@ use function opcache_reset;
 
 /**
  * OPcache.
- *
- * @author Frederic G. Østby
  */
 class OPcache extends Controller
 {

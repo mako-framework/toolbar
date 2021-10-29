@@ -13,8 +13,6 @@ use function count;
 
 /**
  * Monologger.
- *
- * @author Frederic G. Østby
  */
 class Monologger extends AbstractProcessingHandler
 {

@@ -22,8 +22,6 @@ use function round;
 
 /**
  * Mako debug toolbar.
- *
- * @author  Frederic G. Østby
  */
 class Toolbar
 {

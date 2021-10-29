@@ -16,8 +16,6 @@ use function sprintf;
 
 /**
  * Included files panel.
- *
- * @author Frederic G. Østby
  */
 class IncludedFilesPanel extends Panel implements PanelInterface
 {

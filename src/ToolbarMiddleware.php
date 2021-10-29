@@ -19,8 +19,6 @@ use function str_replace;
 
 /**
  * Toolbar middleware.
- *
- * @author Frederic G. Østby
  */
 class ToolbarMiddleware implements MiddlewareInterface
 {

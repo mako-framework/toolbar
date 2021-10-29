@@ -19,8 +19,6 @@ use function strpos;
 
 /**
  * Config panel.
- *
- * @author Frederic G. Østby
  */
 class ConfigPanel extends Panel implements PanelInterface
 {

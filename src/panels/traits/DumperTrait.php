@@ -13,8 +13,6 @@ use Symfony\Component\VarDumper\Dumper\HtmlDumper;
 
 /**
  * Dumper trait.
- *
- * @author Frederic G. Østby
  */
 trait DumperTrait
 {

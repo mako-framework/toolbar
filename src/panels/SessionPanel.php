@@ -13,8 +13,6 @@ use mako\view\ViewFactory;
 
 /**
  * Session panel.
- *
- * @author Frederic G. Østby
  */
 class SessionPanel extends Panel implements PanelInterface
 {

@@ -16,8 +16,6 @@ use function sprintf;
 
 /**
  * Monolog panel.
- *
- * @author Frederic G. Østby
  */
 class MonologPanel extends Panel implements PanelInterface
 {

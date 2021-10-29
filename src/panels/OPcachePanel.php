@@ -15,8 +15,6 @@ use function opcache_get_status;
 
 /**
  * OPcache panel.
- *
- * @author Frederic G. Østby
  */
 class OPcachePanel extends Panel implements PanelInterface
 {

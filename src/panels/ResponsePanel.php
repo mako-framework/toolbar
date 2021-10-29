@@ -13,8 +13,6 @@ use mako\view\ViewFactory;
 
 /**
  * Response panel.
- *
- * @author Frederic G. Østby
  */
 class ResponsePanel extends Panel implements PanelInterface
 {

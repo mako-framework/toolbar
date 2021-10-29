@@ -9,13 +9,10 @@ namespace mako\toolbar\panels;
 
 use mako\view\ViewFactory;
 
-use function get_called_class;
 use function md5;
 
 /**
  * Abstract panel.
- *
- * @author Frederic G. Østby
  */
 abstract class Panel implements PanelInterface
 {
@@ -41,6 +38,6 @@ abstract class Panel implements PanelInterface
 	 */
 	public function getId(): string
 	{
-		return md5(get_called_class());
+		return md5(static::class);
 	}
 }

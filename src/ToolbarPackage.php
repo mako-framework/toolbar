@@ -16,6 +16,7 @@ use mako\http\Response;
 use mako\http\routing\Routes;
 use mako\http\routing\URLBuilder;
 use mako\session\Session;
+use mako\toolbar\controllers\OPcache;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
 use mako\toolbar\panels\MonologPanel;
@@ -32,8 +33,6 @@ use function function_exists;
 
 /**
  * Toolbar package.
- *
- * @author  Frederic G. Østby
  */
 class ToolbarPackage extends Package
 {
@@ -62,7 +61,7 @@ class ToolbarPackage extends Package
 
 		// Register the toolbar in the container
 
-		$this->container->registerSingleton(['mako\toolbar\Toolbar', 'toolbar'], function($container) use ($monologHandler)
+		$this->container->registerSingleton(['mako\toolbar\Toolbar', 'toolbar'], static function($container) use ($monologHandler)
 		{
 			$view = $container->get(ViewFactory::class);
 
@@ -85,10 +84,7 @@ class ToolbarPackage extends Package
 
 				$toolbar->addPanel($panel);
 
-				$toolbar->addTimer('SQL', function() use ($panel)
-				{
-					return $panel->getTotalQueryTime();
-				});
+				$toolbar->addTimer('SQL', fn() => $panel->getTotalQueryTime());
 			}
 
 			if($monologHandler !== null)
@@ -106,6 +102,6 @@ class ToolbarPackage extends Package
 
 		// Register routes
 
-		$this->container->get(Routes::class)->post('/mako.toolbar/opcache/reset', 'mako\toolbar\controllers\OPcache::reset', 'mako.toolbar.opcache.reset');
+		$this->container->get(Routes::class)->post('/mako.toolbar/opcache/reset', [OPcache::class, 'reset'], 'mako.toolbar.opcache.reset');
 	}
 }

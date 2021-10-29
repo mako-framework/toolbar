@@ -16,16 +16,16 @@
         }
     },
     "require": {
-        "php": ">=7.3.0",
+        "php": ">=7.4.0",
         "doctrine/sql-formatter": "^1.1",
-        "symfony/var-dumper": "^5.2"
+        "symfony/var-dumper": "^5.3"
     },
     "require-dev": {
-        "mako/framework": "^7.0.0-dev"
+        "mako/framework": "^8.0.0-dev"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "4.0-dev"
+            "dev-master": "5.0-dev"
         }
     }
 }
