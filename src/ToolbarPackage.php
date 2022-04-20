@@ -61,7 +61,7 @@ class ToolbarPackage extends Package
 
 		// Register the toolbar in the container
 
-		$this->container->registerSingleton(['mako\toolbar\Toolbar', 'toolbar'], static function($container) use ($monologHandler)
+		$this->container->registerSingleton(['mako\toolbar\Toolbar', 'toolbar'], static function ($container) use ($monologHandler)
 		{
 			$view = $container->get(ViewFactory::class);
 
@@ -84,7 +84,7 @@ class ToolbarPackage extends Package
 
 				$toolbar->addPanel($panel);
 
-				$toolbar->addTimer('SQL', fn() => $panel->getTotalQueryTime());
+				$toolbar->addTimer('SQL', fn () => $panel->getTotalQueryTime());
 			}
 
 			if($monologHandler !== null)

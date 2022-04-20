@@ -54,7 +54,7 @@ trait DumperTrait
 
 		$this->styleDumper($dumper);
 
-		return function($variable) use ($dumper): void
+		return function ($variable) use ($dumper): void
 		{
 			$dumper->dump((new VarCloner)->cloneVar($variable));
 		};

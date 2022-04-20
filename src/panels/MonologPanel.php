@@ -56,7 +56,7 @@ class MonologPanel extends Panel implements PanelInterface
 	 */
 	protected function getLevelHelper(): Closure
 	{
-		return function($level)
+		return function ($level)
 		{
 			switch($level)
 			{
