@@ -21,7 +21,8 @@
         "symfony/var-dumper": "^5.2"
     },
     "require-dev": {
-        "mako/framework": "^7.0.0-dev"
+        "mako/framework": "^7.0.0-dev",
+        "monolog/monolog": "^2.3"
     },
     "extra": {
         "branch-alias": {

@@ -25,7 +25,7 @@ use mako\toolbar\panels\ResponsePanel;
 use mako\toolbar\panels\SessionPanel;
 use mako\utility\Humanizer;
 use mako\view\ViewFactory;
-use Monolog\Logger;
+use Monolog\Logger as MonoLogger;
 use Psr\Log\LoggerInterface;
 
 use function function_exists;
@@ -55,9 +55,14 @@ class ToolbarPackage extends Package
 
 		if($this->container->has(LoggerInterface::class))
 		{
-			$monologHandler = new Monologger(Logger::DEBUG, true);
+			$monologHandler = new MonologHandler(MonoLogger::DEBUG, true);
 
-			$this->container->get(LoggerInterface::class)->pushHandler($monologHandler);
+			$logger = $this->container->get(LoggerInterface::class)->getLogger();
+
+			if($logger instanceof MonoLogger)
+			{
+				$logger->pushHandler($monologHandler);
+			}
 		}
 
 		// Register the toolbar in the container
