@@ -8,7 +8,7 @@
 namespace mako\toolbar\panels;
 
 use Closure;
-use mako\toolbar\Monologger;
+use mako\toolbar\MonologHandler;
 use mako\toolbar\panels\traits\DumperTrait;
 use mako\view\ViewFactory;
 
@@ -22,23 +22,23 @@ class MonologPanel extends Panel implements PanelInterface
 	use DumperTrait;
 
 	/**
-	 * Monologger.
+	 * Monolog handler.
 	 *
-	 * @var \mako\toolbar\Monologger
+	 * @var \mako\toolbar\MonologHandler
 	 */
-	protected $monologger;
+	protected $monologHandler;
 
 	/**
 	 * Constructor.
 	 *
 	 * @param \mako\view\ViewFactory   $view       View factory instance
-	 * @param \mako\toolbar\Monologger $monologger Monologger
+	 * @param \mako\toolbar\MonologHandler $monologHandler Monolog handler
 	 */
-	public function __construct(ViewFactory $view, Monologger $monologger)
+	public function __construct(ViewFactory $view, MonologHandler $monologHandler)
 	{
 		parent::__construct($view);
 
-		$this->monologger = $monologger;
+		$this->monologHandler = $monologHandler;
 	}
 
 	/**
@@ -46,7 +46,7 @@ class MonologPanel extends Panel implements PanelInterface
 	 */
 	public function getTabLabel(): string
 	{
-		return sprintf('%u log entries', $this->monologger->getEntryCount());
+		return sprintf('%u log entries', $this->monologHandler->getEntryCount());
 	}
 
 	/**
@@ -87,7 +87,7 @@ class MonologPanel extends Panel implements PanelInterface
 	{
 		$view = $this->view->create('mako-toolbar::panels.monolog',
 		[
-			'entries'      => $this->monologger->getEntries(),
+			'entries'      => $this->monologHandler->getEntries(),
 			'level_helper' => $this->getLevelHelper(),
 			'dump'         => $this->getDumper(),
 		]);

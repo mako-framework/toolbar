@@ -12,9 +12,11 @@ use Monolog\Handler\AbstractProcessingHandler;
 use function count;
 
 /**
- * Monologger.
+ * Monolog handler.
+ *
+ * @author Frederic G. Østby
  */
-class Monologger extends AbstractProcessingHandler
+class MonologHandler extends AbstractProcessingHandler
 {
 	/**
 	 * Log entries.
