@@ -19,23 +19,17 @@ class SessionPanel extends Panel implements PanelInterface
 	use DumperTrait;
 
 	/**
-	 * Session.
-	 *
-	 * @var \mako\session\Session;
-	 */
-	protected $session;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param \mako\view\ViewFactory $view    View factory instance
 	 * @param \mako\session\Session  $session Session instance
 	 */
-	public function __construct(ViewFactory $view, Session $session)
+	public function __construct(
+		ViewFactory $view,
+		protected Session $session
+	)
 	{
 		parent::__construct($view);
-
-		$this->session = $session;
 	}
 
 	/**

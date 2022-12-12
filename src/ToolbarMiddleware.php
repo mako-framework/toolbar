@@ -23,21 +23,14 @@ use function str_replace;
 class ToolbarMiddleware implements MiddlewareInterface
 {
 	/**
-	 * Toolbar.
-	 *
-	 * @var \mako\toolbar\Toolbar
-	 */
-	protected $toolbar;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param \mako\toolbar\Toolbar $toolbar Toolbar
 	 */
-	public function __construct(Toolbar $toolbar)
-	{
-		$this->toolbar = $toolbar;
-	}
+	public function __construct(
+		protected Toolbar $toolbar
+	)
+	{}
 
 	/**
 	 * {@inheritDoc}

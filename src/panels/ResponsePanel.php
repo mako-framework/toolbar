@@ -19,23 +19,17 @@ class ResponsePanel extends Panel implements PanelInterface
 	use DumperTrait;
 
 	/**
-	 * Response.
-	 *
-	 * @var \mako\http\Response
-	 */
-	protected $response;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param \mako\view\ViewFactory $view     View factory instance
 	 * @param \mako\http\Response    $response Response
 	 */
-	public function __construct(ViewFactory $view, Response $response)
+	public function __construct(
+		ViewFactory $view,
+		protected Response $response
+	)
 	{
 		parent::__construct($view);
-
-		$this->response = $response;
 	}
 
 	/**

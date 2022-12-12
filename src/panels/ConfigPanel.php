@@ -25,33 +25,19 @@ class ConfigPanel extends Panel implements PanelInterface
 	use DumperTrait;
 
 	/**
-	 * Config.
-	 *
-	 * @var \mako\config\Config;
-	 */
-	protected $config;
-
-	/**
-	 * Environment.
-	 *
-	 * @var string
-	 */
-	protected $environment;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param \mako\view\ViewFactory $view        View factory instance
 	 * @param \mako\config\Config    $config      Configuration instance
 	 * @param string|null            $environment Environment
 	 */
-	public function __construct(ViewFactory $view, Config $config, ?string $environment = null)
+	public function __construct(
+		ViewFactory $view,
+		protected Config $config,
+		protected ?string $environment = null
+	)
 	{
 		parent::__construct($view);
-
-		$this->config = $config;
-
-		$this->environment = $environment;
 	}
 
 	/**

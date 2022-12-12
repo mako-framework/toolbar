@@ -1,8 +1,10 @@
 # Mako debug toolbar
 
+[![Static analysis](https://github.com/mako-framework/toolbar/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/mako-framework/toolbar/actions/workflows/static-analysis.yml)
+
 ## Requirements
 
-Mako 8.0 or greater.
+Mako 9.0 or greater.
 
 ## Installation
 

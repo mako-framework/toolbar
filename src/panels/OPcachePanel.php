@@ -21,23 +21,17 @@ class OPcachePanel extends Panel implements PanelInterface
 	use DumperTrait;
 
 	/**
-	 * URL builder.
-	 *
-	 * @var \mako\http\routing\URLBuilder
-	 */
-	protected $urlBuilder;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param \mako\view\ViewFactory        $view       View factory instance
 	 * @param \mako\http\routing\URLBuilder $urlBuilder URL builder
 	 */
-	public function __construct(ViewFactory $view, URLBuilder $urlBuilder)
+	public function __construct(
+		ViewFactory $view,
+		protected URLBuilder $urlBuilder
+	)
 	{
-		$this->view = $view;
-
-		$this->urlBuilder = $urlBuilder;
+		parent::__construct($view);
 	}
 
 	/**

@@ -26,27 +26,6 @@ use function round;
 class Toolbar
 {
 	/**
-	 * View factory instance.
-	 *
-	 * @var \mako\view\ViewFactory
-	 */
-	protected $view;
-
-	/**
-	 * Humanizer instance.
-	 *
-	 * @var \mako\utility\Humanizer
-	 */
-	protected $humanizer;
-
-	/**
-	 * Application.
-	 *
-	 * @var \mako\application\Application
-	 */
-	protected $application;
-
-	/**
 	 * Panels.
 	 *
 	 * @var array
@@ -67,14 +46,12 @@ class Toolbar
 	 * @param \mako\utility\Humanizer       $humanizer   Humanizer instance
 	 * @param \mako\application\Application $application Application
 	 */
-	public function __construct(ViewFactory $view, Humanizer $humanizer, Application $application)
-	{
-		$this->view = $view;
-
-		$this->humanizer = $humanizer;
-
-		$this->application = $application;
-	}
+	public function __construct(
+		protected ViewFactory $view,
+		protected Humanizer $humanizer,
+		protected Application $application
+	)
+	{}
 
 	/**
 	 * Add a panel to the toolbar.
@@ -92,7 +69,7 @@ class Toolbar
 	 * @param string         $name Timer name
 	 * @param \Closure|float $time Timer value
 	 */
-	public function addTimer(string $name, $time): void
+	public function addTimer(string $name, Closure|float $time): void
 	{
 		$this->timers[$name] = $time;
 	}

@@ -24,23 +24,17 @@ use function sprintf;
 class DatabasePanel extends Panel implements PanelInterface
 {
 	/**
-	 * Conenction manager instance.
-	 *
-	 * @var \mako\database\ConnectionManager
-	 */
-	protected $database;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param \mako\view\ViewFactory           $view     View factory instance
 	 * @param \mako\database\ConnectionManager $database Connection manager instance
 	 */
-	public function __construct(ViewFactory $view, ConnectionManager $database)
+	public function __construct(
+		ViewFactory $view,
+		protected ConnectionManager $database
+	)
 	{
 		parent::__construct($view);
-
-		$this->database = $database;
 	}
 
 	/**
@@ -72,10 +66,8 @@ class DatabasePanel extends Panel implements PanelInterface
 		{
 			return sprintf('%u database queries', $totalQueries);
 		}
-		else
-		{
-			return sprintf('%u database queries ( %f seconds )', $totalQueries, round($this->getTotalQueryTime(), 4));
-		}
+
+		return sprintf('%u database queries ( %f seconds )', $totalQueries, round($this->getTotalQueryTime(), 4));
 	}
 
 	/**

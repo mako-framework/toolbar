@@ -19,23 +19,17 @@ class RequestPanel extends Panel implements PanelInterface
 	use DumperTrait;
 
 	/**
-	 * Request.
-	 *
-	 * @var \mako\http\Request
-	 */
-	protected $request;
-
-	/**
 	 * Constructor.
 	 *
 	 * @param \mako\view\ViewFactory $view    View factory instance
 	 * @param \mako\http\Request     $request Request
 	 */
-	public function __construct(ViewFactory $view, Request $request)
+	public function __construct(
+		ViewFactory $view,
+		protected Request $request
+	)
 	{
 		parent::__construct($view);
-
-		$this->request = $request;
 	}
 
 	/**

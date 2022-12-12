@@ -22,23 +22,17 @@ class MonologPanel extends Panel implements PanelInterface
 	use DumperTrait;
 
 	/**
-	 * Monolog handler.
-	 *
-	 * @var \mako\toolbar\MonologHandler
-	 */
-	protected $monologHandler;
-
-	/**
 	 * Constructor.
 	 *
-	 * @param \mako\view\ViewFactory   $view       View factory instance
+	 * @param \mako\view\ViewFactory       $view           View factory instance
 	 * @param \mako\toolbar\MonologHandler $monologHandler Monolog handler
 	 */
-	public function __construct(ViewFactory $view, MonologHandler $monologHandler)
+	public function __construct(
+		ViewFactory $view,
+		protected MonologHandler $monologHandler
+	)
 	{
 		parent::__construct($view);
-
-		$this->monologHandler = $monologHandler;
 	}
 
 	/**
@@ -56,27 +50,20 @@ class MonologPanel extends Panel implements PanelInterface
 	 */
 	protected function getLevelHelper(): Closure
 	{
-		return function ($level)
+		return static function (int $level): string
 		{
-			switch($level)
+			return match($level)
 			{
-				case 100:
-					return 'debug';
-				case 200:
-					return 'info';
-				case 250:
-					return 'notice';
-				case 300:
-					return 'warning';
-				case 400:
-					return 'error';
-				case 500:
-					return 'critical';
-				case 550:
-					return 'alert';
-				case 600:
-					return 'emergency';
-			}
+				100     => 'debug',
+				200     => 'info',
+				250     => 'notice',
+				300     => 'warning',
+				400     => 'error',
+				500     => 'critical',
+				550     => 'alert',
+				600     => 'emergency',
+				default => 'unknown',
+			};
 		};
 	}
 

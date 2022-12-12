@@ -66,7 +66,7 @@ class ToolbarPackage extends Package
 
 		// Register the toolbar in the container
 
-		$this->container->registerSingleton(['mako\toolbar\Toolbar', 'toolbar'], static function ($container) use ($monologHandler)
+		$this->container->registerSingleton([Toolbar::class, 'toolbar'], static function ($container) use ($monologHandler)
 		{
 			$view = $container->get(ViewFactory::class);
 
@@ -107,6 +107,9 @@ class ToolbarPackage extends Package
 
 		// Register routes
 
-		$this->container->get(Routes::class)->post('/mako.toolbar/opcache/reset', [OPcache::class, 'reset'], 'mako.toolbar.opcache.reset');
+		if(function_exists('opcache_get_status'))
+		{
+			$this->container->get(Routes::class)->post('/mako.toolbar/opcache/reset', [OPcache::class, 'reset'], 'mako.toolbar.opcache.reset');
+		}
 	}
 }

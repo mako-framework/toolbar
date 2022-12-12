@@ -8,7 +8,6 @@
 namespace mako\toolbar\panels;
 
 use mako\toolbar\panels\traits\DumperTrait;
-use mako\view\ViewFactory;
 
 use function count;
 use function get_included_files;
@@ -27,16 +26,6 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 	 * @var array
 	 */
 	protected $files;
-
-	/**
-	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory $view View factory instance
-	 */
-	public function __construct(ViewFactory $view)
-	{
-		parent::__construct($view);
-	}
 
 	/**
 	 * Returns the included files.
