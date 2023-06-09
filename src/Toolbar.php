@@ -14,7 +14,6 @@ use mako\toolbar\panels\PanelInterface;
 use mako\utility\Humanizer;
 use mako\view\ViewFactory;
 
-use function array_sum;
 use function ini_get;
 use function memory_get_peak_usage;
 use function microtime;
@@ -85,7 +84,12 @@ class Toolbar
 
 		$executionTime = ['total' => $totalTime, 'details' => []];
 
-		$otherTime = array_sum($this->timers);
+		$otherTime = 0;
+
+		foreach($this->timers as $timer)
+		{
+			$otherTime += $timer instanceof Closure ? $timer() : $timer;
+		}
 
 		$detailedTime = $totalTime - $otherTime;
 
