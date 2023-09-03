@@ -18,8 +18,6 @@ trait DumperTrait
 {
 	/**
 	 * Styles the dumper.
-	 *
-	 * @param \Symfony\Component\VarDumper\Dumper\HtmlDumper $dumper HTML dumper
 	 */
 	protected function styleDumper(HtmlDumper $dumper): void
 	{
@@ -45,8 +43,6 @@ trait DumperTrait
 
 	/**
 	 * Returns a dumper closure.
-	 *
-	 * @return \Closure
 	 */
 	protected function getDumper(): Closure
 	{

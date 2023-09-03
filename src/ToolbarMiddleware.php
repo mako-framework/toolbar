@@ -24,8 +24,6 @@ class ToolbarMiddleware implements MiddlewareInterface
 {
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\toolbar\Toolbar $toolbar Toolbar
 	 */
 	public function __construct(
 		protected Toolbar $toolbar

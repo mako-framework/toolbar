@@ -20,9 +20,6 @@ class SessionPanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory $view    View factory instance
-	 * @param \mako\session\Session  $session Session instance
 	 */
 	public function __construct(
 		ViewFactory $view,

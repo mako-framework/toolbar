@@ -26,10 +26,6 @@ class ConfigPanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory $view        View factory instance
-	 * @param \mako\config\Config    $config      Configuration instance
-	 * @param string|null            $environment Environment
 	 */
 	public function __construct(
 		ViewFactory $view,
@@ -50,10 +46,6 @@ class ConfigPanel extends Panel implements PanelInterface
 
 	/**
 	 * Expand key.
-	 *
-	 * @param  array  $config Config
-	 * @param  string $key    Config key
-	 * @return array
 	 */
 	protected function expandKey(array $config, string $key): array
 	{
@@ -67,9 +59,6 @@ class ConfigPanel extends Panel implements PanelInterface
 
 	/**
 	 * Masks config values.
-	 *
-	 * @param  array $config Configuration
-	 * @return array
 	 */
 	protected function maskValues(array $config): array
 	{

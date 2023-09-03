@@ -22,15 +22,11 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 
 	/**
 	 * Included files.
-	 *
-	 * @var array
 	 */
-	protected $files;
+	protected array $files;
 
 	/**
 	 * Returns the included files.
-	 *
-	 * @return array
 	 */
 	protected function getIncludedFiles(): array
 	{

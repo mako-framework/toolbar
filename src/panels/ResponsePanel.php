@@ -20,9 +20,6 @@ class ResponsePanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory $view     View factory instance
-	 * @param \mako\http\Response    $response Response
 	 */
 	public function __construct(
 		ViewFactory $view,

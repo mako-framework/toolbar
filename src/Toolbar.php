@@ -26,24 +26,16 @@ class Toolbar
 {
 	/**
 	 * Panels.
-	 *
-	 * @var array
 	 */
-	protected $panels = [];
+	protected array $panels = [];
 
 	/**
 	 * Timers.
-	 *
-	 * @var array
 	 */
-	protected $timers = [];
+	protected array $timers = [];
 
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory        $view        View factory instance
-	 * @param \mako\utility\Humanizer       $humanizer   Humanizer instance
-	 * @param \mako\application\Application $application Application
 	 */
 	public function __construct(
 		protected ViewFactory $view,
@@ -54,8 +46,6 @@ class Toolbar
 
 	/**
 	 * Add a panel to the toolbar.
-	 *
-	 * @param \mako\toolbar\panels\PanelInterface $panel Panel
 	 */
 	public function addPanel(PanelInterface $panel): void
 	{
@@ -64,9 +54,6 @@ class Toolbar
 
 	/**
 	 * Adds a timer.
-	 *
-	 * @param string         $name Timer name
-	 * @param \Closure|float $time Timer value
 	 */
 	public function addTimer(string $name, Closure|float $time): void
 	{
@@ -75,8 +62,6 @@ class Toolbar
 
 	/**
 	 * Calculates the execution time.
-	 *
-	 * @return array
 	 */
 	protected function calculateExecutionTime(): array
 	{
@@ -110,8 +95,6 @@ class Toolbar
 
 	/**
 	 * Renders the toolbar.
-	 *
-	 * @return string
 	 */
 	public function render(): string
 	{

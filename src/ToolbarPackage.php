@@ -38,10 +38,8 @@ class ToolbarPackage extends Package
 {
 	/**
 	 * Package name.
-	 *
-	 * @var string
 	 */
-	protected $packageName = 'mako/toolbar';
+	protected string $packageName = 'mako/toolbar';
 
 	/**
 	 * {@inheritDoc}

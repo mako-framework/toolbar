@@ -23,9 +23,6 @@ class MonologPanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory       $view           View factory instance
-	 * @param \mako\toolbar\MonologHandler $monologHandler Monolog handler
 	 */
 	public function __construct(
 		ViewFactory $view,
@@ -45,8 +42,6 @@ class MonologPanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns a helper funtion.
-	 *
-	 * @return \Closure
 	 */
 	protected function getLevelHelper(): Closure
 	{

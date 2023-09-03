@@ -18,15 +18,11 @@ abstract class Panel implements PanelInterface
 {
 	/**
 	 * View factory instance.
-	 *
-	 * @var \mako\view\ViewFactory
 	 */
-	protected $view;
+	protected ViewFactory $view;
 
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory $view View factory instance
 	 */
 	public function __construct(ViewFactory $view)
 	{

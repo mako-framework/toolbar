@@ -21,8 +21,8 @@
 			{% foreach($entries as $entry) %}
 
 				<tr>
-					<td class="mako-log-{{$level_helper($entry['level'])}}">{{strtoupper($level_helper($entry['level']))}}</td>
-					<td>{{$dump($entry['message'])}}</td>
+					<td class="mako-log-{{$level_helper($entry->level->value)}}">{{strtoupper($level_helper($entry->level->value))}}</td>
+					<td>{{$dump($entry->message)}}</td>
 				</tr>
 
 			{% endforeach %}

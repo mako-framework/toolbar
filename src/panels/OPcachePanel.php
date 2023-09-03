@@ -22,9 +22,6 @@ class OPcachePanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory        $view       View factory instance
-	 * @param \mako\http\routing\URLBuilder $urlBuilder URL builder
 	 */
 	public function __construct(
 		ViewFactory $view,

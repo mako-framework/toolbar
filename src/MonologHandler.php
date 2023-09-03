@@ -8,35 +8,30 @@
 namespace mako\toolbar;
 
 use Monolog\Handler\AbstractProcessingHandler;
+use Monolog\LogRecord;
 
 use function count;
 
 /**
  * Monolog handler.
- *
- * @author Frederic G. Østby
  */
 class MonologHandler extends AbstractProcessingHandler
 {
 	/**
 	 * Log entries.
-	 *
-	 * @var array
 	 */
-	protected $entries = [];
+	protected array $entries = [];
 
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function write(array $record): void
+	protected function write(LogRecord $record): void
 	{
 		$this->entries[] = $record;
 	}
 
 	/**
 	 * Returns the number of log entries.
-	 *
-	 * @return int
 	 */
 	public function getEntryCount(): int
 	{
@@ -45,8 +40,6 @@ class MonologHandler extends AbstractProcessingHandler
 
 	/**
 	 * Returns the log entries.
-	 *
-	 * @return array
 	 */
 	public function getEntries(): array
 	{

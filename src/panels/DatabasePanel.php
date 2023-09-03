@@ -25,9 +25,6 @@ class DatabasePanel extends Panel implements PanelInterface
 {
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory           $view     View factory instance
-	 * @param \mako\database\ConnectionManager $database Connection manager instance
 	 */
 	public function __construct(
 		ViewFactory $view,
@@ -39,8 +36,6 @@ class DatabasePanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the total query count.
-	 *
-	 * @return int
 	 */
 	public function getTotalQueryCount(): int
 	{
@@ -49,8 +44,6 @@ class DatabasePanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns the total query time.
-	 *
-	 * @return float
 	 */
 	public function getTotalQueryTime(): float
 	{
@@ -72,9 +65,6 @@ class DatabasePanel extends Panel implements PanelInterface
 
 	/**
 	 * Returns logs with syntax highlighted queries.
-	 *
-	 * @param  array $logs Query logs
-	 * @return array
 	 */
 	protected function getFormattedLog(array $logs): array
 	{

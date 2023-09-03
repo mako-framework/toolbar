@@ -20,9 +20,6 @@ class RequestPanel extends Panel implements PanelInterface
 
 	/**
 	 * Constructor.
-	 *
-	 * @param \mako\view\ViewFactory $view    View factory instance
-	 * @param \mako\http\Request     $request Request
 	 */
 	public function __construct(
 		ViewFactory $view,
