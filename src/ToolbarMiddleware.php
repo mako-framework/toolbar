@@ -27,8 +27,8 @@ class ToolbarMiddleware implements MiddlewareInterface
 	 */
 	public function __construct(
 		protected Toolbar $toolbar
-	)
-	{}
+	) {
+	}
 
 	/**
 	 * {@inheritDoc}
@@ -39,8 +39,7 @@ class ToolbarMiddleware implements MiddlewareInterface
 
 		$body = $response->getBody();
 
-		if($response->getType() === 'text/html' && (is_string($body) || (is_object($body) && method_exists($body, '__toString'))))
-		{
+		if ($response->getType() === 'text/html' && (is_string($body) || (is_object($body) && method_exists($body, '__toString')))) {
 			$response->setBody(str_replace('</body>', $this->toolbar->render() . '</body>', $body));
 		}
 

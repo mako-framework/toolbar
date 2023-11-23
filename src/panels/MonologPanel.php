@@ -27,8 +27,7 @@ class MonologPanel extends Panel implements PanelInterface
 	public function __construct(
 		ViewFactory $view,
 		protected MonologHandler $monologHandler
-	)
-	{
+	) {
 		parent::__construct($view);
 	}
 
@@ -45,10 +44,8 @@ class MonologPanel extends Panel implements PanelInterface
 	 */
 	protected function getLevelHelper(): Closure
 	{
-		return static function (int $level): string
-		{
-			return match($level)
-			{
+		return static function (int $level): string {
+			return match ($level) {
 				100     => 'debug',
 				200     => 'info',
 				250     => 'notice',
@@ -67,8 +64,7 @@ class MonologPanel extends Panel implements PanelInterface
 	 */
 	public function render(): string
 	{
-		$view = $this->view->create('mako-toolbar::panels.monolog',
-		[
+		$view = $this->view->create('mako-toolbar::panels.monolog', [
 			'entries'      => $this->monologHandler->getEntries(),
 			'level_helper' => $this->getLevelHelper(),
 			'dump'         => $this->getDumper(),

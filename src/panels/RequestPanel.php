@@ -24,8 +24,7 @@ class RequestPanel extends Panel implements PanelInterface
 	public function __construct(
 		ViewFactory $view,
 		protected Request $request
-	)
-	{
+	) {
 		parent::__construct($view);
 	}
 
@@ -42,12 +41,10 @@ class RequestPanel extends Panel implements PanelInterface
 	 */
 	public function render(): string
 	{
-		$view = $this->view->create('mako-toolbar::panels.request',
-		[
+		$view = $this->view->create('mako-toolbar::panels.request', [
 			'request'      => $this->request,
 			'dump'         => $this->getDumper(),
-			'superglobals' =>
-			[
+			'superglobals' => [
 				'GET parameters'      => &$_GET,
 				'POST parameters'     => &$_POST,
 				'Cookies'             => &$_COOKIE,

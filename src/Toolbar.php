@@ -41,8 +41,8 @@ class Toolbar
 		protected ViewFactory $view,
 		protected Humanizer $humanizer,
 		protected Application $application
-	)
-	{}
+	) {
+	}
 
 	/**
 	 * Add a panel to the toolbar.
@@ -71,8 +71,7 @@ class Toolbar
 
 		$otherTime = 0;
 
-		foreach($this->timers as $timer)
-		{
+		foreach ($this->timers as $timer) {
 			$otherTime += $timer instanceof Closure ? $timer() : $timer;
 		}
 
@@ -80,10 +79,8 @@ class Toolbar
 
 		$executionTime['details']['PHP'] = ['time' => $detailedTime, 'pct' => ($detailedTime / $totalTime * 100)];
 
-		foreach($this->timers as $timer => $time)
-		{
-			if($time instanceof Closure)
-			{
+		foreach ($this->timers as $timer => $time) {
+			if ($time instanceof Closure) {
 				$time = $time();
 			}
 
@@ -100,8 +97,7 @@ class Toolbar
 	{
 		$executionTime = $this->calculateExecutionTime();
 
-		$view = $this->view->create('mako-toolbar::toolbar',
-		[
+		$view = $this->view->create('mako-toolbar::toolbar', [
 			'humanizer'      => $this->humanizer,
 			'version'        => Mako::VERSION,
 			'memory'         => memory_get_peak_usage(),

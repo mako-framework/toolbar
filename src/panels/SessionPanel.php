@@ -24,8 +24,7 @@ class SessionPanel extends Panel implements PanelInterface
 	public function __construct(
 		ViewFactory $view,
 		protected Session $session
-	)
-	{
+	) {
 		parent::__construct($view);
 	}
 
@@ -42,8 +41,7 @@ class SessionPanel extends Panel implements PanelInterface
 	 */
 	public function render(): string
 	{
-		$view = $this->view->create('mako-toolbar::panels.session',
-		[
+		$view = $this->view->create('mako-toolbar::panels.session', [
 			'id'   => $this->session->getId(),
 			'data' => $this->session->getData(),
 			'dump' => $this->getDumper(),

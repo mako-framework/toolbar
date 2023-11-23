@@ -50,22 +50,19 @@ class ToolbarPackage extends Package
 
 		// Add logger if monolog is in the container
 
-		if($this->container->has(LoggerInterface::class))
-		{
+		if ($this->container->has(LoggerInterface::class)) {
 			$monologHandler = new MonologHandler(MonoLogger::DEBUG, true);
 
 			$logger = $this->container->get(LoggerInterface::class)->getLogger();
 
-			if($logger instanceof MonoLogger)
-			{
+			if ($logger instanceof MonoLogger) {
 				$logger->pushHandler($monologHandler);
 			}
 		}
 
 		// Register the toolbar in the container
 
-		$this->container->registerSingleton([Toolbar::class, 'toolbar'], static function ($container) use ($monologHandler)
-		{
+		$this->container->registerSingleton([Toolbar::class, 'toolbar'], static function ($container) use ($monologHandler) {
 			$view = $container->get(ViewFactory::class);
 
 			$toolbar = new Toolbar($view, $container->get(Humanizer::class), $container->get(Application::class));
@@ -76,13 +73,11 @@ class ToolbarPackage extends Package
 
 			$toolbar->addPanel(new ConfigPanel($view, $container->get(Config::class), $container->get(Application::class)->getEnvironment()));
 
-			if($container->has(Session::class))
-			{
+			if ($container->has(Session::class)) {
 				$toolbar->addPanel(new SessionPanel($view, $container->get(Session::class)));
 			}
 
-			if($container->has(DatabaseConnectionManager::class))
-			{
+			if ($container->has(DatabaseConnectionManager::class)) {
 				$panel = new DatabasePanel($view, $container->get(DatabaseConnectionManager::class));
 
 				$toolbar->addPanel($panel);
@@ -90,13 +85,11 @@ class ToolbarPackage extends Package
 				$toolbar->addTimer('SQL', fn () => $panel->getTotalQueryTime());
 			}
 
-			if($monologHandler !== null)
-			{
+			if ($monologHandler !== null) {
 				$toolbar->addPanel(new MonologPanel($view, $monologHandler));
 			}
 
-			if(function_exists('opcache_get_status'))
-			{
+			if (function_exists('opcache_get_status')) {
 				$toolbar->addPanel(new OPcachePanel($view, $container->get(URLBuilder::class)));
 			}
 
@@ -105,8 +98,7 @@ class ToolbarPackage extends Package
 
 		// Register routes
 
-		if(function_exists('opcache_get_status'))
-		{
+		if (function_exists('opcache_get_status')) {
 			$this->container->get(Routes::class)->post('/mako.toolbar/opcache/reset', [OPcache::class, 'reset'], 'mako.toolbar.opcache.reset');
 		}
 	}

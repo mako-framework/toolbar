@@ -21,8 +21,7 @@ trait DumperTrait
 	 */
 	protected function styleDumper(HtmlDumper $dumper): void
 	{
-		$styles =
-		[
+		$styles = [
 			'default'   => 'background-color:transparent; color:#91CDA4; line-height:1.2em; font:14px Menlo, Monaco, Consolas, monospace; word-wrap: break-word; white-space: pre-wrap; position:relative; z-index:99999; word-break: normal',
 			'num'       => 'font-weight:normal; color:#666',
 	        'const'     => 'font-weight:bold',
@@ -50,8 +49,7 @@ trait DumperTrait
 
 		$this->styleDumper($dumper);
 
-		return function ($variable) use ($dumper): void
-		{
+		return function ($variable) use ($dumper): void {
 			$dumper->dump((new VarCloner)->cloneVar($variable));
 		};
 	}

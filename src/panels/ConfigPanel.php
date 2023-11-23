@@ -31,8 +31,7 @@ class ConfigPanel extends Panel implements PanelInterface
 		ViewFactory $view,
 		protected Config $config,
 		protected ?string $environment = null
-	)
-	{
+	) {
 		parent::__construct($view);
 	}
 
@@ -49,8 +48,7 @@ class ConfigPanel extends Panel implements PanelInterface
 	 */
 	protected function expandKey(array $config, string $key): array
 	{
-		if(strpos($key, '*') === false)
-		{
+		if (strpos($key, '*') === false) {
 			return [$key];
 		}
 
@@ -64,14 +62,10 @@ class ConfigPanel extends Panel implements PanelInterface
 	{
 		$mask = $this->config->get('mako-toolbar::config.config.mask');
 
-		if(!empty($mask) && is_array($mask))
-		{
-			foreach($mask as $key)
-			{
-				foreach($this->expandKey($config, $key) as $key)
-				{
-					if(($value = Arr::get($config, $key)) !== null)
-					{
+		if (!empty($mask) && is_array($mask)) {
+			foreach ($mask as $key) {
+				foreach ($this->expandKey($config, $key) as $key) {
+					if (($value = Arr::get($config, $key)) !== null) {
 						Arr::set($config, $key, is_string($value) ? Str::mask($value) : '******');
 					}
 				}
@@ -86,8 +80,7 @@ class ConfigPanel extends Panel implements PanelInterface
 	 */
 	public function render(): string
 	{
-		$view = $this->view->create('mako-toolbar::panels.config',
-		[
+		$view = $this->view->create('mako-toolbar::panels.config', [
 			'config'      => $this->maskValues($this->config->getLoadedConfiguration()),
 			'environment' => $this->environment,
 			'dump'        => $this->getDumper(),

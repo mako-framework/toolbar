@@ -30,8 +30,7 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 	 */
 	protected function getIncludedFiles(): array
 	{
-		if(empty($this->files))
-		{
+		if (empty($this->files)) {
 			$this->files = get_included_files();
 		}
 
@@ -51,8 +50,7 @@ class IncludedFilesPanel extends Panel implements PanelInterface
 	 */
 	public function render(): string
 	{
-		$view = $this->view->create('mako-toolbar::panels.included_files',
-		[
+		$view = $this->view->create('mako-toolbar::panels.included_files', [
 			'files' => $this->getIncludedFiles(),
 			'dump'  => $this->getDumper(),
 		]);

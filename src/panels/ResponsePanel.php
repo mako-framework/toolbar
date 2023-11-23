@@ -24,8 +24,7 @@ class ResponsePanel extends Panel implements PanelInterface
 	public function __construct(
 		ViewFactory $view,
 		protected Response $response
-	)
-	{
+	) {
 		parent::__construct($view);
 	}
 
@@ -46,8 +45,7 @@ class ResponsePanel extends Panel implements PanelInterface
 		[
 			'response' => $this->response,
 			'dump'     => $this->getDumper(),
-			'data'     =>
-			[
+			'data'     => [
 				'Headers' => $this->response->getHeaders(),
 				'Cookies' => $this->response->getCookies(),
 			],

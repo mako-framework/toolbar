@@ -29,8 +29,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	public function __construct(
 		ViewFactory $view,
 		protected ConnectionManager $database
-	)
-	{
+	) {
 		parent::__construct($view);
 	}
 
@@ -55,8 +54,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	 */
 	public function getTabLabel(): string
 	{
-		if(($totalQueries = $this->getTotalQueryCount()) === 0)
-		{
+		if (($totalQueries = $this->getTotalQueryCount()) === 0) {
 			return sprintf('%u database queries', $totalQueries);
 		}
 
@@ -70,8 +68,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	{
 		// Configure the SQL highlighter
 
-		$highlighter = new HtmlHighlighter
-		([
+		$highlighter = new HtmlHighlighter([
 			HtmlHighlighter::HIGHLIGHT_PRE => 'style="color: inherit; background-color: transparent;"',
 		]);
 
@@ -79,10 +76,8 @@ class DatabasePanel extends Panel implements PanelInterface
 
 		$formatter = new SqlFormatter($highlighter);
 
-		foreach($logs as &$log)
-		{
-			foreach($log as $key => $query)
-			{
+		foreach ($logs as &$log) {
+			foreach ($log as $key => $query) {
 				$log[$key]['query'] = $formatter->format($query['query']);
 			}
 		}
@@ -95,8 +90,7 @@ class DatabasePanel extends Panel implements PanelInterface
 	 */
 	public function render(): string
 	{
-		$view = $this->view->create('mako-toolbar::panels.database',
-		[
+		$view = $this->view->create('mako-toolbar::panels.database', [
 			'logs' => $this->getFormattedLog($this->database->getLogs()),
 		]);
 

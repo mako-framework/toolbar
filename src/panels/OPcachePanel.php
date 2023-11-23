@@ -26,8 +26,7 @@ class OPcachePanel extends Panel implements PanelInterface
 	public function __construct(
 		ViewFactory $view,
 		protected URLBuilder $urlBuilder
-	)
-	{
+	) {
 		parent::__construct($view);
 	}
 
@@ -44,8 +43,7 @@ class OPcachePanel extends Panel implements PanelInterface
 	 */
 	public function render(): string
 	{
-		return $this->view->render('mako-toolbar::panels.opcache',
-		[
+		return $this->view->render('mako-toolbar::panels.opcache', [
 			'dump'   => $this->getDumper(),
 			'status' => opcache_get_status(),
 			'url'    => $this->urlBuilder,
