@@ -26,6 +26,7 @@ use mako\toolbar\panels\ResponsePanel;
 use mako\toolbar\panels\SessionPanel;
 use mako\utility\Humanizer;
 use mako\view\ViewFactory;
+use Monolog\Level;
 use Monolog\Logger as MonoLogger;
 use Psr\Log\LoggerInterface;
 
@@ -51,9 +52,12 @@ class ToolbarPackage extends Package
 		// Add logger if monolog is in the container
 
 		if ($this->container->has(LoggerInterface::class)) {
-			$monologHandler = new MonologHandler(MonoLogger::DEBUG, true);
+			$monologHandler = new MonologHandler(Level::Debug, true);
 
-			$logger = $this->container->get(LoggerInterface::class)->getLogger();
+			/** @var \mako\logger\Logger $makoLogger */
+			$makoLogger = $this->container->get(LoggerInterface::class);
+
+			$logger = $makoLogger->getLogger();
 
 			if ($logger instanceof MonoLogger) {
 				$logger->pushHandler($monologHandler);
