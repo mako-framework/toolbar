@@ -13,10 +13,8 @@ use mako\database\ConnectionManager;
 use mako\http\Request;
 use mako\http\Response;
 use mako\http\routing\middleware\MiddlewareInterface;
-use mako\security\Signer;
 use Throwable;
 
-use function json_encode;
 use function memory_get_peak_usage;
 use function microtime;
 
@@ -29,7 +27,6 @@ class DebugServer implements MiddlewareInterface
 	 * Constructor.
 	 */
 	public function __construct(
-		protected Signer $signer,
 		protected DebugServerClient $client,
 		protected Application $app,
 		protected ?ConnectionManager $database
@@ -75,8 +72,6 @@ class DebugServer implements MiddlewareInterface
 	protected function sendToServer(array $data): void
 	{
 		try {
-			$data = $this->signer->sign(json_encode($data));
-
 			$this->client->sendData($data);
 		}
 		catch (Throwable) {
