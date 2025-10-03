@@ -16,6 +16,7 @@ use mako\http\Response;
 use mako\http\routing\Routes;
 use mako\http\routing\URLBuilder;
 use mako\session\Session;
+use mako\toolbar\console\commands\DebugServer;
 use mako\toolbar\controllers\OPcache;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
@@ -41,6 +42,13 @@ class ToolbarPackage extends Package
 	 * Package name.
 	 */
 	protected string $packageName = 'mako/toolbar';
+
+	/**
+	 * {@inheritDoc}
+	 */
+	protected array $commands = [
+		'toolbar:debug-server' => DebugServer::class,
+	];
 
 	/**
 	 * {@inheritDoc}
