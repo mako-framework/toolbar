@@ -16,6 +16,7 @@ use mako\cli\signals\SignalHandler;
 use mako\reactor\attributes\CommandArguments;
 use mako\reactor\attributes\CommandDescription;
 use mako\reactor\Command;
+use mako\security\Signer;
 use mako\utility\Humanizer;
 use RuntimeException;
 
@@ -65,6 +66,7 @@ class DebugServer extends Command
 		Input $input,
 		Output $output,
 		protected SignalHandler $signalHandler,
+		protected Signer $signer,
 		protected ?Humanizer $humanizer
 	) {
 		parent::__construct($input, $output);
@@ -105,6 +107,15 @@ class DebugServer extends Command
 	 */
 	protected function outputRequestInfo(string $requestInfo, bool $verbose, bool $request, bool $response, bool $performance): void
 	{
+		$requestInfo = $this->signer->validate($requestInfo);
+
+		if ($requestInfo === false) {
+			$this->write('<red>Unable to verify the data that was received.</red>');
+			$this->nl();
+
+			return;
+		}
+
 		$info = json_decode(trim($requestInfo), associative: true, flags: JSON_THROW_ON_ERROR);
 
 		if ($info['exception'] === null) {
