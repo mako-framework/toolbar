@@ -5,12 +5,13 @@
  * @license   http://www.makoframework.com/license
  */
 
-namespace mako\toolbar;
+namespace mako\toolbar\http\routing\middleware;
 
 use Closure;
 use mako\http\Request;
 use mako\http\Response;
 use mako\http\routing\middleware\MiddlewareInterface;
+use mako\toolbar\Toolbar as MakoToolbar;
 
 use function is_object;
 use function is_string;
@@ -20,13 +21,13 @@ use function str_replace;
 /**
  * Toolbar middleware.
  */
-class ToolbarMiddleware implements MiddlewareInterface
+class Toolbar implements MiddlewareInterface
 {
 	/**
 	 * Constructor.
 	 */
 	public function __construct(
-		protected Toolbar $toolbar
+		protected MakoToolbar $toolbar
 	) {
 	}
 

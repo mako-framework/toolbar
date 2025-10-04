@@ -1,6 +1,11 @@
 <?php
 
-namespace mako\toolbar\http\routing\middleware;
+/**
+ * @copyright Frederic G. Østby
+ * @license   http://www.makoframework.com/license
+ */
+
+namespace mako\toolbar\console;
 
 use mako\config\attributes\syringe\InjectConfig;
 use mako\security\Signer;

@@ -18,16 +18,16 @@
     "require": {
         "php": ">=8.4.0",
         "doctrine/sql-formatter": "^1.5",
-        "symfony/var-dumper": "^7.2"
+        "symfony/var-dumper": "^7.3"
     },
     "require-dev": {
         "mako/framework": "^11.0.0",
-        "monolog/monolog": "^3.8",
-        "phpstan/phpstan": "^2.0.3"
+        "monolog/monolog": "^3.9",
+        "phpstan/phpstan": "^2.1"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "8.1-dev"
+            "dev-master": "9.0-dev"
         }
     },
     "scripts": {

@@ -5,7 +5,7 @@
  * @license   http://www.makoframework.com/license
  */
 
-namespace mako\toolbar;
+namespace mako\toolbar\logger;
 
 use Monolog\Handler\AbstractProcessingHandler;
 use Monolog\LogRecord;
@@ -19,6 +19,8 @@ class MonologHandler extends AbstractProcessingHandler
 {
 	/**
 	 * Log entries.
+	 *
+	 * @var LogRecord[]
 	 */
 	protected array $entries = [];
 
@@ -40,6 +42,8 @@ class MonologHandler extends AbstractProcessingHandler
 
 	/**
 	 * Returns the log entries.
+	 *
+	 * @return LogRecord[]
 	 */
 	public function getEntries(): array
 	{

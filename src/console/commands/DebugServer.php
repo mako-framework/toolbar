@@ -18,6 +18,7 @@ use mako\reactor\attributes\CommandDescription;
 use mako\reactor\Command;
 use mako\security\Signer;
 use mako\utility\Humanizer;
+use Monolog\Level;
 use RuntimeException;
 
 use function in_array;
@@ -67,7 +68,7 @@ class DebugServer extends Command
 		Output $output,
 		protected SignalHandler $signalHandler,
 		protected Signer $signer,
-		protected ?Humanizer $humanizer
+		protected Humanizer $humanizer
 	) {
 		parent::__construct($input, $output);
 
@@ -77,11 +78,23 @@ class DebugServer extends Command
 	}
 
 	/**
+	 * Escapes the outut.
+	 */
+	protected function escape(string $string): string
+	{
+		if ($this->output->formatter !== null) {
+			return $this->output->formatter->escape($string);
+		}
+
+		return $string;
+	}
+
+	/**
 	 * Formats the memory usage to a human friendly format.
 	 */
 	protected function formatMemoryUsage(int $bytes): string
 	{
-		return $this->humanizer ? $this->humanizer->fileSize($bytes) : "{$bytes} bytes";
+		return $this->humanizer->fileSize($bytes);
 	}
 
 	/**
@@ -103,6 +116,33 @@ class DebugServer extends Command
 	}
 
 	/**
+	 * Outputs log entries.
+	 */
+	protected function outputLogEntries(array $logEntries): void
+	{
+		$this->write('<bold>Log entries</bold>');
+		$this->nl();
+
+		$decorateLevel = static function ($logLevel): string {
+			$level = Level::fromValue($logLevel);
+
+			return sprintf(match ($level) {
+				Level::Debug, Level::Info => '<bg_blue><black> %s </black></bg_blue>',
+				Level::Notice, Level::Warning => '<bg_yellow><black> %s </black></bg_yellow>',
+				Level::Error, Level::Critical, Level::Alert, Level::Emergency => '<bg_red><white> %s </white></bg_red>',
+			}, $level->getName());
+		};
+
+		foreach ($logEntries as $logEntry) {
+			$level = $decorateLevel($logEntry['level']);
+			$message = $this->escape($logEntry['message']);
+
+			$this->write("<bold>{$level}</bold> <faded>{$logEntry['time']}</faded> {$message}");
+			$this->nl();
+		}
+	}
+
+	/**
 	 * Outputs information about the latest request.
 	 */
 	protected function outputRequestInfo(string $requestInfo, bool $verbose, bool $request, bool $response, bool $performance): void
@@ -110,6 +150,7 @@ class DebugServer extends Command
 		$requestInfo = $this->signer->validate($requestInfo);
 
 		if ($requestInfo === false) {
+			$this->nl();
 			$this->write('<red>Unable to verify the data that was received.</red>');
 			$this->nl();
 
@@ -124,27 +165,23 @@ class DebugServer extends Command
 					'<bg_white><black> %s </black></bg_white> <bold>%s</bold> <bold>%s</bold>',
 					$info['response']['code'],
 					strtoupper($info['request']['method']),
-					$info['request']['path']
+					$this->escape($info['request']['path'])
 				),
 				$this->determineAlertTemplate($info['response']['code'])
 			);
 
 			$this->nl();
-
 			$this->write('<bold>Request</bold>');
-
 			$this->nl();
 
 			$this->labelsAndValues([
-				'Route' => $info['request']['route'],
-				'Content type' => $info['request']['type'] ?: 'Undefined',
+				'Route' => $this->escape($info['request']['route']),
+				'Content type' => $this->escape($info['request']['type'] ?: 'Undefined'),
 				'Client IP' => $info['request']['ip'],
 			], widthPercent: 25.0);
 
 			$this->nl();
-
 			$this->write('<bold>Response</bold>');
-
 			$this->nl();
 
 			$this->labelsAndValues([
@@ -153,9 +190,7 @@ class DebugServer extends Command
 			], widthPercent: 25.0);
 
 			$this->nl();
-
 			$this->write('<bold>Performance</bold>');
-
 			$this->nl();
 
 			$this->labelsAndValues([
@@ -176,8 +211,14 @@ class DebugServer extends Command
 			);
 
 			$this->nl();
-			$this->write("<red>{$info['exception']['name']}: {$info['exception']['message']}</red>");
+			$this->write("<red>{$info['exception']['name']}: {$this->escape($info['exception']['message'])}</red>");
 			$this->nl();
+		}
+
+		// Output log entries
+
+		if (!empty($info['log'])) {
+			$this->outputLogEntries($info['log']);
 		}
 	}
 

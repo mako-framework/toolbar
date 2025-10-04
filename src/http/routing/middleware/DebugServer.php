@@ -8,13 +8,17 @@
 namespace mako\toolbar\http\routing\middleware;
 
 use Closure;
+use DateTimeInterface;
 use mako\application\Application;
 use mako\database\ConnectionManager;
 use mako\http\Request;
 use mako\http\Response;
 use mako\http\routing\middleware\MiddlewareInterface;
+use mako\toolbar\console\DebugServerClient;
+use mako\toolbar\logger\MonologHandler;
 use Throwable;
 
+use function array_map;
 use function memory_get_peak_usage;
 use function microtime;
 
@@ -34,11 +38,29 @@ class DebugServer implements MiddlewareInterface
 	}
 
 	/**
+	 * Collects log entries.
+	 */
+	protected function collectLogEntries(): array
+	{
+		$container = $this->app->getContainer();
+
+		if ($container->has(MonologHandler::class)) {
+			return array_map(static fn ($entry) => [
+				'level' => $entry->level->value,
+				'time' => $entry->datetime->format(DateTimeInterface::ATOM),
+				'message' => $entry->message,
+			], $container->get(MonologHandler::class)->getEntries());
+		}
+
+		return [];
+	}
+
+	/**
 	 * Collects data to send to the server.
 	 */
 	protected function collectData(Request $request, Response $response, ?Throwable $exception): array
 	{
-		if ($exception != null) {
+		if ($exception !== null) {
 			$exception = [
 				'name' => $exception::class,
 				'message' => $exception->getMessage(),
@@ -63,6 +85,7 @@ class DebugServer implements MiddlewareInterface
 				'executionTime' => microtime(true) - $this->app->getStartTime(),
 				'peakMemoryUsage' => memory_get_peak_usage(),
 			],
+			'log' => $this->collectLogEntries(),
 		];
 	}
 
