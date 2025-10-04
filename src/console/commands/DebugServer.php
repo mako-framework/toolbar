@@ -138,7 +138,7 @@ class DebugServer extends Command
 	/**
 	 * Output performance information.
 	 */
-	protected function outputPerformanceInformation(array $performance): void
+	protected function outputPerformanceInformation(array $performance, bool $verbose): void
 	{
 		$this->nl();
 		$this->write('<bold>Performance</bold>');
@@ -147,7 +147,20 @@ class DebugServer extends Command
 		$this->labelsAndValues([
 			'Execution time' => round($performance['executionTime'], 4) . ' seconds',
 			'Peak memory usage' => $this->humanizer->fileSize($performance['peakMemoryUsage']),
+			'Database queries' => count($performance['queries']),
 		], 25.0);
+
+		if ($verbose && !empty($performance['queries'])) {
+			foreach ($performance['queries'] as $key => $query) {
+				$number = $key + 1;
+				$time = round($query['time'], 4);
+
+				$this->nl();
+				$this->write("<bold>Query #{$number} <faded>({$time} seconds)</faded></bold>");
+				$this->nl();
+				$this->write($this->escape($query['query']));
+			}
+		}
 	}
 
 	/**
@@ -225,7 +238,7 @@ class DebugServer extends Command
 
 			$this->outputRequestInformation($info['request']);
 			$this->outputResponseInformation($info['response']);
-			$this->outputPerformanceInformation($info['performance']);
+			$this->outputPerformanceInformation($info['performance'], $verbose);
 		}
 		else {
 			$this->alert(

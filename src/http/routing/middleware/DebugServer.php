@@ -84,6 +84,7 @@ class DebugServer implements MiddlewareInterface
 			'performance' => [
 				'executionTime' => microtime(true) - $this->app->getStartTime(),
 				'peakMemoryUsage' => memory_get_peak_usage(),
+				'queries' => $this->database?->getLogs(false) ?? [],
 			],
 			'log' => $this->collectLogEntries(),
 		];
