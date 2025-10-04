@@ -45,10 +45,7 @@ use function trim;
 #[CommandArguments(
 	new NamedArgument('address', 'a', 'Address to run the server on', Argument::IS_OPTIONAL),
 	new NamedArgument('port', 'p', 'Port to run the server on', Argument::IS_OPTIONAL | Argument::IS_INT),
-	new NamedArgument('verbose', 'v', 'Enable verbose output for all information', Argument::IS_BOOL | Argument::IS_OPTIONAL),
-	new NamedArgument('request', 'r', 'Enable verbose output for request information', Argument::IS_BOOL | Argument::IS_OPTIONAL),
-	new NamedArgument('response', 'R', 'Enable verbose output for response information', Argument::IS_BOOL | Argument::IS_OPTIONAL),
-	new NamedArgument('performance', 'P', 'Enable verbose output for performance information', Argument::IS_BOOL | Argument::IS_OPTIONAL)
+	new NamedArgument('verbose', 'v', 'Enable verbose output for all information', Argument::IS_BOOL | Argument::IS_OPTIONAL)
 )]
 /**
  * Debug server.
@@ -78,7 +75,7 @@ class DebugServer extends Command
 	}
 
 	/**
-	 * Escapes the outut.
+	 * Escapes the output.
 	 */
 	protected function escape(string $string): string
 	{
@@ -87,14 +84,6 @@ class DebugServer extends Command
 		}
 
 		return $string;
-	}
-
-	/**
-	 * Formats the memory usage to a human friendly format.
-	 */
-	protected function formatMemoryUsage(int $bytes): string
-	{
-		return $this->humanizer->fileSize($bytes);
 	}
 
 	/**
@@ -116,6 +105,22 @@ class DebugServer extends Command
 	}
 
 	/**
+	 * Decorates the log level.
+	 *
+	 * @param value-of<Level::VALUES> $logLevel
+	 */
+	protected function decorateLogLevel(int $logLevel): string
+	{
+		$level = Level::fromValue($logLevel);
+
+		return sprintf(match ($level) {
+			Level::Debug, Level::Info => '<bg_blue><black> %s </black></bg_blue>',
+			Level::Notice, Level::Warning => '<bg_yellow><black> %s </black></bg_yellow>',
+			Level::Error, Level::Critical, Level::Alert, Level::Emergency => '<bg_red><white> %s </white></bg_red>',
+		}, $level->getName());
+	}
+
+	/**
 	 * Outputs log entries.
 	 */
 	protected function outputLogEntries(array $logEntries): void
@@ -123,18 +128,8 @@ class DebugServer extends Command
 		$this->write('<bold>Log entries</bold>');
 		$this->nl();
 
-		$decorateLevel = static function ($logLevel): string {
-			$level = Level::fromValue($logLevel);
-
-			return sprintf(match ($level) {
-				Level::Debug, Level::Info => '<bg_blue><black> %s </black></bg_blue>',
-				Level::Notice, Level::Warning => '<bg_yellow><black> %s </black></bg_yellow>',
-				Level::Error, Level::Critical, Level::Alert, Level::Emergency => '<bg_red><white> %s </white></bg_red>',
-			}, $level->getName());
-		};
-
 		foreach ($logEntries as $logEntry) {
-			$level = $decorateLevel($logEntry['level']);
+			$level = $this->decorateLogLevel($logEntry['level']);
 			$message = $this->escape($logEntry['message']);
 
 			$this->write("<bold>{$level}</bold> <faded>{$logEntry['time']}</faded> {$message}");
@@ -145,7 +140,7 @@ class DebugServer extends Command
 	/**
 	 * Outputs information about the latest request.
 	 */
-	protected function outputRequestInfo(string $requestInfo, bool $verbose, bool $request, bool $response, bool $performance): void
+	protected function outputRequestInfo(string $requestInfo, bool $verbose): void
 	{
 		$requestInfo = $this->signer->validate($requestInfo);
 
@@ -195,7 +190,7 @@ class DebugServer extends Command
 
 			$this->labelsAndValues([
 				'Execution time' => round($info['performance']['executionTime'], 4) . ' seconds',
-				'Peak memory usage' => $this->formatMemoryUsage($info['performance']['peakMemoryUsage']),
+				'Peak memory usage' => $this->humanizer->fileSize($info['performance']['peakMemoryUsage']),
 			], 25.0);
 
 			$this->nl();
@@ -225,14 +220,8 @@ class DebugServer extends Command
 	/**
 	 * Executes the command.
 	 */
-	public function execute(
-		string $address = 'localhost',
-		int $port = 9000,
-		bool $verbose = false,
-		bool $request = false,
-		bool $response = false,
-		bool $performance = false
-	): void {
+	public function execute(string $address = 'localhost', int $port = 9000, bool $verbose = false): void
+	{
 		$server = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
 		socket_set_option($server, SOL_SOCKET, SO_REUSEADDR, value: 1);
@@ -284,7 +273,7 @@ class DebugServer extends Command
 					}
 
 					if ($message !== '') {
-						$this->outputRequestInfo($message, $verbose, $request, $response, $performance);
+						$this->outputRequestInfo($message, $verbose);
 					}
 
 					socket_close($client);
