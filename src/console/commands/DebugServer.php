@@ -105,6 +105,52 @@ class DebugServer extends Command
 	}
 
 	/**
+	 * Output request information.
+	 */
+	protected function outputRequestInformation(array $request): void
+	{
+		$this->nl();
+		$this->write('<bold>Request</bold>');
+		$this->nl();
+
+		$this->labelsAndValues([
+			'Route' => $this->escape($request['route']),
+			'Content type' => $this->escape($request['type'] ?: 'Undefined'),
+			'Client IP' => $request['ip'],
+		], widthPercent: 25.0);
+	}
+
+	/**
+	 * Output response information.
+	 */
+	protected function outputResponseInformation(array $response): void
+	{
+		$this->nl();
+		$this->write('<bold>Response</bold>');
+		$this->nl();
+
+		$this->labelsAndValues([
+			'Content type' => $response['type'],
+			'Character set' => $response['charset'],
+		], widthPercent: 25.0);
+	}
+
+	/**
+	 * Output performance information.
+	 */
+	protected function outputPerformanceInformation(array $performance): void
+	{
+		$this->nl();
+		$this->write('<bold>Performance</bold>');
+		$this->nl();
+
+		$this->labelsAndValues([
+			'Execution time' => round($performance['executionTime'], 4) . ' seconds',
+			'Peak memory usage' => $this->humanizer->fileSize($performance['peakMemoryUsage']),
+		], 25.0);
+	}
+
+	/**
 	 * Decorates the log level.
 	 *
 	 * @param value-of<Level::VALUES> $logLevel
@@ -121,26 +167,38 @@ class DebugServer extends Command
 	}
 
 	/**
+	 * Output exception information.
+	 */
+	protected function outputExceptionInformation(array $exception): void
+	{
+		$this->nl();
+		$this->write("<bold>{$exception['name']}</bold>");
+		$this->nl();
+		$this->write($this->escape($exception['message']));
+		$this->nl();
+		$this->write('<faded>Check the application error log for more details.</faded>');
+	}
+
+	/**
 	 * Outputs log entries.
 	 */
 	protected function outputLogEntries(array $logEntries): void
 	{
+		$this->nl();
 		$this->write('<bold>Log entries</bold>');
 		$this->nl();
 
 		foreach ($logEntries as $logEntry) {
 			$level = $this->decorateLogLevel($logEntry['level']);
 			$message = $this->escape($logEntry['message']);
-
 			$this->write("<bold>{$level}</bold> <faded>{$logEntry['time']}</faded> {$message}");
-			$this->nl();
 		}
 	}
 
 	/**
 	 * Outputs information about the latest request.
 	 */
-	protected function outputRequestInfo(string $requestInfo, bool $verbose): void
+	protected function output(string $requestInfo, bool $verbose): void
 	{
 		$requestInfo = $this->signer->validate($requestInfo);
 
@@ -165,35 +223,9 @@ class DebugServer extends Command
 				$this->determineAlertTemplate($info['response']['code'])
 			);
 
-			$this->nl();
-			$this->write('<bold>Request</bold>');
-			$this->nl();
-
-			$this->labelsAndValues([
-				'Route' => $this->escape($info['request']['route']),
-				'Content type' => $this->escape($info['request']['type'] ?: 'Undefined'),
-				'Client IP' => $info['request']['ip'],
-			], widthPercent: 25.0);
-
-			$this->nl();
-			$this->write('<bold>Response</bold>');
-			$this->nl();
-
-			$this->labelsAndValues([
-				'Content type' => $info['response']['type'],
-				'Character set' => $info['response']['charset'],
-			], widthPercent: 25.0);
-
-			$this->nl();
-			$this->write('<bold>Performance</bold>');
-			$this->nl();
-
-			$this->labelsAndValues([
-				'Execution time' => round($info['performance']['executionTime'], 4) . ' seconds',
-				'Peak memory usage' => $this->humanizer->fileSize($info['performance']['peakMemoryUsage']),
-			], 25.0);
-
-			$this->nl();
+			$this->outputRequestInformation($info['request']);
+			$this->outputResponseInformation($info['response']);
+			$this->outputPerformanceInformation($info['performance']);
 		}
 		else {
 			$this->alert(
@@ -205,9 +237,7 @@ class DebugServer extends Command
 				Alert::DANGER
 			);
 
-			$this->nl();
-			$this->write("<red>{$info['exception']['name']}: {$this->escape($info['exception']['message'])}</red>");
-			$this->nl();
+			$this->outputExceptionInformation($info['exception']);
 		}
 
 		// Output log entries
@@ -215,6 +245,8 @@ class DebugServer extends Command
 		if (!empty($info['log'])) {
 			$this->outputLogEntries($info['log']);
 		}
+
+		$this->nl();
 	}
 
 	/**
@@ -273,7 +305,7 @@ class DebugServer extends Command
 					}
 
 					if ($message !== '') {
-						$this->outputRequestInfo($message, $verbose);
+						$this->output($message, $verbose);
 					}
 
 					socket_close($client);
