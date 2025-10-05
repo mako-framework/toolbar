@@ -21,7 +21,7 @@
         "symfony/var-dumper": "^7.3"
     },
     "require-dev": {
-        "mako/framework": "^11.0.0",
+        "mako/framework": "^12.0.0-dev",
         "monolog/monolog": "^3.9",
         "phpstan/phpstan": "^2.1"
     },

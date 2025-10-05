@@ -152,13 +152,10 @@ class DebugServer extends Command
 
 		if ($verbose && !empty($performance['queries'])) {
 			foreach ($performance['queries'] as $key => $query) {
-				$number = $key + 1;
 				$time = round($query['time'], 4);
 
 				$this->nl();
-				$this->write("<bold>Query #{$number} <faded>({$time} seconds)</faded></bold>");
-				$this->nl();
-				$this->write($this->escape($query['query']));
+				$this->frame($this->escape($query['query']), "{$time} seconds");
 			}
 		}
 	}
