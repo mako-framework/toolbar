@@ -1,5 +1,6 @@
 # Mako debug toolbar
 
+[![Tests](https://github.com/mako-framework/toolbar/actions/workflows/tests.yml/badge.svg)](https://github.com/mako-framework/toolbar/actions/workflows/tests.yml)
 [![Static analysis](https://github.com/mako-framework/toolbar/actions/workflows/static-analysis.yml/badge.svg)](https://github.com/mako-framework/toolbar/actions/workflows/static-analysis.yml)
 
 ## Requirements
