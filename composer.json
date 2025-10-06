@@ -15,24 +15,33 @@
             "mako\\toolbar\\": "src"
         }
     },
+    "autoload-dev": {
+        "psr-4": {
+            "mako\\toolbar\\tests\\": "tests"
+        }
+    },
     "require": {
         "php": ">=8.4.0",
         "doctrine/sql-formatter": "^1.5",
-        "symfony/var-dumper": "^7.2"
+        "symfony/var-dumper": "^7.3"
     },
     "require-dev": {
-        "mako/framework": "^11.0.0",
-        "monolog/monolog": "^3.8",
-        "phpstan/phpstan": "^2.0.3"
+        "mako/framework": "^12.0.0-dev",
+        "mockery/mockery": "^1.6.12",
+        "monolog/monolog": "^3.9",
+        "phpstan/phpstan": "^2.1",
+        "phpunit/phpunit": "^12.3"
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "8.1-dev"
+            "dev-master": "9.0-dev"
         }
     },
     "scripts": {
+        "phpunit": "phpunit --display-incomplete --display-skipped --display-deprecations --display-errors --display-notices --display-warning --display-phpunit-deprecations",
         "phpstan": "phpstan analyze src --no-progress --memory-limit=-1 -c phpstan.neon",
         "qa": [
+            "@phpunit",
             "@phpstan"
         ]
     }

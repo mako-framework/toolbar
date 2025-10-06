@@ -16,7 +16,9 @@ use mako\http\Response;
 use mako\http\routing\Routes;
 use mako\http\routing\URLBuilder;
 use mako\session\Session;
+use mako\toolbar\console\commands\DebugServer;
 use mako\toolbar\controllers\OPcache;
+use mako\toolbar\logger\MonologHandler;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;
 use mako\toolbar\panels\MonologPanel;
@@ -45,6 +47,13 @@ class ToolbarPackage extends Package
 	/**
 	 * {@inheritDoc}
 	 */
+	protected array $commands = [
+		'toolbar:debug-server' => DebugServer::class,
+	];
+
+	/**
+	 * {@inheritDoc}
+	 */
 	protected function bootstrap(): void
 	{
 		$monologHandler = null;
@@ -53,6 +62,8 @@ class ToolbarPackage extends Package
 
 		if ($this->container->has(LoggerInterface::class)) {
 			$monologHandler = new MonologHandler(Level::Debug, true);
+
+			$this->container->registerInstance(MonologHandler::class, $monologHandler);
 
 			/** @var \mako\logger\Logger $makoLogger */
 			$makoLogger = $this->container->get(LoggerInterface::class);
