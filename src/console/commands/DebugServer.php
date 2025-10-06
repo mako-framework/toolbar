@@ -171,7 +171,8 @@ class DebugServer extends Command
 		$level = Level::fromValue($logLevel);
 
 		return sprintf(match ($level) {
-			Level::Debug, Level::Info => '<bg_blue><black> %s </black></bg_blue>',
+			Level::Debug => '<bg_green><black> %s </black></bg_green>',
+			Level::Info => '<bg_blue><black> %s </black></bg_blue>',
 			Level::Notice, Level::Warning => '<bg_yellow><black> %s </black></bg_yellow>',
 			Level::Error, Level::Critical, Level::Alert, Level::Emergency => '<bg_red><white> %s </white></bg_red>',
 		}, $level->getName());
@@ -197,11 +198,11 @@ class DebugServer extends Command
 	{
 		$this->nl();
 		$this->write('<bold>Log entries</bold>');
-		$this->nl();
 
 		foreach ($logEntries as $logEntry) {
 			$level = $this->decorateLogLevel($logEntry['level']);
 			$message = $this->escape($logEntry['message']);
+			$this->nl();
 			$this->write("<bold>{$level}</bold> <faded>{$logEntry['time']}</faded> {$message}");
 		}
 	}
