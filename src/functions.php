@@ -19,9 +19,12 @@ namespace mako\toolbar {
 	 * @param  T $value
 	 * @return T
 	 */
-	function debug(mixed $value): mixed
+	function debug(mixed $value, ?callable $encoder = null): mixed
 	{
-		CurrentApplication::get()?->getContainer()->get(LoggerInterface::class)->debug(var_export($value, true));
+		CurrentApplication::get()
+		?->getContainer()
+		->get(LoggerInterface::class)
+		->debug($encoder ? $encoder($value) : var_export($value, true));
 
 		return $value;
 	}
