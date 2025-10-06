@@ -21,7 +21,7 @@ namespace mako\toolbar {
 	 */
 	function debug(mixed $value): mixed
 	{
-		CurrentApplication::get()->getContainer()->get(LoggerInterface::class)->debug(var_export($value, true));
+		CurrentApplication::get()?->getContainer()->get(LoggerInterface::class)->debug(var_export($value, true));
 
 		return $value;
 	}
