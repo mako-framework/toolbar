@@ -17,7 +17,7 @@ use mako\http\routing\Routes;
 use mako\http\routing\URLBuilder;
 use mako\session\Session;
 use mako\toolbar\console\commands\DebugServer;
-use mako\toolbar\controllers\OPcache;
+use mako\toolbar\http\controllers\OPcache;
 use mako\toolbar\logger\MonologHandler;
 use mako\toolbar\panels\ConfigPanel;
 use mako\toolbar\panels\DatabasePanel;

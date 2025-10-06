@@ -21,6 +21,7 @@ use mako\utility\Humanizer;
 use Monolog\Level;
 use RuntimeException;
 
+use function count;
 use function in_array;
 use function json_decode;
 use function round;

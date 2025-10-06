@@ -5,7 +5,7 @@
  * @license   http://www.makoframework.com/license
  */
 
-namespace mako\toolbar\controllers;
+namespace mako\toolbar\http\controllers;
 
 use mako\http\routing\Controller;
 
