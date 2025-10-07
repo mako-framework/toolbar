@@ -10,6 +10,7 @@ namespace mako\toolbar {
     use mako\application\CurrentApplication;
     use Psr\Log\LoggerInterface;
 
+	use function is_string;
 	use function var_export;
 
 	/**
