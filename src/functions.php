@@ -24,7 +24,7 @@ namespace mako\toolbar {
 		CurrentApplication::get()
 		?->getContainer()
 		->get(LoggerInterface::class)
-		->log($level, ($encoder ? $encoder($value) : var_export($value, true)));
+		->log($level, ($encoder ? $encoder($value) : (is_string($value) ? $value : var_export($value, true))));
 
 		return $value;
 	}
