@@ -77,6 +77,18 @@ class DebugServer extends Command
 	}
 
 	/**
+	 * Returns TRUE if the provided filter is a regex pattern and FALSE if not.
+	 */
+	protected function validateFilter(string $filter): bool
+	{
+		if (@preg_match("#{$filter}#u", '') === false) {
+			return false;
+		}
+
+		return true;
+	}
+
+	/**
 	 * Escapes the output.
 	 */
 	protected function escape(string $string): string
@@ -290,6 +302,13 @@ class DebugServer extends Command
 		$message .= '<yellow>(ctrl+c to stop)</yellow>';
 
 		if (!empty($filter)) {
+			if (!$this->validateFilter($filter)) {
+				$this->nl();
+				$this->error('<red>The provided filter is not a valid regex pattern.</red>');
+				$this->nl();
+				return;
+			}
+
 			$message .= PHP_EOL . PHP_EOL;
 			$message .= "The server will only output info for requests matching the <blue>'{$this->escape($filter)}'</blue> pattern.";
 		}
