@@ -46,6 +46,7 @@ use function trim;
 #[CommandArguments(
 	new NamedArgument('address', 'a', 'Address to run the server on', Argument::IS_OPTIONAL),
 	new NamedArgument('port', 'p', 'Port to run the server on', Argument::IS_OPTIONAL | Argument::IS_INT),
+	new NamedArgument('filter', 'f', 'Filter incomming requests', Argument::IS_OPTIONAL),
 	new NamedArgument('verbose', 'v', 'Enable verbose output for all information', Argument::IS_BOOL | Argument::IS_OPTIONAL)
 )]
 /**
@@ -210,8 +211,10 @@ class DebugServer extends Command
 	/**
 	 * Outputs information about the latest request.
 	 */
-	protected function output(string $requestInfo, bool $verbose): void
+	protected function output(string $requestInfo, ?string $filter, bool $verbose): void
 	{
+		// Validate and decode data
+
 		$requestInfo = $this->signer->validate($requestInfo);
 
 		if ($requestInfo === false) {
@@ -224,13 +227,22 @@ class DebugServer extends Command
 
 		$info = json_decode(trim($requestInfo), associative: true, flags: JSON_THROW_ON_ERROR);
 
+		// Check if we should display the request data
+
+		if ($filter !== null && preg_match("#{$filter}#u", "{$info['request']['path']}{$info['request']['queryString']}") !== 1) {
+			return;
+		}
+
+		// Display request information
+
 		if ($info['exception'] === null) {
 			$this->alert(
 				sprintf(
-					'<bg_white><black> %s </black></bg_white> <bold>%s</bold> <bold>%s</bold>',
+					'<bg_white><black> %s </black></bg_white> <bold>%s</bold> <bold>%s</bold>%s',
 					$info['response']['code'],
 					strtoupper($info['request']['method']),
-					$this->escape($info['request']['path'])
+					$this->escape($info['request']['path']),
+					$info['request']['queryString'] ? $this->escape("?{$info['request']['queryString']}") : ''
 				),
 				$this->determineAlertTemplate($info['response']['code'])
 			);
@@ -264,7 +276,7 @@ class DebugServer extends Command
 	/**
 	 * Executes the command.
 	 */
-	public function execute(string $address = 'localhost', int $port = 9000, bool $verbose = false): void
+	public function execute(string $address = 'localhost', int $port = 9000, ?string $filter = null, bool $verbose = false): void
 	{
 		$server = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
 
@@ -274,8 +286,13 @@ class DebugServer extends Command
 		socket_set_nonblock($server);
 
 		$message  = 'The <green>Mako</green> debug server is listening for data on ';
-		$message .= "<underlined>$address:$port</underlined> ";
+		$message .= "<underlined>{$address}:{$port}</underlined> ";
 		$message .= '<yellow>(ctrl+c to stop)</yellow>';
+
+		if (!empty($filter)) {
+			$message .= PHP_EOL . PHP_EOL;
+			$message .= "The server will only output info for requests matching the <blue>'{$this->escape($filter)}'</blue> pattern.";
+		}
 
 		$this->nl();
 		$this->write($message);
@@ -317,7 +334,7 @@ class DebugServer extends Command
 					}
 
 					if ($message !== '') {
-						$this->output($message, $verbose);
+						$this->output($message, $filter, $verbose);
 					}
 
 					socket_close($client);

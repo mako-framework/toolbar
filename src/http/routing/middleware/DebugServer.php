@@ -38,6 +38,18 @@ class DebugServer implements MiddlewareInterface
 	}
 
 	/**
+	 * Returns the query string.
+	 */
+	protected function getQueryString(Request $request): ?string
+	{
+		if (!empty($params = $request->query->all())) {
+			return http_build_query($params, encoding_type: PHP_QUERY_RFC3986);
+		}
+
+		return null;
+	}
+
+	/**
 	 * Collects log entries.
 	 */
 	protected function collectLogEntries(): array
@@ -73,6 +85,7 @@ class DebugServer implements MiddlewareInterface
 				'method' => $request->getMethod(),
 				'route' => $request->getRoute()?->getRoute(),
 				'path' => $request->getPath(),
+				'queryString' => $this->getQueryString($request),
 				'type' => $request->getContentType(),
 				'ip' => $request->getIp(),
 			],
