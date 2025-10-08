@@ -24,6 +24,7 @@ use RuntimeException;
 use function count;
 use function in_array;
 use function json_decode;
+use function preg_match;
 use function round;
 use function socket_accept;
 use function socket_bind;

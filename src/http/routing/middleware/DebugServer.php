@@ -19,6 +19,7 @@ use mako\toolbar\logger\MonologHandler;
 use Throwable;
 
 use function array_map;
+use function http_build_query;
 use function memory_get_peak_usage;
 use function microtime;
 
