@@ -10,6 +10,7 @@ namespace mako\toolbar\tests\unit\http\routing\middleware;
 use mako\application\Application;
 use mako\database\ConnectionManager;
 use mako\http\Request;
+use mako\http\request\Parameters;
 use mako\http\Response;
 use mako\http\response\Status;
 use mako\http\routing\Route;
@@ -71,6 +72,12 @@ class DebugServerTest extends TestCase
 	 */
 	public function getRequest(): MockInterface&Request
 	{
+		$query = Mockery::mock(Parameters::class);
+
+		$query->shouldReceive('all')->andReturn(['foo' => 'bar']);
+
+		//
+
 		$route = Mockery::mock(Route::class);
 
 		$route->shouldReceive('getRoute')->andReturn('/article/{id}');
@@ -84,6 +91,10 @@ class DebugServerTest extends TestCase
 		$request->shouldReceive('getPath')->andReturn('/article/123');
 		$request->shouldReceive('getContentType')->andReturn('application/json');
 		$request->shouldReceive('getIp')->andReturn('127.0.0.1');
+
+		(function ($query): void {
+			$this->query = $query;
+		})->bindTo($request, Request::class)($query);
 
 		return $request;
 	}
