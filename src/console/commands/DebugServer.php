@@ -47,7 +47,7 @@ use function trim;
 	new NamedArgument('address', 'a', 'Address to run the server on', Argument::IS_OPTIONAL),
 	new NamedArgument('port', 'p', 'Port to run the server on', Argument::IS_OPTIONAL | Argument::IS_INT),
 	new NamedArgument('filter', 'f', 'Filter incoming requests using a regex pattern', Argument::IS_OPTIONAL),
-	new NamedArgument('verbose', 'v', 'Enable verbose output for all information', Argument::IS_BOOL | Argument::IS_OPTIONAL)
+	new NamedArgument('verbose', 'v', 'Enable verbose information output', Argument::IS_BOOL | Argument::IS_OPTIONAL)
 )]
 /**
  * Debug server.
