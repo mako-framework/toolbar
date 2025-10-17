@@ -9,6 +9,7 @@ namespace mako\toolbar {
 
     use mako\application\CurrentApplication;
     use Psr\Log\LoggerInterface;
+    use Stringable;
 
 	use function is_string;
 	use function var_export;
@@ -25,7 +26,10 @@ namespace mako\toolbar {
 		CurrentApplication::get()
 		?->getContainer()
 		->get(LoggerInterface::class)
-		->log($level, ($encoder ? $encoder($value) : (is_string($value) ? $value : var_export($value, true))));
+		->log(
+			$level,
+			($encoder ? $encoder($value) : ((is_string($value) || $value instanceof Stringable) ? $value : var_export($value, true)))
+		);
 
 		return $value;
 	}
