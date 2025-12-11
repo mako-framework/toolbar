@@ -24,7 +24,7 @@
         }
     },
     "require": {
-        "php": ">=8.4.0",
+        "php": ">=8.5.0",
         "doctrine/sql-formatter": "^1.5",
         "symfony/var-dumper": "^7.3"
     },
