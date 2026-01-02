@@ -26,14 +26,14 @@
     "require": {
         "php": ">=8.5.0",
         "doctrine/sql-formatter": "^1.5",
-        "symfony/var-dumper": "^7.3"
+        "symfony/var-dumper": "^8.0"
     },
     "require-dev": {
         "mako/framework": "^12.0.0-dev",
         "mockery/mockery": "^1.6.12",
-        "monolog/monolog": "^3.9",
+        "monolog/monolog": "^3.10",
         "phpstan/phpstan": "^2.1",
-        "phpunit/phpunit": "^12.3"
+        "phpunit/phpunit": "^12.5"
     },
     "extra": {
         "branch-alias": {
