@@ -106,7 +106,7 @@ class DebugServerTest extends TestCase
 	{
 		$response = Mockery::mock(Response::class);
 
-		$response->shouldReceive('getStatus')->andReturn(Status::OK);
+		$response->shouldReceive('getStatus')->andReturn(Status::Ok);
 		$response->shouldReceive('getType')->andReturn('application/json');
 		$response->shouldReceive('getCharset')->andReturn('UTF-8');
 
