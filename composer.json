@@ -29,7 +29,7 @@
         "symfony/var-dumper": "^8.0"
     },
     "require-dev": {
-        "mako/framework": "^12.0.0",
+        "mako/framework": "^13.0.0@dev",
         "mockery/mockery": "^1.6.12",
         "monolog/monolog": "^3.10",
         "phpstan/phpstan": "^2.1",
@@ -37,7 +37,7 @@
     },
     "extra": {
         "branch-alias": {
-            "dev-master": "9.1-dev"
+            "dev-master": "10.0-dev"
         }
     },
     "scripts": {

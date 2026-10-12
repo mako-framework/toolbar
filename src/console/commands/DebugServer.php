@@ -16,7 +16,7 @@ use mako\cli\signals\SignalHandler;
 use mako\reactor\attributes\CommandArguments;
 use mako\reactor\attributes\CommandDescription;
 use mako\reactor\Command;
-use mako\security\Signer;
+use mako\security\signer\Signer;
 use mako\utility\Humanizer;
 use Monolog\Level;
 use RuntimeException;

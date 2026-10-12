@@ -8,7 +8,7 @@
 namespace mako\toolbar\console;
 
 use mako\config\attributes\syringe\InjectConfig;
-use mako\security\Signer;
+use mako\security\signer\Signer;
 
 use function fclose;
 use function fsockopen;

@@ -30,6 +30,7 @@ use mako\utility\Humanizer;
 use mako\view\ViewFactory;
 use Monolog\Level;
 use Monolog\Logger as MonoLogger;
+use Override;
 use Psr\Log\LoggerInterface;
 
 use function function_exists;
@@ -54,7 +55,8 @@ class ToolbarPackage extends Package
 	/**
 	 * {@inheritDoc}
 	 */
-	protected function bootstrap(): void
+	#[Override]
+	public function bootstrap(): void
 	{
 		$monologHandler = null;
 
