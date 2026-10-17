@@ -78,7 +78,7 @@ class DebugServer extends Command
 	}
 
 	/**
-	 * Returns TRUE if the provided filter is a regex pattern and FALSE if not.
+	 * Returns true if the provided filter is a regex pattern and false if not.
 	 */
 	protected function validateFilter(string $filter): bool
 	{
