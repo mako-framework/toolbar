@@ -41,13 +41,15 @@ use function function_exists;
 class ToolbarPackage extends Package
 {
 	/**
-	 * Package name.
+	 * {@inheritDoc}
 	 */
+	#[Override]
 	protected string $packageName = 'mako/toolbar';
 
 	/**
 	 * {@inheritDoc}
 	 */
+	#[Override]
 	protected array $commands = [
 		'toolbar:debug-server' => DebugServer::class,
 	];
