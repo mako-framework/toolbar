@@ -38,6 +38,11 @@
     "extra": {
         "branch-alias": {
             "dev-master": "10.0-dev"
+        },
+        "mako": {
+            "publish": {
+                "config": true
+            }
         }
     },
     "scripts": {
